@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roots & Receipes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --gold-1:#b8862b;
+      --gold-2:#d9bf5a;
+      --green-soft:#9cb788;
+      --dark:#3f3727;
+      --muted:#7a7467;
+      --shadow:0 16px 38px rgba(120,94,35,0.12);
+      --hover-shadow:0 22px 50px rgba(184,134,43,0.22);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:'Poppins',sans-serif;
+      color:var(--dark);
+      background:
+        radial-gradient(circle at top left, rgba(184,134,43,0.14), transparent 25%),
+        radial-gradient(circle at top right, rgba(156,183,136,0.14), transparent 22%),
+        linear-gradient(135deg, #faf8f0 0%, #ffffff 40%, #f4efdd 100%);
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    .site-watermark{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .site-watermark img{
+      width:75vw;
+      max-width:900px;
+      opacity:0.20;
+      filter:sepia(80%) saturate(120%) hue-rotate(10deg) brightness(0.9);
+      transform:rotate(-15deg);
+      object-fit:contain;
+    }
+
+    nav, section, footer{
+      position:relative;
+      z-index:2;
+    }
+
+    .custom-navbar{
+      background:rgba(250,248,240,0.9);
+      backdrop-filter:blur(12px);
+      box-shadow:0 8px 24px rgba(184,134,43,0.08);
+      border-bottom:1px solid rgba(184,134,43,0.12);
+    }
+
+    .brand-wrap{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+    }
+
+    .brand-logo{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      object-fit:cover;
+      box-shadow:0 10px 22px rgba(184,134,43,0.18);
+      border:2px solid rgba(255,255,255,0.85);
+    }
+
+    .brand-text{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2rem;
+      font-weight:700;
+      color:var(--gold-1);
+      line-height:1;
+    }
+
+    .navbar .nav-link{
+      color:var(--dark);
+      font-weight:500;
+      border-radius:12px;
+      transition:all .28s ease;
+      padding:8px 14px !important;
+    }
+
+    .navbar .nav-link:hover{
+      color:var(--gold-1);
+      background:rgba(184,134,43,0.08);
+      transform:translateY(-1px);
+    }
+
+    .hero-section,
+    .how-section,
+    .menu-section,
+    .checkout-section{
+      padding:90px 0;
+    }
+
+    .status-section,
+    .thali-section,
+    .download-section{
+      padding:25px 0 10px;
+    }
+
+    .hero-section{padding-top:120px}
+
+    .hero-card,
+    .glass-card,
+    .feature-card,
+    .thali-card,
+    .download-card,
+    .form-card,
+    .summary-card,
+    .status-card{
+      background:rgba(255,255,255,0.92);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border:1px solid rgba(184,134,43,0.12);
+      position:relative;
+      overflow:hidden;
+      transition:transform .35s ease, box-shadow .35s ease;
+    }
+
+    .hero-card:hover,
+    .glass-card:hover,
+    .feature-card:hover,
+    .thali-card:hover,
+    .download-card:hover,
+    .form-card:hover,
+    .summary-card:hover,
+    .status-card:hover{
+      transform:translateY(-8px);
+      box-shadow:var(--hover-shadow);
+    }
+
+    .hero-card{
+      padding:44px;
+      background:linear-gradient(135deg, rgba(184,134,43,0.96), rgba(224,198,99,0.93), rgba(156,183,136,0.9));
+      color:#fff;
+    }
+
+    .hero-card h1{
+      font-family:'Cormorant Garamond',serif;
+      font-size:3.2rem;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+
+    .hero-badge,
+    .special-tag,
+    .status-pill{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:.85rem;
+      font-weight:700;
+    }
+
+    .hero-badge{
+      background:rgba(255,255,255,0.18);
+      border:1px solid rgba(255,255,255,0.24);
+      margin-bottom:16px;
+    }
+
+    .status-pill.pending{
+      background:linear-gradient(135deg,#5d84d6,#8db0f8);
+      color:#fff;
+    }
+
+    .status-pill.accepted{
+      background:linear-gradient(135deg,#329f59,#6cc788);
+      color:#fff;
+    }
+
+    .special-tag{
+      background:linear-gradient(135deg,var(--gold-1), var(--gold-2));
+      color:#fff;
+      margin-bottom:14px;
+    }
+
+    .hero-pill-wrap{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .info-pill{
+      background:#f7f1dd;
+      color:#947319;
+      border:1px solid rgba(184,134,43,0.14);
+      border-radius:999px;
+      padding:8px 14px;
+      font-weight:600;
+      box-shadow:0 8px 18px rgba(184,134,43,0.07);
+    }
+
+    .glass-card{padding:30px}
+
+    .qr-box{
+      width:180px;
+      height:180px;
+      margin:0 auto;
+      border-radius:18px;
+      background:
+        linear-gradient(90deg,#000 10px,transparent 10px) 0 0/34px 34px,
+        linear-gradient(#000 10px,transparent 10px) 0 0/34px 34px,
+        linear-gradient(90deg,transparent 24px,#000 24px) 0 0/34px 34px,
+        linear-gradient(transparent 24px,#000 24px) 0 0/34px 34px,
+        #fff;
+      border:10px solid #fff;
+      box-shadow:0 14px 32px rgba(120,94,35,0.14);
+    }
+
+    .small-qr{width:130px;height:130px}
+
+    .section-head{
+      margin-bottom:34px;
+    }
+
+    .section-head h2{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.8rem;
+      font-weight:700;
+      color:var(--gold-1);
+      margin-bottom:6px;
+    }
+
+    .section-head p{color:var(--muted)}
+
+    .feature-card{
+      padding:28px;
+      height:100%;
+    }
+
+    .feature-card h5{
+      margin-top:18px;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .icon-circle{
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-size:1.5rem;
+      background:linear-gradient(135deg,#f7ebc7,#fff8e8);
+      border:1px solid rgba(184,134,43,0.14);
+      box-shadow:0 10px 20px rgba(184,134,43,0.1);
+    }
+
+    .status-card{padding:32px}
+
+    .status-card h3{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.2rem;
+      color:var(--gold-1);
+    }
+
+    .eta-box{
+      padding:22px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#fffaf0,#ffffff);
+      border:1px solid rgba(184,134,43,0.14);
+      box-shadow:0 14px 28px rgba(184,134,43,0.08);
+    }
+
+    .eta-value{
+      font-weight:700;
+      color:var(--gold-1);
+    }
+
+    .thali-card{
+      padding:38px;
+      background:linear-gradient(180deg,#fff,#fcf8ea);
+    }
+
+    .thali-card h2{
+      font-family:'Cormorant Garamond',serif;
+      color:var(--gold-1);
+      font-size:2.6rem;
+    }
+
+    .price-tag{
+      margin-top:16px;
+      font-size:2rem;
+      font-weight:800;
+      color:var(--gold-1);
+    }
+
+    .download-card{
+      text-align:center;
+      padding:34px;
+      background:linear-gradient(135deg,#fcf8ea,#ffffff);
+    }
+
+    .download-card h3{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.2rem;
+      color:var(--gold-1);
+    }
+
+    .menu-card{
+      background:rgba(255,255,255,0.96);
+      border-radius:22px;
+      padding:18px;
+      height:100%;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(184,134,43,0.12);
+      transition:transform .35s ease, box-shadow .35s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .menu-card:hover{
+      transform:translateY(-8px);
+      box-shadow:var(--hover-shadow);
+    }
+
+    .menu-card img{
+      width:100%;
+      height:190px;
+      object-fit:cover;
+      border-radius:18px;
+      margin-bottom:14px;
+      box-shadow:0 14px 28px rgba(0,0,0,0.12);
+      transition:transform .35s ease;
+    }
+
+    .menu-card:hover img{
+      transform:scale(1.04);
+    }
+
+    .qty-box{
+      width:78px;
+      border-radius:14px;
+      border:1px solid #e5e7eb;
+      padding:10px;
+      text-align:center;
+      font-weight:600;
+    }
+
+    .form-card,
+    .summary-card{
+      padding:32px;
+    }
+
+    .form-card h2,
+    .summary-card h4,
+    .menu-download-content h2,
+    .menu-download-content h3{
+      font-family:'Cormorant Garamond',serif;
+      color:var(--gold-1);
+      font-weight:700;
+    }
+
+    .payment-box{
+      padding:18px;
+      border-radius:18px;
+      background:linear-gradient(180deg,#fffaf0,#fff);
+      border:1px dashed rgba(184,134,43,0.45);
+    }
+
+    .upi-pill{
+      display:inline-block;
+      background:#3b3429;
+      color:#fff;
+      border-radius:12px;
+      padding:10px 14px;
+      box-shadow:0 10px 20px rgba(59,52,41,0.15);
+    }
+
+    .payment-qr-box{
+      background:#ffffff;
+      padding:12px;
+      border-radius:14px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.15);
+      display:inline-block;
+      overflow:hidden;
+    }
+
+    .payment-qr-img{
+      width:150px;
+      height:150px;
+      object-fit:contain;
+      transition:transform 0.35s ease;
+      cursor:pointer;
+    }
+
+    .payment-qr-box:hover .payment-qr-img{
+      transform:scale(1.4);
+    }
+
+    .payment-qr-box:hover{
+      box-shadow:0 15px 40px rgba(0,0,0,0.25);
+    }
+
+    .qr-text{
+      font-size:13px;
+      color:#666;
+      margin-top:6px;
+    }
+
+    .form-control,
+    .form-select{
+      border-radius:14px;
+      padding:12px 14px;
+      border:1px solid #e6e1d3;
+    }
+
+    .form-control:focus,
+    .form-select:focus{
+      border-color:#d4b763;
+      box-shadow:0 0 0 .2rem rgba(212,183,99,0.18);
+    }
+
+    .summary-card{
+      position:sticky;
+      top:100px;
+    }
+
+    .summary-row{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:12px;
+      color:#5b5548;
+    }
+
+    .total-row{
+      font-size:1.15rem;
+      font-weight:700;
+      color:var(--gold-1);
+    }
+
+    .order-item{
+      background:#fffaf1;
+      border-radius:14px;
+      padding:10px 12px;
+      margin-bottom:10px;
+      border:1px solid rgba(184,134,43,0.08);
+      box-shadow:0 8px 16px rgba(184,134,43,0.05);
+    }
+
+    .btn-main{
+      background:linear-gradient(135deg,var(--gold-1), var(--gold-2), #cfa73c);
+      color:#fff;
+      border:none;
+      border-radius:14px;
+      padding:12px 22px;
+      font-weight:600;
+      box-shadow:0 12px 24px rgba(184,134,43,0.22);
+      transition:.3s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .btn-main:hover{
+      color:#fff;
+      transform:translateY(-2px);
+      box-shadow:0 18px 30px rgba(184,134,43,0.28);
+    }
+
+    .btn-soft{
+      background:#fff;
+      border:1px solid #eadfbb;
+      color:var(--dark);
+      border-radius:14px;
+      padding:12px 20px;
+      font-weight:600;
+      box-shadow:0 10px 18px rgba(120,94,35,0.05);
+      transition:.3s ease;
+    }
+
+    .btn-soft:hover{
+      background:#fcf7ea;
+      transform:translateY(-2px);
+    }
+
+    .menu-download-sheet{
+      position:fixed;
+      inset:0;
+      background:rgba(48, 40, 23, 0.62);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:1060;
+    }
+
+    .menu-download-sheet.show{
+      display:flex;
+    }
+
+    .menu-download-content{
+      width:100%;
+      max-width:920px;
+      max-height:90vh;
+      overflow:auto;
+      background:#fff;
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 28px 55px rgba(0,0,0,0.2);
+    }
+
+    .download-category{
+      border:1px solid rgba(184,134,43,0.15);
+      border-radius:18px;
+      padding:18px;
+      background:#fffdf8;
+      height:100%;
+    }
+
+    .download-category h5{
+      color:var(--gold-1);
+      font-weight:700;
+      margin-bottom:14px;
+    }
+
+    .download-menu-row{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      padding:8px 0;
+      border-bottom:1px dashed #eee3c1;
+    }
+
+    .download-menu-row:last-child{
+      border-bottom:none;
+    }
+
+    .sparkle{
+      position:fixed;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      pointer-events:none;
+      background:radial-gradient(circle, rgba(255,255,255,0.95), rgba(217,191,90,0.92), rgba(156,183,136,0.18));
+      box-shadow:0 0 14px rgba(217,191,90,0.82), 0 0 22px rgba(184,134,43,0.35);
+      animation:sparkleFly .8s ease-out forwards;
+      z-index:2000;
+    }
+
+    @keyframes sparkleFly{
+      from{
+        transform:translate(0,0) scale(1);
+        opacity:1;
+      }
+      to{
+        transform:translate(var(--x),var(--y)) scale(.1);
+        opacity:0;
+      }
+    }
+
+    .footer{
+      background: linear-gradient(135deg, #faf6ea, #fff);
+      border-top: 1px solid rgba(184,134,43,0.12);
+      color: #6b7280;
+      padding:35px 0;
+    }
+
+    #enquiry .summary-card h3{
+      color: var(--gold-1);
+      font-weight: 800;
+    }
+
+    @media print{
+      body *{visibility:hidden}
+      #menuDownloadSheet,#menuDownloadSheet *{visibility:visible}
+      #menuDownloadSheet{
+        position:static !important;
+        display:block !important;
+        background:#fff !important;
+        padding:0 !important;
+      }
+      .menu-download-content{
+        box-shadow:none !important;
+        max-width:100% !important;
+        max-height:none !important;
+        border-radius:0 !important;
+        padding:0 !important;
+      }
+      .no-print{display:none !important}
+    }
+
+    @media (max-width:991px){
+      .hero-section{padding-top:105px}
+      .summary-card{position:static}
+      .hero-card h1{font-size:2.7rem}
+      .site-watermark img{width:180px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site-watermark">
+    <img src="logo.png.jpeg" alt="Roots & Receipes Watermark">
+  </div>
+
+  <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+    <div class="container">
+      <a class="navbar-brand brand-wrap" href="#home">
+        <img src="logo.png.jpeg" alt="Roots & Receipes Logo" class="brand-logo">
+        <span class="brand-text">Roots &amp; Receipes</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#how-it-works">How it Works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#checkout">Checkout</a></li>
+          <li class="nav-item"><a class="nav-link" href="#enquiry">Room Enquiry</a></li>
+          <li class="nav-item ms-lg-2"><a href="#menu" class="btn btn-main">Order Now</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section" id="home">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <div class="hero-card sparkle-target">
+            <span class="hero-badge">Elegant Meals • Delivery • Dine-In • WhatsApp Orders</span>
+            <h1>Roots &amp; Receipes</h1>
+            <p class="hero-subtext">
+              Scan QR, choose your food, select <strong>Delivery</strong> or <strong>Dine-In</strong>,
+              make payment, and send your order directly to WhatsApp.
+            </p>
+            <div class="hero-pill-wrap">
+              <span class="info-pill">Premium Look</span>
+              <span class="info-pill">30 Min ETA</span>
+              <span class="info-pill">Google Sheets Storage</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="glass-card text-center sparkle-target">
+            <h4 class="mb-3 fw-bold">Scan & Order</h4>
+            <div class="qr-box"></div>
+            <p class="text-muted mt-3 mb-0">
+              Add your website QR here so tenants can directly open the page and place orders.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="status-section">
+    <div class="container">
+      <div class="status-card sparkle-target">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <span class="status-pill pending" id="liveOrderStatusBadge">Awaiting Order</span>
+            <h3 class="mt-3">Delivery & Dine-In Available</h3>
+            <p class="mb-2 text-muted">
+              Customers can order for room delivery or choose dine-in inside the dining area.
+            </p>
+            <p class="mb-0 text-muted">
+              Minimum estimated time for every order is <strong>30 minutes</strong>.
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <div class="eta-box">
+              <h6 class="mb-2">Order Status</h6>
+              <p class="mb-2 text-muted small" id="statusText">
+                Order tracking will appear here after placing an order.
+              </p>
+              <div class="eta-value">ETA: <span id="estimatedTimeText">30 mins</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <div class="section-head text-center">
+        <h2>How It Works</h2>
+        <p>Simple food ordering experience for residents.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feature-card sparkle-target">
+            <div class="icon-circle">📱</div>
+            <h5>Scan QR</h5>
+            <p>Users scan the QR code and land on the Roots & Receipes ordering page.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card sparkle-target">
+            <div class="icon-circle">🍲</div>
+            <h5>Select Food</h5>
+            <p>Choose the ₹100 Thali or add items from the full premium menu.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card sparkle-target">
+            <div class="icon-circle">✅</div>
+            <h5>Pay & Order</h5>
+            <p>Choose Delivery or Dine-In, complete payment, and send the order on WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="thali-section">
+    <div class="container">
+      <div class="thali-card sparkle-target">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <span class="special-tag">Most Popular</span>
+            <h2>Daily Thali System</h2>
+            <p class="text-muted mb-3">Balanced meal for PG tenants with elegant service.</p>
+            <div class="hero-pill-wrap">
+              <span class="info-pill">4 Rotis</span>
+              <span class="info-pill">Sabzi</span>
+              <span class="info-pill">Dal</span>
+              <span class="info-pill">Rice</span>
+              <span class="info-pill">Salad</span>
+            </div>
+            <div class="price-tag">₹100 / plate</div>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <button class="btn btn-main" onclick="quickAddThali()">Add Thali</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="download-section">
+    <div class="container">
+      <div class="download-card sparkle-target">
+        <h3>Download Full Menu</h3>
+        <p class="text-muted">View or download the menu as PDF.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <button class="btn btn-main" onclick="openMenuDownloadSheet()">View Downloadable Menu</button>
+          <button class="btn btn-soft" onclick="downloadMenuPDF()">Download Menu PDF</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="section-head text-center">
+        <h2>Full Menu</h2>
+        <p>Select your favorite dishes.</p>
+      </div>
+      <div class="row g-4" id="menuContainer"></div>
+    </div>
+  </section>
+
+  <section class="checkout-section" id="checkout">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-7">
+          <div class="form-card sparkle-target">
+            <h2>Checkout Details</h2>
+            <p class="text-muted">Fill your information and send the order to WhatsApp.</p>
+
+            <div class="payment-box mb-4">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-8">
+                  <h5 class="fw-bold mb-2">Payment Section</h5>
+                  <p class="text-muted mb-2">Scan the QR code using any UPI app and enter the transaction reference below.</p>
+                  <div class="upi-pill">UPI ID: 9870281515@okbizaxis</div>
+                  <p class="small text-muted mt-2">Payment Number: <strong>+91 9870281515</strong></p>
+                </div>
+                <div class="col-md-4 text-center">
+                  <div class="payment-qr-box">
+                    <img src="pay.jpeg" alt="UPI QR Code" class="payment-qr-img">
+                    <p class="qr-text">Scan &amp; Pay</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <form id="checkoutForm" class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Name</label>
+                <input type="text" class="form-control" id="customerName" placeholder="Enter full name" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Room Number</label>
+                <input type="text" class="form-control" id="roomNumber" placeholder="Example: 204" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">WhatsApp Number</label>
+                <input type="tel" class="form-control" id="customerWhatsapp" placeholder="10 digit WhatsApp number" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Order Type</label>
+                <select class="form-select" id="orderType" required>
+                  <option value="Delivery">Food Delivery</option>
+                  <option value="Dine-In">Dine-In</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Payment Ref / UTR</label>
+                <input type="text" class="form-control" id="paymentRef" placeholder="Enter transaction ID" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Minimum ETA</label>
+                <input type="text" class="form-control" id="etaInput" value="30 mins" readonly>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold">Special Instructions</label>
+                <textarea class="form-control" id="specialNote" rows="4" placeholder="Less spicy / no onion / extra roti etc."></textarea>
+              </div>
+              <div class="col-12 d-flex flex-wrap gap-3 mt-2">
+                <button type="submit" class="btn btn-main">Send Order to WhatsApp</button>
+                <button type="button" class="btn btn-soft" onclick="clearCart()">Clear Order</button>
+              </div>
+            </form>
+
+            <div class="alert alert-warning mt-4 mb-0">
+              Real cook acceptance notifications inside the page need backend + WhatsApp Business API. This version stores the order in Google Sheets and confirms it was sent to WhatsApp.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="summary-card sparkle-target">
+            <h4>Order Summary</h4>
+            <div id="cartItems" class="mb-3">
+              <p class="text-muted mb-0">No items selected yet.</p>
+            </div>
+            <hr>
+            <div class="summary-row"><span>Subtotal</span><strong id="subtotalAmount">₹0</strong></div>
+            <div class="summary-row"><span>Convenience</span><strong id="feeAmount">₹0</strong></div>
+            <div class="summary-row total-row"><span>Total</span><strong id="totalAmount">₹0</strong></div>
+
+            <hr>
+            <h5 class="mb-3">Order Status</h5>
+            <span class="status-pill pending" id="userStatusBadge">Pending</span>
+            <p class="small text-muted mt-2" id="userStatusMessage">
+              Your order status will be shown here after placing the order.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="checkout-section" id="enquiry">
+    <div class="container">
+
+      <div class="summary-card sparkle-target p-4 mb-4 text-center">
+        <h3 class="fw-bold mb-2">69 STAR GALAXY PG</h3>
+        <p class="mb-0 text-muted">
+          Address: C-56, 69, Star Galaxy PG, Sector 69, Near Genpact, 122101
+        </p>
+      </div>
+
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-7">
+          <div class="form-card sparkle-target">
+            <h2>Room Enquiry</h2>
+            <p class="text-muted">Looking for a room? Send your requirement directly on WhatsApp.</p>
+
+            <form id="enquiryForm" class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Full Name</label>
+                <input type="text" class="form-control" id="enquiryName" placeholder="Enter your name" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">WhatsApp Number</label>
+                <input type="tel" class="form-control" id="enquiryWhatsapp" placeholder="Enter WhatsApp number" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Requirement Type</label>
+                <select class="form-select" id="requirementType" required>
+                  <option value="PG">PG</option>
+                  <option value="1 RK">1 RK</option>
+                  <option value="1 BHK">1 BHK</option>
+                  <option value="2 BHK">2 BHK</option>
+                  <option value="3 BHK">3 BHK</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Food Preference</label>
+                <select class="form-select" id="foodPreference" required>
+                  <option value="With Food">With Food</option>
+                  <option value="Without Food">Without Food</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Preferred Move-in</label>
+                <input type="date" class="form-control" id="moveInDate">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Budget</label>
+                <input type="text" class="form-control" id="budgetRange" placeholder="Example: 8000-12000">
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold">Extra Requirement</label>
+                <textarea class="form-control" id="enquiryNote" rows="4" placeholder="Sharing / private room / furnished / parking / family etc."></textarea>
+              </div>
+              <div class="col-12 d-flex flex-wrap gap-3 mt-2">
+                <button type="submit" class="btn btn-main">Send Room Enquiry on WhatsApp</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="summary-card sparkle-target h-100">
+            <h4>Available Enquiry Options</h4>
+            <div class="order-item"><div class="fw-semibold">PG</div><div class="small text-muted">With food / without food</div></div>
+            <div class="order-item"><div class="fw-semibold">1 RK</div><div class="small text-muted">Compact independent unit</div></div>
+            <div class="order-item"><div class="fw-semibold">1 BHK</div><div class="small text-muted">Single bedroom apartment</div></div>
+            <div class="order-item"><div class="fw-semibold">2 BHK</div><div class="small text-muted">Family or sharing</div></div>
+            <div class="order-item"><div class="fw-semibold">3 BHK</div><div class="small text-muted">Spacious option</div></div>
+            <div class="alert alert-success mt-3 mb-0">WhatsApp for orders & enquiries: <strong>+91 9650009462</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="menu-download-sheet" id="menuDownloadSheet">
+    <div class="menu-download-content">
+      <div class="d-flex justify-content-between align-items-start gap-3 mb-4 no-print flex-wrap">
+        <div>
+          <h2 class="mb-1">Roots &amp; Receipes</h2>
+          <p class="text-muted mb-0">Downloadable food menu</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+          <button class="btn btn-main" onclick="window.print()">Save as PDF</button>
+          <button class="btn btn-soft" onclick="closeMenuDownloadSheet()">Close</button>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <h3 class="mb-1">Roots &amp; Receipes Menu</h3>
+        <p class="text-muted mb-0">Premium food menu</p>
+      </div>
+
+      <div class="row g-4" id="downloadMenuContainer"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container text-center">
+      <p class="mb-1 fw-semibold">Roots &amp; Receipes</p>
+      <p class="mb-1 text-muted">Made for a clean tenant ordering and room enquiry experience with Bootstrap, HTML, CSS and JavaScript.</p>
+      <p class="mb-0 fw-semibold">Designed by Yash Agrawal</p>
+    </div>
+  </footer>
+
+  <script>
+    const orderWhatsappNumber = '918175007166';
+    const enquiryWhatsappNumber = '919650009462';
+    const sheetWebAppUrl = 'https://script.google.com/macros/s/AKfycbxS6x-UWoFOrGDD4X4ZGx56ntT52OpjSp9mXs0OLMw7jWrKNHR5kjLjmqxwyMBHoKmNyA/exec';
+
+    const menuItems = [
+      {id:'thali',name:'Daily Thali',price:100,image:'https://wallpaperaccess.com/full/11262727.jpg',description:'4 Rotis, sabzi, dal, rice and salad.'},
+      {id:'fried-rice',name:'Fried Rice',price:100,image:'https://wallpaperbat.com/img/12458126-mixed-fried-rice-recipe-how-to-make-a.jpg',description:'Veg fried rice.'},
+      {id:'paneer-fried-rice',name:'Paneer Fried Rice',price:120,image:'https://www.flavouroffood.com/wp-content/uploads/2021/02/Paneer-Fried-Rice-4.jpg',description:'Paneer fried rice.'},
+      {id:'veg-chowmein',name:'Veg Chowmein',price:100,image:'https://wallpaperaccess.com/full/8325607.jpg',description:'Veg noodles.'},
+      {id:'paneer-chowmein',name:'Paneer Chowmein',price:150,image:'https://i.ytimg.com/vi/qhvlkSbh4II/maxresdefault.jpg',description:'Paneer noodles.'},
+      {id:'veg-manchurian',name:'Veg Manchurian',price:150,image:'https://tse4.mm.bing.net/th/id/OIP.sPA0_0sQ4m_MLWVxzQ1rPgHaE7?w=800&h=533&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Fried veg balls in sauce.'},
+      {id:'chilli-paneer',name:'Chilli Paneer (Dry)',price:160,image:'https://wallpapercave.com/wp/wp10846848.jpg',description:'Spicy paneer starter.'},
+      {id:'spring-roll',name:'Spring Roll (6 pcs)',price:120,image:'https://images.indianexpress.com/2016/06/recipies_480_thinkstock.jpg',description:'Crispy spring rolls.'},
+      {id:'veg-momos',name:'Veg Momos (8 pcs)',price:120,image:'https://wallpapercave.com/wp/wp10053469.jpg',description:'Steamed veg momos.'},
+      {id:'paneer-momos',name:'Paneer Momos (8 pcs)',price:120,image:'https://i0.wp.com/passion2cook.com/wp-content/uploads/2023/03/paneer-momos-2.jpg?w=1920&ssl=1',description:'Paneer momos.'},
+      {id:'chilli-potato',name:'Chilli Potato',price:120,image:'https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?auto=format&fit=crop&w=1200&q=80',description:'Spicy crispy potato.'},
+      {id:'honey-chilli-potato',name:'Honey Chilli Potato',price:150,image:'https://recipes.timesofindia.com/photo/52532656.cms',description:'Sweet spicy potato.'},
+      {id:'plain-maggi',name:'Plain Maggi',price:40,image:'https://i.ytimg.com/vi/CthdvfRdABs/maxresdefault.jpg',description:'Simple maggi.'},
+      {id:'veg-maggi',name:'Veg Maggi',price:50,image:'https://i.pinimg.com/originals/00/e6/d0/00e6d0678a79442071445a3c0c50d5ac.jpg',description:'Veg maggi noodles.'},
+      {id:'veg-sandwich',name:'Veg Sandwich',price:50,image:'https://images2.alphacoders.com/129/thumb-1920-1292990.jpg',description:'Fresh veg sandwich.'},
+      {id:'paneer-sandwich',name:'Grilled Paneer Sandwich',price:80,image:'https://www.indianhealthyrecipes.com/wp-content/uploads/2022/03/veg-grilled-sandwich-recipe-500x500.jpg',description:'Paneer grilled sandwich.'},
+      {id:'french-fries',name:'French Fries',price:80,image:'https://images6.alphacoders.com/108/thumb-1920-1080178.jpg',description:'Crispy fries.'},
+      {id:'peri-fries',name:'Peri Peri Fries',price:100,image:'https://static.vecteezy.com/system/resources/previews/024/748/761/non_2x/grilled-meat-and-french-fries-a-classic-american-lunch-bar-generated-by-ai-free-photo.jpg',description:'Peri peri fries.'},
+      {id:'chana-masala',name:'Chana Masala',price:100,image:'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1200&q=80',description:'Classic chana curry.'},
+      {id:'dal-tadka',name:'Dal Tadka',price:100,image:'https://static.vecteezy.com/system/resources/previews/038/947/178/non_2x/ai-generated-dal-tadka-is-a-popular-indian-dish-where-cooked-spiced-lentils-are-finished-with-a-tempering-made-of-ghee-or-oil-and-spices-photo.jpg',description:'Tadka dal.'},
+      {id:'aloo-jeera',name:'Aloo Jeera',price:100,image:'https://2.bp.blogspot.com/-wonKVzMF8lM/VtYdt7V12sI/AAAAAAAAUuo/li4gWvl4zBM/s1600/Aloo-Jeera_finalforweb1.jpg',description:'Jeera potatoes.'},
+      {id:'mix-veg',name:'Mix Veg',price:150,image:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80',description:'Mixed vegetables.'},
+      {id:'paneer-bhurji',name:'Paneer Bhurji',price:180,image:'https://media.istockphoto.com/id/1820486089/photo/paneer-bhurji.jpg?s=612x612&w=0&k=20&c=8rcJeVTEJBw_gU6UN60qaDhknd4Z9jGw-x32cwk1vr8=',description:'Paneer bhurji masala.'},
+      {id:'kadhai-paneer',name:'Kadhai Paneer',price:190,image:'https://1.bp.blogspot.com/_GlkYxavu-Ts/StVnaw3GCJI/AAAAAAAAARM/2b3PenJbX7g/s400/kadhai-paneer1.JPG',description:'Kadhai paneer gravy.'},
+      {id:'shahi-paneer',name:'Shahi Paneer',price:190,image:'https://images.pexels.com/photos/10905933/pexels-photo-10905933.jpeg?cs=srgb&dl=pexels-anilsharma65-10905933.jpg&fm=jpg',description:'Rich paneer curry.'},
+      {id:'paneer-butter-masala',name:'Paneer Butter Masala',price:190,image:'https://img.freepik.com/premium-photo/delicious-paneer-butter-masala-photography_928503-848.jpg',description:'Butter paneer curry.'},
+      {id:'plain-paratha',name:'Plain Paratha',price:40,image:'https://img.freepik.com/premium-photo/triangle-shape-plain-paratha-parantha-is-yummy-indian-flat-bread-made-whole-wheat-flour-served-plate-selective-focus_466689-2962.jpg',description:'Plain paratha.'},
+      {id:'lachha-paratha',name:'Lachha Paratha',price:50,image:'https://i.ytimg.com/vi/pmA2-YtUMz4/maxresdefault.jpg',description:'Layered paratha.'},
+      {id:'aloo-paratha',name:'Aloo Paratha',price:60,image:'https://wallpaperaccess.com/full/9466589.jpg',description:'Stuffed aloo paratha.'},
+      {id:'paneer-paratha',name:'Paneer Paratha',price:90,image:'https://tse1.mm.bing.net/th/id/OIP.hIrsd6QLnB4qArX1Kg-o5gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed paneer paratha.'},
+      {id:'plain-roti',name:'Plain Roti',price:10,image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Fresh roti.'},
+      {id:'butter-roti',name:'Butter Roti',price:12,image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Butter roti.'},
+      {id:'plain-rice',name:'Plain Rice',price:70,image:'https://tse4.mm.bing.net/th/id/OIP.oR_ER5FVgt6Ie1fjHPs8hQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Steamed rice.'},
+      {id:'jeera-rice',name:'Jeera Rice',price:80,image:'https://tse4.mm.bing.net/th/id/OIP.oR_ER5FVgt6Ie1fjHPs8hQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Cumin rice.'},
+      {id:'veg-biryani',name:'Veg Biryani',price:150,image:'https://img.freepik.com/premium-photo/view-tasty-yummy-delicious-indian-biryani-4k-hd-photo_1193781-10185.jpg?w=2000',description:'Veg biryani.'},
+      {id:'chai',name:'Aadrak Chai',price:20,image:'https://budleaf.com/wp-content/uploads/2023/08/Adrak-masala-chai-scaled.jpeg',description:'Ginger tea.'},
+      {id:'elaichi-chai',name:'Aadrak Elaichi Chai',price:30,image:'https://budleaf.com/wp-content/uploads/2023/08/Adrak-masala-chai-scaled.jpeg',description:'Cardamom ginger tea.'},
+      {id:'coffee',name:'Hot Coffee',price:50,image:'https://th.bing.com/th?q=Coffee%20Cup%20Background%20Wallpaper&pid=ImgDet&w=150&h=150&c=1&p=1&rs=1&t=1&dpr=1.3&mkt=en-in&adlt=demote&o=7&rm=3',description:'Hot coffee.'},
+      {id:'cold-coffee',name:'Classic Cold Coffee',price:70,image:'https://tse2.mm.bing.net/th/id/OIP.2P4fqrajqy8-4iqhlVbR4AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic cold coffee.'},
+      {id:'banana-shake',name:'Banana Shake',price:80,image:'https://www.aboutamom.com/wp-content/uploads/2024/08/Banana-Milkshake-A_AAM_Banana_Milkshake_Recipe_Future_2.jpg.jpg',description:'Banana shake.'},
+      {id:'oreo-shake',name:'Oreo Shake',price:90,image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'Oreo shake.'},
+      {id:'chilli-chicken',name:'Chilli Chicken',price:299,image:'https://tse1.mm.bing.net/th/id/OIP.FvNjy_tKQvntJRXnpGy5CgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Spicy chilli chicken.'},
+      {id:'burnt-garlic-chicken',name:'Burnt Garlic Chicken',price:299,image:'https://images.alphacoders.com/991/thumb-1920-991362.jpg',description:'Garlic chicken.'},
+      {id:'chicken-nuggets',name:'Chicken Nuggets',price:299,image:'https://th.bing.com/th/id/OIP.lZCe5dzX1_UyOohJc_E4XQHaEK?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Crispy nuggets.'},
+      {id:'chicken-soup',name:'Chicken Soup',price:70,image:'https://images8.alphacoders.com/553/thumb-1920-553947.jpg',description:'Hot chicken soup.'}
+    ];
+
+    const menuCategories = [
+      {title:'Thali System', items:['Daily Thali']},
+      {title:'Snacks', items:['Fried Rice','Paneer Fried Rice','Veg Chowmein','Paneer Chowmein','Veg Manchurian','Chilli Paneer (Dry)','Spring Roll (6 pcs)','Veg Momos (8 pcs)','Paneer Momos (8 pcs)','Chilli Potato','Honey Chilli Potato','Plain Maggi','Veg Maggi','Veg Sandwich','Grilled Paneer Sandwich','French Fries','Peri Peri Fries']},
+      {title:'Main Course', items:['Chana Masala','Dal Tadka','Aloo Jeera','Mix Veg','Paneer Bhurji','Kadhai Paneer','Shahi Paneer','Paneer Butter Masala']},
+      {title:'Bread & Rice', items:['Plain Paratha','Lachha Paratha','Aloo Paratha','Paneer Paratha','Plain Roti','Butter Roti','Plain Rice','Jeera Rice','Veg Biryani']},
+      {title:'Beverages', items:['Aadrak Chai','Aadrak Elaichi Chai','Hot Coffee','Classic Cold Coffee','Banana Shake','Oreo Shake']},
+      {title:'Chicken Snacks', items:['Chilli Chicken','Burnt Garlic Chicken','Chicken Nuggets','Chicken Soup']}
+    ];
+
+    const cart = {};
+
+    function formatCurrency(value){
+      return `₹${value}`;
+    }
+
+    function formatIndianDate(dateObj){
+      return dateObj.toLocaleDateString('en-IN', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      });
+    }
+
+    function formatIndianTime(dateObj){
+      return dateObj.toLocaleTimeString('en-IN', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+    }
+
+    function renderMenu(){
+      const container = document.getElementById('menuContainer');
+      container.innerHTML = '';
+
+      menuItems.filter(item => item.id !== 'thali').forEach(item => {
+        const col = document.createElement('div');
+        col.className = 'col-md-6 col-lg-4';
+
+        col.innerHTML = `
+          <div class="menu-card">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+              <h5 class="fw-bold mb-0">${item.name}</h5>
+              <span class="badge text-bg-warning px-3 py-2 rounded-pill">₹${item.price}</span>
+            </div>
+            <p class="text-muted small">${item.description}</p>
+            <div class="d-flex justify-content-between align-items-center gap-2 mt-3">
+              <input type="number" class="qty-box" id="qty-${item.id}" min="1" value="1">
+              <button class="btn btn-main" onclick="addToCart('${item.id}')">Add Item</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(col);
+      });
+    }
+
+    function addToCart(itemId, forcedQty = null){
+      const item = menuItems.find(m => m.id === itemId);
+      if(!item) return;
+
+      const qtyInput = document.getElementById(`qty-${itemId}`);
+      const qty = forcedQty || Number(qtyInput?.value || 1);
+
+      if(qty < 1) return;
+
+      if(cart[itemId]){
+        cart[itemId].qty += qty;
+      } else {
+        cart[itemId] = {...item, qty};
+      }
+
+      updateSummary();
+    }
+
+    function quickAddThali(){
+      addToCart('thali', 1);
+      document.getElementById('checkout').scrollIntoView({behavior:'smooth'});
+    }
+
+    function removeFromCart(itemId){
+      delete cart[itemId];
+      updateSummary();
+    }
+
+    function clearCart(resetOrderStatus = true){
+      Object.keys(cart).forEach(key => delete cart[key]);
+      updateSummary();
+      if(resetOrderStatus){
+        resetStatus();
+      }
+    }
+
+    function updateSummary(){
+      const cartItems = document.getElementById('cartItems');
+      const subtotalAmount = document.getElementById('subtotalAmount');
+      const feeAmount = document.getElementById('feeAmount');
+      const totalAmount = document.getElementById('totalAmount');
+
+      const items = Object.values(cart);
+
+      if(!items.length){
+        cartItems.innerHTML = '<p class="text-muted mb-0">No items selected yet.</p>';
+        subtotalAmount.textContent = '₹0';
+        feeAmount.textContent = '₹0';
+        totalAmount.textContent = '₹0';
+        return;
+      }
+
+      let subtotal = 0;
+      cartItems.innerHTML = '';
+
+      items.forEach(item => {
+        const total = item.price * item.qty;
+        subtotal += total;
+
+        const row = document.createElement('div');
+        row.className = 'order-item';
+        row.innerHTML = `
+          <div class="d-flex justify-content-between align-items-start gap-2">
+            <div>
+              <div class="fw-semibold">${item.name}</div>
+              <div class="small text-muted">Qty: ${item.qty} × ₹${item.price}</div>
+            </div>
+            <div class="text-end">
+              <div class="fw-bold">₹${total}</div>
+              <button class="btn btn-sm btn-link text-danger p-0" onclick="removeFromCart('${item.id}')">Remove</button>
+            </div>
+          </div>
+        `;
+        cartItems.appendChild(row);
+      });
+
+      const fee = 0;
+      const grandTotal = subtotal + fee;
+
+      subtotalAmount.textContent = formatCurrency(subtotal);
+      feeAmount.textContent = formatCurrency(fee);
+      totalAmount.textContent = formatCurrency(grandTotal);
+    }
+
+    function renderDownloadMenu(){
+      const container = document.getElementById('downloadMenuContainer');
+      container.innerHTML = '';
+
+      menuCategories.forEach(category => {
+        const col = document.createElement('div');
+        col.className = 'col-md-6';
+
+        const rows = category.items.map(name => {
+          const item = menuItems.find(m => m.name === name);
+          if(!item) return '';
+          return `
+            <div class="download-menu-row">
+              <span>${item.name}</span>
+              <strong>₹${item.price}</strong>
+            </div>
+          `;
+        }).join('');
+
+        col.innerHTML = `
+          <div class="download-category">
+            <h5>${category.title}</h5>
+            ${rows}
+          </div>
+        `;
+        container.appendChild(col);
+      });
+    }
+
+    function openMenuDownloadSheet(){
+      document.getElementById('menuDownloadSheet').classList.add('show');
+    }
+
+    function closeMenuDownloadSheet(){
+      document.getElementById('menuDownloadSheet').classList.remove('show');
+    }
+
+    function downloadMenuPDF(){
+      openMenuDownloadSheet();
+      setTimeout(() => window.print(), 250);
+    }
+
+    function setLiveStatus(type, message = '', eta = '30 mins'){
+      const badge1 = document.getElementById('liveOrderStatusBadge');
+      const text1 = document.getElementById('statusText');
+      const badge2 = document.getElementById('userStatusBadge');
+      const text2 = document.getElementById('userStatusMessage');
+      const etaText = document.getElementById('estimatedTimeText');
+
+      badge1.className = 'status-pill';
+      badge2.className = 'status-pill';
+      etaText.textContent = eta;
+
+      if(type === 'confirmed'){
+        badge1.classList.add('accepted');
+        badge2.classList.add('accepted');
+        badge1.textContent = 'Order Sent';
+        badge2.textContent = 'Order Sent';
+        text1.textContent = message || 'Your order was sent successfully.';
+        text2.textContent = message || 'Your order was sent successfully.';
+      } else {
+        badge1.classList.add('pending');
+        badge2.classList.add('pending');
+        badge1.textContent = 'Awaiting Order';
+        badge2.textContent = 'Pending';
+        text1.textContent = 'Order tracking will appear here after placing an order.';
+        text2.textContent = 'Your order status will be shown here after placing the order.';
+      }
+    }
+
+    function resetStatus(){
+      setLiveStatus('pending');
+    }
+
+    async function saveOrderToSheet(orderData){
+      const response = await fetch(sheetWebAppUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify(orderData)
+      });
+
+      const rawText = await response.text();
+      let result = null;
+
+      try {
+        result = JSON.parse(rawText);
+      } catch (err) {
+        throw new Error('Google Sheet response is not valid JSON: ' + rawText);
+      }
+
+      if (!result.success) {
+        throw new Error(result.message || 'Unable to save order');
+      }
+
+      return result;
+    }
+
+    const checkoutForm = document.getElementById('checkoutForm');
+    if (checkoutForm) {
+      checkoutForm.addEventListener('submit', async function(e){
+        e.preventDefault();
+
+        const items = Object.values(cart);
+        if(!items.length){
+          alert('Please add at least one item to place the order.');
+          return;
+        }
+
+        const name = document.getElementById('customerName').value.trim();
+        const room = document.getElementById('roomNumber').value.trim();
+        const whatsapp = document.getElementById('customerWhatsapp').value.trim();
+        const orderType = document.getElementById('orderType').value;
+        const paymentRef = document.getElementById('paymentRef').value.trim();
+        const specialNote = document.getElementById('specialNote').value.trim() || 'None';
+        const eta = '30 mins';
+
+        const total = items.reduce((sum, item) => sum + item.price * item.qty, 0);
+        const totalItems = items.reduce((sum, item) => sum + item.qty, 0);
+
+        const orderLinesText = items
+          .map((item, index) => `${index + 1}. ${item.name} - Qty ${item.qty} - ₹${item.price * item.qty}`)
+          .join('\n');
+
+        const itemNames = items.map(item => item.name).join(', ');
+
+        const now = new Date();
+
+        const orderData = {
+          customerName: name,
+          roomNumber: room,
+          customerWhatsapp: whatsapp,
+          orderType: orderType,
+          paymentRef: paymentRef,
+          specialNote: specialNote,
+          items: orderLinesText,
+          itemNames: itemNames,
+          totalItems: totalItems,
+          totalAmount: total,
+          eta: eta,
+          frontendDate: formatIndianDate(now),
+          frontendTime: formatIndianTime(now)
+        };
+
+        const submitButton = checkoutForm.querySelector('button[type="submit"]');
+        const oldButtonText = submitButton.innerHTML;
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Saving Order...';
+
+        try {
+          const result = await saveOrderToSheet(orderData);
+
+          const orderNo = result.orderNo || 'N/A';
+          const orderDate = result.orderDate || formatIndianDate(now);
+          const orderTime = result.orderTime || formatIndianTime(now);
+
+          const whatsappMessage = `Roots & Receipes - New Order
+
+Order No: ${orderNo}
+Date: ${orderDate}
+Time: ${orderTime}
+Customer Name: ${name}
+Room No: ${room}
+Customer WhatsApp: ${whatsapp}
+Order Type: ${orderType}
+Payment UTR: ${paymentRef}
+ETA: ${eta}
+
+Order Items:
+${orderLinesText}
+
+Total Quantity: ${totalItems}
+Total Amount: ₹${total}
+Special Instructions: ${specialNote}`;
+
+          const whatsappUrl = `https://wa.me/${orderWhatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+          window.open(whatsappUrl, '_blank');
+
+          setLiveStatus(
+            'confirmed',
+            `Order ${orderNo} sent successfully to WhatsApp and saved in Google Sheets.`,
+            eta
+          );
+
+          checkoutForm.reset();
+          clearCart(false);
+
+        } catch (error) {
+          console.error('Order save error:', error);
+          alert('Order could not be saved to Google Sheets. Check Apps Script deployment, permissions, and URL.');
+        } finally {
+          submitButton.disabled = false;
+          submitButton.innerHTML = oldButtonText;
+        }
+      });
+    }
+
+    const enquiryForm = document.getElementById('enquiryForm');
+    if (enquiryForm) {
+      enquiryForm.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        const name = document.getElementById('enquiryName').value.trim();
+        const whatsapp = document.getElementById('enquiryWhatsapp').value.trim();
+        const type = document.getElementById('requirementType').value;
+        const food = document.getElementById('foodPreference').value;
+        const moveIn = document.getElementById('moveInDate').value || 'Not specified';
+        const budget = document.getElementById('budgetRange').value.trim() || 'Not specified';
+        const note = document.getElementById('enquiryNote').value.trim() || 'None';
+
+        const enquiryMessage = `Roots & Receipes - Room Enquiry
+
+Name: ${name}
+WhatsApp: ${whatsapp}
+Requirement: ${type}
+Food Option: ${food}
+Preferred Move-in: ${moveIn}
+Budget: ${budget}
+Extra Requirement: ${note}`;
+
+        const enquiryUrl = `https://wa.me/${enquiryWhatsappNumber}?text=${encodeURIComponent(enquiryMessage)}`;
+        window.open(enquiryUrl, '_blank');
+      });
+    }
+
+    function createSparkles(x, y){
+      for(let i = 0; i < 10; i++){
+        const sparkle = document.createElement('span');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = `${x}px`;
+        sparkle.style.top = `${y}px`;
+        sparkle.style.setProperty('--x', `${(Math.random() - 0.5) * 140}px`);
+        sparkle.style.setProperty('--y', `${(Math.random() - 0.5) * 140}px`);
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 800);
+      }
+    }
+
+    document.addEventListener('click', function(e){
+      const target = e.target.closest('button, .menu-card, .feature-card, .download-card, .summary-card, .form-card, .thali-card, .hero-card');
+      if(target){
+        createSparkles(e.clientX, e.clientY);
+      }
+    });
+
+    renderMenu();
+    renderDownloadMenu();
+    updateSummary();
+    resetStatus();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
