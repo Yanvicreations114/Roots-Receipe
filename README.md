@@ -1,6 +1,6 @@
-🍽️ Roots & Receipes
+🍽️ Roots & Recipes
 
-Roots & Receipes is a modern food ordering website designed for PG tenants and residents to easily order meals, snacks, and beverages.
+Roots & Recipes is a modern food ordering website designed for PG tenants and residents to easily order meals, snacks, and beverages.
 The platform allows customers to select food, pay via UPI, and send the order directly to WhatsApp while automatically storing order data in Google Sheets.
 
 🚀 Features
