@@ -106,7 +106,6 @@
     }
 
     .hero-section,
-    .how-section,
     .menu-section,
     .checkout-section{
       padding:90px 0;
@@ -121,7 +120,6 @@
     .hero-section{padding-top:120px}
 
     .hero-card,
-    .glass-card,
     .feature-card,
     .thali-card,
     .download-card,
@@ -138,7 +136,6 @@
     }
 
     .hero-card:hover,
-    .glass-card:hover,
     .feature-card:hover,
     .thali-card:hover,
     .download-card:hover,
@@ -151,13 +148,16 @@
 
     .hero-card{
       padding:44px;
-      background:linear-gradient(135deg, rgba(184,134,43,0.96), rgba(224,198,99,0.93), rgba(156,183,136,0.9));
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 22%),
+        radial-gradient(circle at bottom left, rgba(255,255,255,0.14), transparent 24%),
+        linear-gradient(135deg, rgba(184,134,43,0.96), rgba(224,198,99,0.93), rgba(156,183,136,0.9));
       color:#fff;
     }
 
     .hero-card h1{
       font-family:'Cormorant Garamond',serif;
-      font-size:3.2rem;
+      font-size:3.3rem;
       font-weight:700;
       margin-bottom:12px;
     }
@@ -206,6 +206,7 @@
       flex-wrap:wrap;
       gap:10px;
       margin-top:18px;
+      justify-content:center;
     }
 
     .info-pill{
@@ -217,8 +218,6 @@
       font-weight:600;
       box-shadow:0 8px 18px rgba(184,134,43,0.07);
     }
-
-    .glass-card{padding:30px}
 
     .section-head{
       margin-bottom:34px;
@@ -233,29 +232,6 @@
     }
 
     .section-head p{color:var(--muted)}
-
-    .feature-card{
-      padding:28px;
-      height:100%;
-    }
-
-    .feature-card h5{
-      margin-top:18px;
-      margin-bottom:10px;
-      font-weight:700;
-    }
-
-    .icon-circle{
-      width:64px;
-      height:64px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      font-size:1.5rem;
-      background:linear-gradient(135deg,#f7ebc7,#fff8e8);
-      border:1px solid rgba(184,134,43,0.14);
-      box-shadow:0 10px 20px rgba(184,134,43,0.1);
-    }
 
     .status-card{padding:32px}
 
@@ -472,11 +448,6 @@
       object-fit:contain;
       transition:transform 0.35s ease;
       cursor:pointer;
-    }
-
-    .hero-card .payment-qr-img{
-      width:180px;
-      height:180px;
     }
 
     .payment-qr-box:hover .payment-qr-img{
@@ -698,6 +669,52 @@
       z-index:2000;
     }
 
+    .hero-stats{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:16px;
+      margin-top:28px;
+    }
+
+    .hero-stat-card{
+      background:rgba(255,255,255,0.16);
+      border:1px solid rgba(255,255,255,0.22);
+      border-radius:22px;
+      padding:20px 16px;
+      backdrop-filter:blur(8px);
+      box-shadow:0 12px 24px rgba(0,0,0,0.08);
+    }
+
+    .hero-stat-card h4{
+      font-size:1.8rem;
+      font-weight:800;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .hero-stat-card p{
+      margin:0;
+      font-size:.92rem;
+      color:rgba(255,255,255,0.9);
+    }
+
+    .hero-action-wrap{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .hero-glow-line{
+      width:120px;
+      height:4px;
+      margin:18px auto 0;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.95), rgba(255,255,255,0.1));
+      box-shadow:0 0 18px rgba(255,255,255,0.4);
+    }
+
     @keyframes sparkleFly{
       from{
         transform:translate(0,0) scale(1);
@@ -768,8 +785,9 @@
     @media (max-width:991px){
       .hero-section{padding-top:105px}
       .summary-card{position:static}
-      .hero-card h1{font-size:2.7rem}
+      .hero-card h1{font-size:2.6rem}
       .site-watermark img{width:180px}
+      .hero-stats{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -793,11 +811,9 @@
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
           <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#how-it-works">How it Works</a></li>
-          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
           <li class="nav-item"><a class="nav-link" href="#checkout">Checkout</a></li>
           <li class="nav-item"><a class="nav-link" href="#enquiry">Room Enquiry</a></li>
-          <li class="nav-item ms-lg-2"><a href="#menu" class="btn btn-main">Order Now</a></li>
+          <li class="nav-item ms-lg-2"><a href="#checkout" class="btn btn-main">Order Now</a></li>
         </ul>
       </div>
     </div>
@@ -806,25 +822,64 @@
   <section class="hero-section" id="home">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-9">
+        <div class="col-lg-10">
           <div class="hero-card sparkle-target text-center">
-            <span class="hero-badge">Elegant Meals • Delivery • Dine-In • WhatsApp Orders</span>
+            <span class="hero-badge">Premium Meals • Dine-In • Delivery • WhatsApp Orders</span>
             <h1>Roots &amp; Recipes</h1>
-            <p class="hero-subtext mb-4">
-              Scan QR, choose your food, select <strong>Delivery</strong> or <strong>Dine-In</strong>,
-              make payment, and send your order directly to WhatsApp.
+            <p class="hero-subtext mb-3">
+              A premium food experience for PG residents with homely taste, elegant service, and smooth ordering.
+            </p>
+            <p class="mb-0" style="color: rgba(255,255,255,0.92); max-width:760px; margin:0 auto;">
+              Freshly prepared meals, quick room delivery, peaceful dine-in, and simple payment options — all in one place.
             </p>
 
-            <div class="d-flex justify-content-center mb-3">
-              <div class="payment-qr-box">
-                <img src="roots-recipes-qr.png" alt="Website QR Code" class="payment-qr-img">
-                <p class="qr-text mb-0">Scan to open ordering page</p>
+            <div class="hero-glow-line"></div>
+
+            <div class="hero-pill-wrap mb-2">
+              <span class="info-pill">🍽 Daily Fresh Meals</span>
+              <span class="info-pill">🚪 Fast Delivery</span>
+              <span class="info-pill">🏠 Cozy Dine-In</span>
+              <span class="info-pill">💵 Cash & UPI</span>
+            </div>
+
+            <div class="hero-stats">
+              <div class="hero-stat-card">
+                <h4>₹100</h4>
+                <p>Daily Thali starting price</p>
+              </div>
+              <div class="hero-stat-card">
+                <h4>30 Mins</h4>
+                <p>Minimum estimated delivery time</p>
+              </div>
+              <div class="hero-stat-card">
+                <h4>2 Ways</h4>
+                <p>Dine-In or Room Delivery</p>
               </div>
             </div>
 
-            <p class="mb-0" style="color: rgba(255,255,255,0.92);">
-              Scan the QR code to open the Roots &amp; Recipes ordering page instantly.
-            </p>
+            <div class="hero-action-wrap">
+              <a href="#menu" class="btn btn-light fw-semibold px-4 py-3 rounded-4">Explore Food Menu</a>
+              <a href="#checkout" class="btn btn-main">Place Your Order</a>
+              <a href="#enquiry" class="btn btn-outline-light fw-semibold px-4 py-3 rounded-4" style="border-width:1.5px;">Room Enquiry</a>
+            </div>
+
+            <div class="mt-4 p-3 rounded-4" style="background: rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.2);">
+              <div class="row g-3 text-center">
+                <div class="col-md-4">
+                  <div class="fw-bold">🍛 Fresh Daily Thali</div>
+                  <small style="color: rgba(255,255,255,0.88);">Affordable • Filling • Tasty</small>
+                </div>
+                <div class="col-md-4">
+                  <div class="fw-bold">🚚 Quick Room Delivery</div>
+                  <small style="color: rgba(255,255,255,0.88);">Hot meals at your doorstep</small>
+                </div>
+                <div class="col-md-4">
+                  <div class="fw-bold">✨ Premium Experience</div>
+                  <small style="color: rgba(255,255,255,0.88);">Comfort, quality, and convenience</small>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -853,39 +908,6 @@
               </p>
               <div class="eta-value">ETA: <span id="estimatedTimeText">30 mins</span></div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="how-section" id="how-it-works">
-    <div class="container">
-      <div class="section-head text-center">
-        <h2>How It Works</h2>
-        <p>Simple food ordering experience for residents.</p>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="feature-card sparkle-target">
-            <div class="icon-circle">📱</div>
-            <h5>Scan QR</h5>
-            <p>Users scan the QR code and land on the Roots &amp; Recipes ordering page.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="feature-card sparkle-target">
-            <div class="icon-circle">🍲</div>
-            <h5>Select Food</h5>
-            <p>Choose the ₹100 Thali or add items from the full premium menu.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="feature-card sparkle-target">
-            <div class="icon-circle">✅</div>
-            <h5>Pay & Order</h5>
-            <p>Choose Delivery or Dine-In, complete payment, and send the order on WhatsApp.</p>
           </div>
         </div>
       </div>
@@ -952,94 +974,108 @@
   </section>
 
   <section class="checkout-section" id="checkout">
-    <div class="container">
-      <div class="row g-4 align-items-start">
-        <div class="col-lg-7">
-          <div class="form-card sparkle-target">
-            <h2>Checkout Details</h2>
-            <p class="text-muted">Fill your information and send the order to WhatsApp.</p>
-
-            <div class="payment-box mb-4">
-              <div class="row g-3 align-items-center">
-                <div class="col-md-8">
-                  <h5 class="fw-bold mb-2">Payment Section</h5>
-                  <p class="text-muted mb-2">Scan the QR code using any UPI app and enter the transaction reference below.</p>
-                  <div class="upi-pill">UPI ID: 9870281515@okbizaxis</div>
-                  <p class="small text-muted mt-2">Payment Number: <strong>+91 9870281515</strong></p>
-                </div>
-                <div class="col-md-4 text-center">
-                  <div class="payment-qr-box">
-                    <img src="pay.jpeg" alt="UPI QR Code" class="payment-qr-img">
-                    <p class="qr-text">Scan &amp; Pay</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <form id="checkoutForm" class="row g-3">
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">Name</label>
-                <input type="text" class="form-control" id="customerName" placeholder="Enter full name" required>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">Room Number</label>
-                <input type="text" class="form-control" id="roomNumber" placeholder="Example: 204" required>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">WhatsApp Number</label>
-                <input type="tel" class="form-control" id="customerWhatsapp" placeholder="10 digit WhatsApp number" required>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">Order Type</label>
-                <select class="form-select" id="orderType" required>
-                  <option value="Delivery">Food Delivery</option>
-                  <option value="Dine-In">Dine-In</option>
-                </select>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">Payment Ref / UTR</label>
-                <input type="text" class="form-control" id="paymentRef" placeholder="Enter transaction ID" required>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">Minimum ETA</label>
-                <input type="text" class="form-control" id="etaInput" value="30 mins" readonly>
-              </div>
-              <div class="col-12">
-                <label class="form-label fw-semibold">Special Instructions</label>
-                <textarea class="form-control" id="specialNote" rows="4" placeholder="Less spicy / no onion / extra roti etc."></textarea>
-              </div>
-              <div class="col-12 d-flex flex-wrap gap-3 mt-2">
-                <button type="submit" class="btn btn-main">Send Order to WhatsApp</button>
-                <button type="button" class="btn btn-soft" onclick="clearCart()">Clear Order</button>
-              </div>
-            </form>
-
-            
+  <div class="container">
+    <div class="row g-4 align-items-start">
+      
+      <!-- Order Summary First -->
+      <div class="col-lg-5 order-1 order-lg-1">
+        <div class="summary-card sparkle-target">
+          <h4>Order Summary</h4>
+          <div id="cartItems" class="mb-3">
+            <p class="text-muted mb-0">No items selected yet.</p>
           </div>
-        </div>
+          <hr>
+          <div class="summary-row"><span>Subtotal</span><strong id="subtotalAmount">₹0</strong></div>
+          <div class="summary-row"><span>Convenience</span><strong id="feeAmount">₹0</strong></div>
+          <div class="summary-row total-row"><span>Total</span><strong id="totalAmount">₹0</strong></div>
 
-        <div class="col-lg-5">
-          <div class="summary-card sparkle-target">
-            <h4>Order Summary</h4>
-            <div id="cartItems" class="mb-3">
-              <p class="text-muted mb-0">No items selected yet.</p>
-            </div>
-            <hr>
-            <div class="summary-row"><span>Subtotal</span><strong id="subtotalAmount">₹0</strong></div>
-            <div class="summary-row"><span>Convenience</span><strong id="feeAmount">₹0</strong></div>
-            <div class="summary-row total-row"><span>Total</span><strong id="totalAmount">₹0</strong></div>
-
-            <hr>
-            <h5 class="mb-3">Order Status</h5>
-            <span class="status-pill pending" id="userStatusBadge">Pending</span>
-            <p class="small text-muted mt-2" id="userStatusMessage">
-              Your order status will be shown here after placing the order.
-            </p>
-          </div>
+          <hr>
+          <h5 class="mb-3">Order Status</h5>
+          <span class="status-pill pending" id="userStatusBadge">Pending</span>
+          <p class="small text-muted mt-2" id="userStatusMessage">
+            Your order status will be shown here after placing the order.
+          </p>
         </div>
       </div>
+
+      <!-- Checkout Details Second -->
+      <div class="col-lg-7 order-2 order-lg-2">
+        <div class="form-card sparkle-target">
+          <h2>Checkout Details</h2>
+          <p class="text-muted">Fill your information and send the order to WhatsApp.</p>
+
+          <div class="payment-box mb-4">
+            <div class="row g-3 align-items-center">
+              <div class="col-md-8">
+                <h5 class="fw-bold mb-2">Payment Section</h5>
+                <p class="text-muted mb-2">
+                  Pay using <strong>UPI / Online</strong> or choose <strong>Cash</strong> at the time of delivery or dine-in.
+                </p>
+                <div class="upi-pill">UPI ID: 9870281515@okbizaxis</div>
+                <p class="small text-muted mt-2 mb-1">Payment Number: <strong>+91 9870281515</strong></p>
+                <p class="small text-success fw-semibold mb-0">Cash payment is also available.</p>
+              </div>
+              <div class="col-md-4 text-center">
+                <div class="payment-qr-box">
+                  <img src="pay.jpeg" alt="UPI QR Code" class="payment-qr-img">
+                  <p class="qr-text">Scan &amp; Pay</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form id="checkoutForm" class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Name</label>
+              <input type="text" class="form-control" id="customerName" placeholder="Enter full name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Room Number</label>
+              <input type="text" class="form-control" id="roomNumber" placeholder="Example: 204" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">WhatsApp Number</label>
+              <input type="tel" class="form-control" id="customerWhatsapp" placeholder="10 digit WhatsApp number" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Order Type</label>
+              <select class="form-select" id="orderType" required>
+                <option value="Delivery">Food Delivery</option>
+                <option value="Dine-In">Dine-In</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Payment Mode</label>
+              <select class="form-select" id="paymentMode" required onchange="togglePaymentRefField()">
+                <option value="Online">Online / UPI</option>
+                <option value="Cash">Cash</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Minimum ETA</label>
+              <input type="text" class="form-control" id="etaInput" value="30 mins" readonly>
+            </div>
+
+            <div class="col-12" id="paymentRefWrap">
+              <label class="form-label fw-semibold">Payment Ref / UTR</label>
+              <input type="text" class="form-control" id="paymentRef" placeholder="Enter transaction ID">
+            </div>
+
+            <div class="col-12">
+              <label class="form-label fw-semibold">Special Instructions</label>
+              <textarea class="form-control" id="specialNote" rows="4" placeholder="Less spicy / no onion / extra roti etc."></textarea>
+            </div>
+            <div class="col-12 d-flex flex-wrap gap-3 mt-2">
+              <button type="submit" class="btn btn-main">Send Order to WhatsApp</button>
+              <button type="button" class="btn btn-soft" onclick="clearCart()">Clear Order</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
   <section class="checkout-section" id="enquiry">
     <div class="container">
@@ -1182,7 +1218,7 @@
   </div>
 
   <script>
-    const orderWhatsappNumbers = ['919650009462', '919540757074'];
+    const orderWhatsappNumbers = ['9310805191'];
     const enquiryWhatsappNumbers = ['919650009462', '919540757074'];
     const sheetWebAppUrl = 'https://script.google.com/macros/s/AKfycbxS6x-UWoFOrGDD4X4ZGx56ntT52OpjSp9mXs0OLMw7jWrKNHR5kjLjmqxwyMBHoKmNyA/exec';
 
@@ -1193,22 +1229,22 @@
       {id:'veg-chowmein',name:'Veg Chowmein',price:100,category:'snacks',image:'https://wallpaperaccess.com/full/8325607.jpg',description:'Veg noodles.'},
       {id:'paneer-chowmein',name:'Paneer Chowmein',price:150,category:'snacks',image:'https://i.ytimg.com/vi/qhvlkSbh4II/maxresdefault.jpg',description:'Paneer noodles.'},
       {id:'veg-manchurian',name:'Veg Manchurian',price:150,category:'snacks',image:'https://tse4.mm.bing.net/th/id/OIP.sPA0_0sQ4m_MLWVxzQ1rPgHaE7?w=800&h=533&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Fried veg balls in sauce.'},
-      {id:'chilli-paneer',name:'Chilli Paneer (Dry)',price:160,category:'snacks',image:'https://wallpapercave.com/wp/wp10846848.jpg',description:'Spicy paneer starter.'},
+      {id:'chilli-paneer',name:'Chilli Paneer (Dry)',price:160,category:'snacks',image:'https://wallpapercave.com/wp/wp11413533.jpg',description:'Spicy paneer starter.'},
       {id:'spring-roll',name:'Spring Roll (6 pcs)',price:120,category:'snacks',image:'https://images.indianexpress.com/2016/06/recipies_480_thinkstock.jpg',description:'Crispy spring rolls.'},
       {id:'veg-momos',name:'Veg Momos (8 pcs)',price:120,category:'snacks',image:'https://wallpapercave.com/wp/wp10053469.jpg',description:'Steamed veg momos.'},
       {id:'paneer-momos',name:'Paneer Momos (8 pcs)',price:120,category:'snacks',image:'https://i0.wp.com/passion2cook.com/wp-content/uploads/2023/03/paneer-momos-2.jpg?w=1920&ssl=1',description:'Paneer momos.'},
-      {id:'chilli-potato',name:'Chilli Potato',price:120,category:'snacks',image:'https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?auto=format&fit=crop&w=1200&q=80',description:'Spicy crispy potato.'},
+      {id:'chilli-potato',name:'Chilli Potato',price:120,category:'snacks',image:'https://wallpaperaccess.com/full/13502513.jpg',description:'Spicy crispy potato.'},
       {id:'honey-chilli-potato',name:'Honey Chilli Potato',price:150,category:'snacks',image:'https://recipes.timesofindia.com/photo/52532656.cms',description:'Sweet spicy potato.'},
-      {id:'plain-maggi',name:'Plain Maggi',price:40,category:'snacks',image:'https://i.ytimg.com/vi/CthdvfRdABs/maxresdefault.jpg',description:'Simple maggi.'},
+      {id:'plain-maggi',name:'Plain Maggi',price:40,category:'snacks',image:'https://theovenchef.com/wp-content/uploads/2023/12/plain-maggie-1.png',description:'Simple maggi.'},
       {id:'veg-maggi',name:'Veg Maggi',price:50,category:'snacks',image:'https://i.pinimg.com/originals/00/e6/d0/00e6d0678a79442071445a3c0c50d5ac.jpg',description:'Veg maggi noodles.'},
-      {id:'veg-sandwich',name:'Veg Sandwich',price:50,category:'snacks',image:'https://images2.alphacoders.com/129/thumb-1920-1292990.jpg',description:'Fresh veg sandwich.'},
+      {id:'veg-sandwich',name:'Veg Grilled Sandwich',price:50,category:'snacks',image:'https://img.freepik.com/premium-photo/veg-grilled-sandwich-served-with-ketchup-isolated-rustic-wooden-background-selective-focus_726363-1356.jpg',description:'Fresh veg sandwich.'},
       {id:'paneer-sandwich',name:'Grilled Paneer Sandwich',price:80,category:'snacks',image:'https://www.indianhealthyrecipes.com/wp-content/uploads/2022/03/veg-grilled-sandwich-recipe-500x500.jpg',description:'Paneer grilled sandwich.'},
       {id:'french-fries',name:'French Fries',price:80,category:'snacks',image:'https://images6.alphacoders.com/108/thumb-1920-1080178.jpg',description:'Crispy fries.'},
       {id:'peri-fries',name:'Peri Peri Fries',price:100,category:'snacks',image:'https://static.vecteezy.com/system/resources/previews/024/748/761/non_2x/grilled-meat-and-french-fries-a-classic-american-lunch-bar-generated-by-ai-free-photo.jpg',description:'Peri peri fries.'},
-      {id:'chana-masala',name:'Chana Masala',price:100,category:'main-course',image:'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1200&q=80',description:'Classic chana curry.'},
+      {id:'chana-masala',name:'Chana Masala',price:100,category:'main-course',image:'https://img.freepik.com/premium-photo/chana-masala-photo-with-touch-spice_1036998-305050.jpg',description:'Classic chana curry.'},
       {id:'dal-tadka',name:'Dal Tadka',price:100,category:'main-course',image:'https://static.vecteezy.com/system/resources/previews/038/947/178/non_2x/ai-generated-dal-tadka-is-a-popular-indian-dish-where-cooked-spiced-lentils-are-finished-with-a-tempering-made-of-ghee-or-oil-and-spices-photo.jpg',description:'Tadka dal.'},
       {id:'aloo-jeera',name:'Aloo Jeera',price:100,category:'main-course',image:'https://2.bp.blogspot.com/-wonKVzMF8lM/VtYdt7V12sI/AAAAAAAAUuo/li4gWvl4zBM/s1600/Aloo-Jeera_finalforweb1.jpg',description:'Jeera potatoes.'},
-      {id:'mix-veg',name:'Mix Veg',price:150,category:'main-course',image:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80',description:'Mixed vegetables.'},
+      {id:'mix-veg',name:'Mix Veg',price:150,category:'main-course',image:'https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/Mixed-Veg-Curry1.jpg',description:'Mixed vegetables.'},
       {id:'paneer-bhurji',name:'Paneer Bhurji',price:180,category:'main-course',image:'https://media.istockphoto.com/id/1820486089/photo/paneer-bhurji.jpg?s=612x612&w=0&k=20&c=8rcJeVTEJBw_gU6UN60qaDhknd4Z9jGw-x32cwk1vr8=',description:'Paneer bhurji masala.'},
       {id:'kadhai-paneer',name:'Kadhai Paneer',price:190,category:'main-course',image:'https://1.bp.blogspot.com/_GlkYxavu-Ts/StVnaw3GCJI/AAAAAAAAARM/2b3PenJbX7g/s400/kadhai-paneer1.JPG',description:'Kadhai paneer gravy.'},
       {id:'shahi-paneer',name:'Shahi Paneer',price:190,category:'main-course',image:'https://images.pexels.com/photos/10905933/pexels-photo-10905933.jpeg?cs=srgb&dl=pexels-anilsharma65-10905933.jpg&fm=jpg',description:'Rich paneer curry.'},
@@ -1528,6 +1564,22 @@
       setLiveStatus('pending');
     }
 
+    function togglePaymentRefField(){
+      const paymentMode = document.getElementById('paymentMode').value;
+      const paymentRefWrap = document.getElementById('paymentRefWrap');
+      const paymentRef = document.getElementById('paymentRef');
+
+      if(paymentMode === 'Cash'){
+        paymentRefWrap.style.display = 'none';
+        paymentRef.value = 'Cash Payment';
+        paymentRef.removeAttribute('required');
+      } else {
+        paymentRefWrap.style.display = 'block';
+        paymentRef.value = '';
+        paymentRef.setAttribute('required', 'required');
+      }
+    }
+
     async function saveOrderToSheet(orderData){
       const response = await fetch(sheetWebAppUrl, {
         method: 'POST',
@@ -1610,7 +1662,8 @@
         const room = document.getElementById('roomNumber').value.trim();
         const whatsapp = document.getElementById('customerWhatsapp').value.trim();
         const orderType = document.getElementById('orderType').value;
-        const paymentRef = document.getElementById('paymentRef').value.trim();
+        const paymentMode = document.getElementById('paymentMode').value;
+        const paymentRef = document.getElementById('paymentRef').value.trim() || 'N/A';
         const specialNote = document.getElementById('specialNote').value.trim() || 'None';
         const eta = '30 mins';
 
@@ -1629,6 +1682,7 @@
           roomNumber: room,
           customerWhatsapp: whatsapp,
           orderType: orderType,
+          paymentMode: paymentMode,
           paymentRef: paymentRef,
           specialNote: specialNote,
           items: orderLinesText,
@@ -1661,7 +1715,8 @@ Customer Name: ${name}
 Room No: ${room}
 Customer WhatsApp: ${whatsapp}
 Order Type: ${orderType}
-Payment UTR: ${paymentRef}
+Payment Mode: ${paymentMode}
+Payment Ref: ${paymentRef}
 ETA: ${eta}
 
 Order Items:
@@ -1685,6 +1740,7 @@ Special Instructions: ${specialNote}`;
 
           checkoutForm.reset();
           clearCart(false);
+          togglePaymentRefField();
 
         } catch (error) {
           console.error('Order save error:', error);
@@ -1741,7 +1797,7 @@ Extra Requirement: ${note}`;
     }
 
     document.addEventListener('click', function(e){
-      const target = e.target.closest('button, .menu-card, .feature-card, .download-card, .summary-card, .form-card, .thali-card, .hero-card, .floating-cart-icon');
+      const target = e.target.closest('button, .menu-card, .download-card, .summary-card, .form-card, .thali-card, .hero-card, .floating-cart-icon');
       if(target){
         createSparkles(e.clientX, e.clientY);
       }
@@ -1752,6 +1808,7 @@ Extra Requirement: ${note}`;
     renderPrintMenu();
     updateSummary();
     resetStatus();
+    togglePaymentRefField();
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
