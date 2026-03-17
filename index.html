@@ -117,10 +117,145 @@
       padding:25px 0 10px;
     }
 
-    .hero-section{padding-top:120px}
+    /* SHORT PREMIUM HERO */
+    .hero-section{
+      padding:120px 0 80px;
+      position:relative;
+    }
+
+    .hero-premium-wrap{
+      position:relative;
+    }
+
+    .hero-glass-card{
+      position:relative;
+      padding:42px 28px;
+      border-radius:28px;
+      text-align:center;
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      background:linear-gradient(135deg, rgba(184,134,43,0.88), rgba(217,191,90,0.78), rgba(156,183,136,0.70));
+      border:1px solid rgba(255,255,255,0.20);
+      box-shadow:0 24px 60px rgba(184,134,43,0.18);
+      overflow:hidden;
+    }
+
+    .hero-glass-card::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at top right, rgba(255,255,255,0.22), transparent 28%);
+      pointer-events:none;
+    }
+
+    .hero-mini-badge{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:700;
+      color:#fff;
+      background:rgba(255,255,255,0.14);
+      border:1px solid rgba(255,255,255,0.18);
+      margin-bottom:16px;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-title-animated{
+      font-family:'Cormorant Garamond',serif;
+      font-size:3.5rem;
+      font-weight:700;
+      color:#fff;
+      margin-bottom:12px;
+      animation:heroFloat 3s ease-in-out infinite;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-title-animated span{
+      color:#fff7d1;
+    }
+
+    .hero-premium-subtext{
+      max-width:700px;
+      margin:0 auto 20px;
+      color:rgba(255,255,255,0.95);
+      font-size:1rem;
+      line-height:1.7;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-pill-wrap-premium{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:24px;
+      position:relative;
+      z-index:2;
+    }
+
+    .premium-pill{
+      background:rgba(255,255,255,0.14);
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.18);
+      border-radius:999px;
+      padding:8px 14px;
+      font-weight:600;
+    }
+
+    .hero-cta-wrap{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-btn{
+      min-width:170px;
+      padding:13px 20px;
+      border-radius:14px;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition:.3s ease;
+    }
+
+    .hero-btn-main{
+      color:#fff;
+      background:linear-gradient(135deg,#3f3727,#7c5c12,#d9bf5a);
+      box-shadow:0 14px 30px rgba(63,55,39,0.22);
+    }
+
+    .hero-btn-main:hover{
+      color:#fff;
+      transform:translateY(-3px);
+    }
+
+    .hero-btn-soft{
+      color:#fff;
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.22);
+    }
+
+    .hero-btn-soft:hover{
+      color:#fff;
+      transform:translateY(-3px);
+      background:rgba(255,255,255,0.18);
+    }
+
+    @keyframes heroFloat{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-4px);}
+    }
 
     .hero-card,
-    .feature-card,
     .thali-card,
     .download-card,
     .form-card,
@@ -136,7 +271,6 @@
     }
 
     .hero-card:hover,
-    .feature-card:hover,
     .thali-card:hover,
     .download-card:hover,
     .form-card:hover,
@@ -144,29 +278,6 @@
     .status-card:hover{
       transform:translateY(-8px);
       box-shadow:var(--hover-shadow);
-    }
-
-    .hero-card{
-      padding:44px;
-      background:
-        radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 22%),
-        radial-gradient(circle at bottom left, rgba(255,255,255,0.14), transparent 24%),
-        linear-gradient(135deg, rgba(184,134,43,0.96), rgba(224,198,99,0.93), rgba(156,183,136,0.9));
-      color:#fff;
-    }
-
-    .hero-card h1{
-      font-family:'Cormorant Garamond',serif;
-      font-size:3.3rem;
-      font-weight:700;
-      margin-bottom:12px;
-    }
-
-    .hero-subtext{
-      font-size:1rem;
-      line-height:1.8;
-      max-width:760px;
-      margin-inline:auto;
     }
 
     .hero-badge,
@@ -177,12 +288,6 @@
       border-radius:999px;
       font-size:.85rem;
       font-weight:700;
-    }
-
-    .hero-badge{
-      background:rgba(255,255,255,0.18);
-      border:1px solid rgba(255,255,255,0.24);
-      margin-bottom:16px;
     }
 
     .status-pill.pending{
@@ -301,6 +406,7 @@
       font-weight:600;
       box-shadow:0 8px 20px rgba(184,134,43,0.08);
       transition:.3s ease;
+      cursor:pointer;
     }
 
     .menu-filter-btn:hover,
@@ -359,8 +465,38 @@
       background:#fcf5dd;
       border-radius:999px;
       padding:6px 10px;
-      margin-bottom:10px;
     }
+
+    .food-type-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:.78rem;
+      font-weight:700;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,0.06);
+    }
+
+    .food-type-badge.veg{
+      background:#eefbf0;
+      color:#1f8f3a;
+    }
+
+    .food-type-badge.non-veg{
+      background:#fff1f1;
+      color:#d93025;
+    }
+
+    .food-dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      display:inline-block;
+    }
+
+    .food-dot.veg{background:#1f8f3a}
+    .food-dot.non-veg{background:#d93025}
 
     .qty-control{
       display:flex;
@@ -386,6 +522,7 @@
       align-items:center;
       justify-content:center;
       box-shadow:0 8px 18px rgba(184,134,43,0.16);
+      cursor:pointer;
     }
 
     .qty-btn:hover{
@@ -516,6 +653,11 @@
       transition:.3s ease;
       position:relative;
       overflow:hidden;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
     }
 
     .btn-main:hover{
@@ -533,6 +675,11 @@
       font-weight:600;
       box-shadow:0 10px 18px rgba(120,94,35,0.05);
       transition:.3s ease;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
     }
 
     .btn-soft:hover{
@@ -771,6 +918,7 @@
       background:#fffaf1;
       font-weight:600;
       transition:.2s ease;
+      cursor:pointer;
     }
 
     .whatsapp-choice-btn:hover{
@@ -788,52 +936,6 @@
       box-shadow:0 0 14px rgba(217,191,90,0.82), 0 0 22px rgba(184,134,43,0.35);
       animation:sparkleFly .8s ease-out forwards;
       z-index:2000;
-    }
-
-    .hero-stats{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:16px;
-      margin-top:28px;
-    }
-
-    .hero-stat-card{
-      background:rgba(255,255,255,0.16);
-      border:1px solid rgba(255,255,255,0.22);
-      border-radius:22px;
-      padding:20px 16px;
-      backdrop-filter:blur(8px);
-      box-shadow:0 12px 24px rgba(0,0,0,0.08);
-    }
-
-    .hero-stat-card h4{
-      font-size:1.8rem;
-      font-weight:800;
-      margin-bottom:4px;
-      color:#fff;
-    }
-
-    .hero-stat-card p{
-      margin:0;
-      font-size:.92rem;
-      color:rgba(255,255,255,0.9);
-    }
-
-    .hero-action-wrap{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-top:26px;
-    }
-
-    .hero-glow-line{
-      width:120px;
-      height:4px;
-      margin:18px auto 0;
-      border-radius:999px;
-      background:linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.95), rgba(255,255,255,0.1));
-      box-shadow:0 0 18px rgba(255,255,255,0.4);
     }
 
     @keyframes sparkleFly{
@@ -868,9 +970,7 @@
     }
 
     @media print{
-      body *{
-        visibility:hidden !important;
-      }
+      body *{visibility:hidden !important}
 
       #printMenuWrapper,
       #printMenuWrapper *{
@@ -888,9 +988,7 @@
         z-index:9999;
       }
 
-      .print-menu-content{
-        width:100%;
-      }
+      .print-menu-content{width:100%}
 
       .download-menu-row,
       .download-category{
@@ -898,19 +996,27 @@
         page-break-inside:avoid;
       }
 
-      .no-print{
-        display:none !important;
-      }
+      .no-print{display:none !important}
     }
 
     @media (max-width:991px){
-      .hero-section{padding-top:105px}
+      .hero-section{padding:105px 0 70px}
       .summary-card{position:static}
-      .hero-card h1{font-size:2.6rem}
       .site-watermark img{width:180px}
-      .hero-stats{grid-template-columns:1fr}
       .download-brand-wrap{justify-content:center;text-align:center}
       .download-menu-header{justify-content:center}
+      .hero-title-animated{font-size:2.8rem}
+      .hero-btn{width:100%;min-width:unset}
+    }
+
+    @media (max-width:576px){
+      .hero-glass-card{
+        padding:34px 18px;
+        border-radius:22px;
+      }
+
+      .hero-title-animated{font-size:2.3rem}
+      .hero-premium-subtext{font-size:.95rem}
     }
   </style>
 </head>
@@ -945,64 +1051,30 @@
   <section class="hero-section" id="home">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="hero-card sparkle-target text-center">
-            <span class="hero-badge">Premium Meals • Dine-In • Delivery • WhatsApp Orders</span>
-            <h1>Roots &amp; Recipes</h1>
-            <p class="hero-subtext mb-3">
-              A premium food experience for PG residents with homely taste, elegant service, and smooth ordering.
-            </p>
-            <p class="mb-0" style="color: rgba(255,255,255,0.92); max-width:760px; margin:0 auto;">
-              Freshly prepared meals, quick room delivery, peaceful dine-in, and simple payment options — all in one place.
-            </p>
+        <div class="col-lg-9">
+          <div class="hero-premium-wrap">
+            <div class="hero-glass-card sparkle-target">
+              <span class="hero-mini-badge">Fresh • Fast • Premium</span>
 
-            <div class="hero-glow-line"></div>
+              <h1 class="hero-title-animated">Roots <span>&amp;</span> Recipes</h1>
 
-            <div class="hero-pill-wrap mb-2">
-              <span class="info-pill">🍽 Daily Fresh Meals</span>
-              <span class="info-pill">🚪 Fast Delivery</span>
-              <span class="info-pill">🏠 Cozy Dine-In</span>
-              <span class="info-pill">💵 Cash & UPI</span>
-            </div>
+              <p class="hero-premium-subtext">
+                Fresh homely meals with quick delivery, cozy dine-in, and easy ordering.
+              </p>
 
-            <div class="hero-stats">
-              <div class="hero-stat-card">
-                <h4>₹100</h4>
-                <p>Daily Thali starting price</p>
+              <div class="hero-pill-wrap-premium">
+                <span class="premium-pill">🍽 Daily Fresh Meals</span>
+                <span class="premium-pill">🚪 Fast Delivery</span>
+                <span class="premium-pill">🏠 Cozy Dine-In</span>
+                <span class="premium-pill">💵 Cash &amp; UPI</span>
               </div>
-              <div class="hero-stat-card">
-                <h4>30 Mins</h4>
-                <p>Minimum estimated delivery time</p>
-              </div>
-              <div class="hero-stat-card">
-                <h4>2 Ways</h4>
-                <p>Dine-In or Room Delivery</p>
+
+              <div class="hero-cta-wrap">
+                <a href="#menu" class="hero-btn hero-btn-soft">Explore Menu</a>
+                <a href="#checkout" class="hero-btn hero-btn-main">Place Order</a>
+                <a href="#enquiry" class="hero-btn hero-btn-soft">Room Enquiry</a>
               </div>
             </div>
-
-            <div class="hero-action-wrap">
-              <a href="#menu" class="btn btn-light fw-semibold px-4 py-3 rounded-4">Explore Food Menu</a>
-              <a href="#checkout" class="btn btn-main">Place Your Order</a>
-              <a href="#enquiry" class="btn btn-outline-light fw-semibold px-4 py-3 rounded-4" style="border-width:1.5px;">Room Enquiry</a>
-            </div>
-
-            <div class="mt-4 p-3 rounded-4" style="background: rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.2);">
-              <div class="row g-3 text-center">
-                <div class="col-md-4">
-                  <div class="fw-bold">🍛 Fresh Daily Thali</div>
-                  <small style="color: rgba(255,255,255,0.88);">Affordable • Filling • Tasty</small>
-                </div>
-                <div class="col-md-4">
-                  <div class="fw-bold">🚚 Quick Room Delivery</div>
-                  <small style="color: rgba(255,255,255,0.88);">Hot meals at your doorstep</small>
-                </div>
-                <div class="col-md-4">
-                  <div class="fw-bold">✨ Premium Experience</div>
-                  <small style="color: rgba(255,255,255,0.88);">Comfort, quality, and convenience</small>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
@@ -1089,7 +1161,7 @@
         <button class="menu-filter-btn" onclick="filterMenu('main-course', this)">Main Course</button>
         <button class="menu-filter-btn" onclick="filterMenu('bread-rice', this)">Bread & Rice</button>
         <button class="menu-filter-btn" onclick="filterMenu('beverages', this)">Beverages</button>
-        <button class="menu-filter-btn" onclick="filterMenu('chicken', this)">Chicken</button>
+        <button class="menu-filter-btn" onclick="filterMenu('chicken', this)">Non Veg</button>
       </div>
 
       <div class="row g-4" id="menuContainer"></div>
@@ -1145,7 +1217,15 @@
               </div>
             </div>
 
-            <form id="checkoutForm" class="row g-3">
+            <div class="alert alert-warning mt-3 rounded-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
+              <div>
+                <strong>Need help after ordering?</strong><br>
+                <span class="small">For any query regarding your order, you can call the cook directly.</span>
+              </div>
+              <a href="tel:+919870281515" class="btn btn-main">📞 Call Cook</a>
+            </div>
+
+            <form id="checkoutForm" class="row g-3 mt-1">
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Name</label>
                 <input type="text" class="form-control" id="customerName" placeholder="Enter full name" required>
@@ -1200,7 +1280,6 @@
 
   <section class="checkout-section" id="enquiry">
     <div class="container">
-
       <div class="summary-card sparkle-target p-4 mb-4 text-center">
         <h3 class="fw-bold mb-2">69 STAR GALAXY PG</h3>
         <p class="mb-0 text-muted">
@@ -1364,56 +1443,92 @@
   </div>
 
   <script>
-    const orderWhatsappNumbers = ['9199310805191'];
+    const orderWhatsappNumbers = ['919650009462', '919540757074'];
     const enquiryWhatsappNumbers = ['919650009462', '919540757074'];
+    const cookNumber = '919870281515';
     const sheetWebAppUrl = 'https://script.google.com/macros/s/AKfycbxS6x-UWoFOrGDD4X4ZGx56ntT52OpjSp9mXs0OLMw7jWrKNHR5kjLjmqxwyMBHoKmNyA/exec';
 
     const menuItems = [
-      {id:'thali',name:'Daily Thali',price:100,category:'thali',image:'https://wallpaperaccess.com/full/11262727.jpg',description:'4 Rotis, sabzi, dal, rice and salad.'},
-      {id:'fried-rice',name:'Fried Rice',price:100,category:'snacks',image:'https://wallpaperbat.com/img/12458126-mixed-fried-rice-recipe-how-to-make-a.jpg',description:'Veg fried rice.'},
-      {id:'paneer-fried-rice',name:'Paneer Fried Rice',price:120,category:'snacks',image:'https://www.flavouroffood.com/wp-content/uploads/2021/02/Paneer-Fried-Rice-4.jpg',description:'Paneer fried rice.'},
-      {id:'veg-chowmein',name:'Veg Chowmein',price:100,category:'snacks',image:'https://wallpaperaccess.com/full/8325607.jpg',description:'Veg noodles.'},
-      {id:'paneer-chowmein',name:'Paneer Chowmein',price:150,category:'snacks',image:'https://i.ytimg.com/vi/qhvlkSbh4II/maxresdefault.jpg',description:'Paneer noodles.'},
-      {id:'veg-manchurian',name:'Veg Manchurian',price:150,category:'snacks',image:'https://tse4.mm.bing.net/th/id/OIP.sPA0_0sQ4m_MLWVxzQ1rPgHaE7?w=800&h=533&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Fried veg balls in sauce.'},
-      {id:'chilli-paneer',name:'Chilli Paneer (Dry)',price:160,category:'snacks',image:'https://wallpapercave.com/wp/wp11413533.jpg',description:'Spicy paneer starter.'},
-      {id:'spring-roll',name:'Spring Roll (6 pcs)',price:120,category:'snacks',image:'https://images.indianexpress.com/2016/06/recipies_480_thinkstock.jpg',description:'Crispy spring rolls.'},
-      {id:'veg-momos',name:'Veg Momos (8 pcs)',price:120,category:'snacks',image:'https://wallpapercave.com/wp/wp10053469.jpg',description:'Steamed veg momos.'},
-      {id:'paneer-momos',name:'Paneer Momos (8 pcs)',price:120,category:'snacks',image:'https://i0.wp.com/passion2cook.com/wp-content/uploads/2023/03/paneer-momos-2.jpg?w=1920&ssl=1',description:'Paneer momos.'},
-      {id:'chilli-potato',name:'Chilli Potato',price:120,category:'snacks',image:'https://wallpaperaccess.com/full/13502513.jpg',description:'Spicy crispy potato.'},
-      {id:'honey-chilli-potato',name:'Honey Chilli Potato',price:150,category:'snacks',image:'https://recipes.timesofindia.com/photo/52532656.cms',description:'Sweet spicy potato.'},
-      {id:'plain-maggi',name:'Plain Maggi',price:40,category:'snacks',image:'https://theovenchef.com/wp-content/uploads/2023/12/plain-maggie-1.png',description:'Simple maggi.'},
-      {id:'veg-maggi',name:'Veg Maggi',price:50,category:'snacks',image:'https://i.pinimg.com/originals/00/e6/d0/00e6d0678a79442071445a3c0c50d5ac.jpg',description:'Veg maggi noodles.'},
-      {id:'veg-sandwich',name:'Veg Grilled Sandwich',price:50,category:'snacks',image:'https://img.freepik.com/premium-photo/veg-grilled-sandwich-served-with-ketchup-isolated-rustic-wooden-background-selective-focus_726363-1356.jpg',description:'Fresh veg sandwich.'},
-      {id:'paneer-sandwich',name:'Grilled Paneer Sandwich',price:80,category:'snacks',image:'https://www.indianhealthyrecipes.com/wp-content/uploads/2022/03/veg-grilled-sandwich-recipe-500x500.jpg',description:'Paneer grilled sandwich.'},
-      {id:'french-fries',name:'French Fries',price:80,category:'snacks',image:'https://images6.alphacoders.com/108/thumb-1920-1080178.jpg',description:'Crispy fries.'},
-      {id:'peri-fries',name:'Peri Peri Fries',price:100,category:'snacks',image:'https://static.vecteezy.com/system/resources/previews/024/748/761/non_2x/grilled-meat-and-french-fries-a-classic-american-lunch-bar-generated-by-ai-free-photo.jpg',description:'Peri peri fries.'},
-      {id:'chana-masala',name:'Chana Masala',price:100,category:'main-course',image:'https://img.freepik.com/premium-photo/chana-masala-photo-with-touch-spice_1036998-305050.jpg',description:'Classic chana curry.'},
-      {id:'dal-tadka',name:'Dal Tadka',price:100,category:'main-course',image:'https://static.vecteezy.com/system/resources/previews/038/947/178/non_2x/ai-generated-dal-tadka-is-a-popular-indian-dish-where-cooked-spiced-lentils-are-finished-with-a-tempering-made-of-ghee-or-oil-and-spices-photo.jpg',description:'Tadka dal.'},
-      {id:'aloo-jeera',name:'Aloo Jeera',price:100,category:'main-course',image:'https://2.bp.blogspot.com/-wonKVzMF8lM/VtYdt7V12sI/AAAAAAAAUuo/li4gWvl4zBM/s1600/Aloo-Jeera_finalforweb1.jpg',description:'Jeera potatoes.'},
-      {id:'mix-veg',name:'Mix Veg',price:150,category:'main-course',image:'https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/Mixed-Veg-Curry1.jpg',description:'Mixed vegetables.'},
-      {id:'paneer-bhurji',name:'Paneer Bhurji',price:180,category:'main-course',image:'https://media.istockphoto.com/id/1820486089/photo/paneer-bhurji.jpg?s=612x612&w=0&k=20&c=8rcJeVTEJBw_gU6UN60qaDhknd4Z9jGw-x32cwk1vr8=',description:'Paneer bhurji masala.'},
-      {id:'kadhai-paneer',name:'Kadhai Paneer',price:190,category:'main-course',image:'https://1.bp.blogspot.com/_GlkYxavu-Ts/StVnaw3GCJI/AAAAAAAAARM/2b3PenJbX7g/s400/kadhai-paneer1.JPG',description:'Kadhai paneer gravy.'},
-      {id:'shahi-paneer',name:'Shahi Paneer',price:190,category:'main-course',image:'https://images.pexels.com/photos/10905933/pexels-photo-10905933.jpeg?cs=srgb&dl=pexels-anilsharma65-10905933.jpg&fm=jpg',description:'Rich paneer curry.'},
-      {id:'paneer-butter-masala',name:'Paneer Butter Masala',price:190,category:'main-course',image:'https://img.freepik.com/premium-photo/delicious-paneer-butter-masala-photography_928503-848.jpg',description:'Butter paneer curry.'},
-      {id:'plain-paratha',name:'Plain Paratha',price:40,category:'bread-rice',image:'https://img.freepik.com/premium-photo/triangle-shape-plain-paratha-parantha-is-yummy-indian-flat-bread-made-whole-wheat-flour-served-plate-selective-focus_466689-2962.jpg',description:'Plain paratha.'},
-      {id:'lachha-paratha',name:'Lachha Paratha',price:50,category:'bread-rice',image:'https://i.ytimg.com/vi/pmA2-YtUMz4/maxresdefault.jpg',description:'Layered paratha.'},
-      {id:'aloo-paratha',name:'Aloo Paratha',price:60,category:'bread-rice',image:'https://wallpaperaccess.com/full/9466589.jpg',description:'Stuffed aloo paratha.'},
-      {id:'paneer-paratha',name:'Paneer Paratha',price:90,category:'bread-rice',image:'https://tse1.mm.bing.net/th/id/OIP.hIrsd6QLnB4qArX1Kg-o5gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed paneer paratha.'},
-      {id:'plain-roti',name:'Plain Roti',price:10,category:'bread-rice',image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Fresh roti.'},
-      {id:'butter-roti',name:'Butter Roti',price:12,category:'bread-rice',image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Butter roti.'},
-      {id:'plain-rice',name:'Plain Rice',price:70,category:'bread-rice',image:'https://tse4.mm.bing.net/th/id/OIP.oR_ER5FVgt6Ie1fjHPs8hQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Steamed rice.'},
-      {id:'jeera-rice',name:'Jeera Rice',price:80,category:'bread-rice',image:'https://tse4.mm.bing.net/th/id/OIP.oR_ER5FVgt6Ie1fjHPs8hQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Cumin rice.'},
-      {id:'veg-biryani',name:'Veg Biryani',price:150,category:'bread-rice',image:'https://img.freepik.com/premium-photo/view-tasty-yummy-delicious-indian-biryani-4k-hd-photo_1193781-10185.jpg?w=2000',description:'Veg biryani.'},
-      {id:'chai',name:'Aadrak Chai',price:20,category:'beverages',image:'https://budleaf.com/wp-content/uploads/2023/08/Adrak-masala-chai-scaled.jpeg',description:'Ginger tea.'},
-      {id:'elaichi-chai',name:'Aadrak Elaichi Chai',price:30,category:'beverages',image:'https://budleaf.com/wp-content/uploads/2023/08/Adrak-masala-chai-scaled.jpeg',description:'Cardamom ginger tea.'},
-      {id:'coffee',name:'Hot Coffee',price:50,category:'beverages',image:'https://th.bing.com/th?q=Coffee%20Cup%20Background%20Wallpaper&pid=ImgDet&w=150&h=150&c=1&p=1&rs=1&t=1&dpr=1.3&mkt=en-in&adlt=demote&o=7&rm=3',description:'Hot coffee.'},
-      {id:'cold-coffee',name:'Classic Cold Coffee',price:70,category:'beverages',image:'https://tse2.mm.bing.net/th/id/OIP.2P4fqrajqy8-4iqhlVbR4AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic cold coffee.'},
-      {id:'banana-shake',name:'Banana Shake',price:80,category:'beverages',image:'https://www.aboutamom.com/wp-content/uploads/2024/08/Banana-Milkshake-A_AAM_Banana_Milkshake_Recipe_Future_2.jpg.jpg',description:'Banana shake.'},
-      {id:'oreo-shake',name:'Oreo Shake',price:90,category:'beverages',image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'Oreo shake.'},
-      {id:'chilli-chicken',name:'Chilli Chicken',price:299,category:'chicken',image:'https://tse1.mm.bing.net/th/id/OIP.FvNjy_tKQvntJRXnpGy5CgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Spicy chilli chicken.'},
-      {id:'burnt-garlic-chicken',name:'Burnt Garlic Chicken',price:299,category:'chicken',image:'https://images.alphacoders.com/991/thumb-1920-991362.jpg',description:'Garlic chicken.'},
-      {id:'chicken-nuggets',name:'Chicken Nuggets',price:299,category:'chicken',image:'https://th.bing.com/th/id/OIP.lZCe5dzX1_UyOohJc_E4XQHaEK?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Crispy nuggets.'},
-      {id:'chicken-soup',name:'Chicken Soup',price:70,category:'chicken',image:'https://images8.alphacoders.com/553/thumb-1920-553947.jpg',description:'Hot chicken soup.'}
+      {id:'thali',name:'Daily Thali',price:100,category:'thali',type:'veg',image:'https://wallpaperaccess.com/full/11262727.jpg',description:'4 Rotis, sabzi, dal, rice and salad.'},
+
+      {id:'fried-rice',name:'Fried Rice',price:100,category:'snacks',type:'veg',image:'https://wallpaperbat.com/img/12458126-mixed-fried-rice-recipe-how-to-make-a.jpg',description:'Veg fried rice.'},
+      {id:'paneer-fried-rice',name:'Paneer Fried Rice',price:120,category:'snacks',type:'veg',image:'https://www.flavouroffood.com/wp-content/uploads/2021/02/Paneer-Fried-Rice-4.jpg',description:'Paneer fried rice.'},
+      {id:'veg-chowmein',name:'Veg Chowmein',price:100,category:'snacks',type:'veg',image:'https://wallpaperaccess.com/full/8325607.jpg',description:'Veg noodles.'},
+      {id:'paneer-chowmein',name:'Paneer Chowmein',price:150,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/qhvlkSbh4II/maxresdefault.jpg',description:'Paneer noodles.'},
+      {id:'veg-manchurian',name:'Veg Manchurian',price:150,category:'snacks',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.sPA0_0sQ4m_MLWVxzQ1rPgHaE7?w=800&h=533&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Fried veg balls in sauce.'},
+      {id:'chilli-paneer',name:'Chilli Paneer (Dry)',price:160,category:'snacks',type:'veg',image:'https://wallpapercave.com/wp/wp11413533.jpg',description:'Spicy paneer starter.'},
+      {id:'spring-roll',name:'Spring Roll (6 pcs)',price:120,category:'snacks',type:'veg',image:'https://images.indianexpress.com/2016/06/recipies_480_thinkstock.jpg',description:'Crispy spring rolls.'},
+      {id:'veg-momos',name:'Veg Momos (8 pcs)',price:120,category:'snacks',type:'veg',image:'https://wallpapercave.com/wp/wp10053469.jpg',description:'Steamed veg momos.'},
+      {id:'paneer-momos',name:'Paneer Momos (8 pcs)',price:120,category:'snacks',type:'veg',image:'https://i0.wp.com/passion2cook.com/wp-content/uploads/2023/03/paneer-momos-2.jpg?w=1920&ssl=1',description:'Paneer momos.'},
+      {id:'chilli-potato',name:'Chilli Potato',price:120,category:'snacks',type:'veg',image:'https://wallpaperaccess.com/full/13502513.jpg',description:'Spicy crispy potato.'},
+      {id:'honey-chilli-potato',name:'Honey Chilli Potato',price:150,category:'snacks',type:'veg',image:'https://recipes.timesofindia.com/photo/52532656.cms',description:'Sweet spicy potato.'},
+      {id:'plain-maggi',name:'Plain Maggi',price:40,category:'snacks',type:'veg',image:'https://theovenchef.com/wp-content/uploads/2023/12/plain-maggie-1.png',description:'Simple maggi.'},
+      {id:'veg-maggi',name:'Veg Maggi',price:50,category:'snacks',type:'veg',image:'https://i.pinimg.com/originals/00/e6/d0/00e6d0678a79442071445a3c0c50d5ac.jpg',description:'Veg maggi noodles.'},
+      {id:'veg-sandwich',name:'Veg Grilled Sandwich',price:50,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/veg-grilled-sandwich-served-with-ketchup-isolated-rustic-wooden-background-selective-focus_726363-1356.jpg',description:'Fresh veg sandwich.'},
+      {id:'paneer-sandwich',name:'Grilled Paneer Sandwich',price:80,category:'snacks',type:'veg',image:'https://www.indianhealthyrecipes.com/wp-content/uploads/2022/03/veg-grilled-sandwich-recipe-500x500.jpg',description:'Paneer grilled sandwich.'},
+      {id:'french-fries',name:'French Fries',price:80,category:'snacks',type:'veg',image:'https://images6.alphacoders.com/108/thumb-1920-1080178.jpg',description:'Crispy fries.'},
+      {id:'peri-fries',name:'Peri Peri Fries',price:100,category:'snacks',type:'veg',image:'https://static.vecteezy.com/system/resources/previews/024/748/761/non_2x/grilled-meat-and-french-fries-a-classic-american-lunch-bar-generated-by-ai-free-photo.jpg',description:'Peri peri fries.'},
+      {id:'chilli-gobhi',name:'Chilli Gobhi',price:50,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=1200&auto=format&fit=crop',description:'Spicy crispy chilli gobhi.'},
+      {id:'veg-burger',name:'Veg Burger',price:50,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop',description:'Loaded veg burger.'},
+      {id:'red-sauce-pasta',name:'Red Sauce Pasta',price:100,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=1200&auto=format&fit=crop',description:'Classic red sauce pasta.'},
+      {id:'white-sauce-pasta',name:'White Sauce Pasta',price:150,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?q=80&w=1200&auto=format&fit=crop',description:'Creamy white sauce pasta.'},
+      {id:'veg-macaroni',name:'Veg Macaroni',price:100,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?q=80&w=1200&auto=format&fit=crop',description:'Veg macaroni.'},
+      {id:'poha',name:'Poha',price:70,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?q=80&w=1200&auto=format&fit=crop',description:'Light and tasty poha.'},
+      {id:'veg-roll',name:'Veg Roll',price:100,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=1200&auto=format&fit=crop',description:'Stuffed veg roll.'},
+      {id:'paneer-cheese-roll',name:'Paneer Cheese Roll',price:150,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?q=80&w=1200&auto=format&fit=crop',description:'Paneer and cheese loaded roll.'},
+      {id:'paneer-kathi-roll',name:'Paneer Kathi Roll',price:120,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1200&auto=format&fit=crop',description:'Paneer kathi roll.'},
+      {id:'corn-cheese',name:'Corn & Cheese',price:120,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?q=80&w=1200&auto=format&fit=crop',description:'Creamy corn and cheese snack.'},
+
+      {id:'chana-masala',name:'Chana Masala',price:100,category:'main-course',type:'veg',image:'https://img.freepik.com/premium-photo/chana-masala-photo-with-touch-spice_1036998-305050.jpg',description:'Classic chana curry.'},
+      {id:'dal-tadka',name:'Dal Tadka',price:100,category:'main-course',type:'veg',image:'https://static.vecteezy.com/system/resources/previews/038/947/178/non_2x/ai-generated-dal-tadka-is-a-popular-indian-dish-where-cooked-spiced-lentils-are-finished-with-a-tempering-made-of-ghee-or-oil-and-spices-photo.jpg',description:'Tadka dal.'},
+      {id:'aloo-jeera',name:'Aloo Jeera',price:100,category:'main-course',type:'veg',image:'https://2.bp.blogspot.com/-wonKVzMF8lM/VtYdt7V12sI/AAAAAAAAUuo/li4gWvl4zBM/s1600/Aloo-Jeera_finalforweb1.jpg',description:'Jeera potatoes.'},
+      {id:'mix-veg',name:'Mix Veg',price:150,category:'main-course',type:'veg',image:'https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/Mixed-Veg-Curry1.jpg',description:'Mixed vegetables.'},
+      {id:'paneer-bhurji',name:'Paneer Bhurji',price:180,category:'main-course',type:'veg',image:'https://media.istockphoto.com/id/1820486089/photo/paneer-bhurji.jpg?s=612x612&w=0&k=20&c=8rcJeVTEJBw_gU6UN60qaDhknd4Z9jGw-x32cwk1vr8=',description:'Paneer bhurji masala.'},
+      {id:'kadhai-paneer',name:'Kadhai Paneer',price:190,category:'main-course',type:'veg',image:'https://1.bp.blogspot.com/_GlkYxavu-Ts/StVnaw3GCJI/AAAAAAAAARM/2b3PenJbX7g/s400/kadhai-paneer1.JPG',description:'Kadhai paneer gravy.'},
+      {id:'shahi-paneer',name:'Shahi Paneer',price:190,category:'main-course',type:'veg',image:'https://images.pexels.com/photos/10905933/pexels-photo-10905933.jpeg?cs=srgb&dl=pexels-anilsharma65-10905933.jpg&fm=jpg',description:'Rich paneer curry.'},
+      {id:'paneer-butter-masala',name:'Paneer Butter Masala',price:190,category:'main-course',type:'veg',image:'https://img.freepik.com/premium-photo/delicious-paneer-butter-masala-photography_928503-848.jpg',description:'Butter paneer curry.'},
+      {id:'aloo-gobhi',name:'Aloo Gobhi',price:100,category:'main-course',type:'veg',image:'https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=1200&auto=format&fit=crop',description:'Classic aloo gobhi curry.'},
+      {id:'matar-paneer',name:'Matar Paneer',price:180,category:'main-course',type:'veg',image:'https://images.unsplash.com/photo-1631452180539-96aca7d48617?q=80&w=1200&auto=format&fit=crop',description:'Paneer and matar curry.'},
+      {id:'paneer-lababdar',name:'Paneer Lababdar',price:190,category:'main-course',type:'veg',image:'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?q=80&w=1200&auto=format&fit=crop',description:'Rich paneer lababdar gravy.'},
+
+      {id:'plain-paratha',name:'Plain Paratha',price:40,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/triangle-shape-plain-paratha-parantha-is-yummy-indian-flat-bread-made-whole-wheat-flour-served-plate-selective-focus_466689-2962.jpg',description:'Plain paratha.'},
+      {id:'lachha-paratha',name:'Lachha Paratha',price:50,category:'bread-rice',type:'veg',image:'https://i.ytimg.com/vi/pmA2-YtUMz4/maxresdefault.jpg',description:'Layered paratha.'},
+      {id:'aloo-paratha',name:'Aloo Paratha',price:60,category:'bread-rice',type:'veg',image:'https://wallpaperaccess.com/full/9466589.jpg',description:'Stuffed aloo paratha.'},
+      {id:'paneer-paratha',name:'Paneer Paratha',price:90,category:'bread-rice',type:'veg',image:'https://tse1.mm.bing.net/th/id/OIP.hIrsd6QLnB4qArX1Kg-o5gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed paneer paratha.'},
+      {id:'gobhi-paratha',name:'Gobhi Paratha',price:70,category:'bread-rice',type:'veg',image:'https://images.unsplash.com/photo-1626776876729-bab4369a5a5c?q=80&w=1200&auto=format&fit=crop',description:'Stuffed gobhi paratha.'},
+      {id:'plain-roti',name:'Plain Roti',price:10,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Fresh roti.'},
+      {id:'butter-roti',name:'Butter Roti',price:12,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Butter roti.'},
+      {id:'plain-rice',name:'Plain Rice',price:70,category:'bread-rice',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.oR_ER5FVgt6Ie1fjHPs8hQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Steamed rice.'},
+      {id:'jeera-rice',name:'Jeera Rice',price:80,category:'bread-rice',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.oR_ER5FVgt6Ie1fjHPs8hQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Cumin rice.'},
+      {id:'veg-biryani',name:'Veg Biryani',price:150,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/view-tasty-yummy-delicious-indian-biryani-4k-hd-photo_1193781-10185.jpg?w=2000',description:'Veg biryani.'},
+
+      {id:'chai',name:'Aadrak Chai',price:20,category:'beverages',type:'veg',image:'https://budleaf.com/wp-content/uploads/2023/08/Adrak-masala-chai-scaled.jpeg',description:'Ginger tea.'},
+      {id:'elaichi-chai',name:'Aadrak Elaichi Chai',price:30,category:'beverages',type:'veg',image:'https://budleaf.com/wp-content/uploads/2023/08/Adrak-masala-chai-scaled.jpeg',description:'Cardamom ginger tea.'},
+      {id:'coffee',name:'Hot Coffee',price:50,category:'beverages',type:'veg',image:'https://th.bing.com/th?q=Coffee%20Cup%20Background%20Wallpaper&pid=ImgDet&w=150&h=150&c=1&p=1&rs=1&t=1&dpr=1.3&mkt=en-in&adlt=demote&o=7&rm=3',description:'Hot coffee.'},
+      {id:'cold-coffee',name:'Classic Cold Coffee',price:70,category:'beverages',type:'veg',image:'https://tse2.mm.bing.net/th/id/OIP.2P4fqrajqy8-4iqhlVbR4AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic cold coffee.'},
+      {id:'banana-shake',name:'Banana Shake',price:80,category:'beverages',type:'veg',image:'https://www.aboutamom.com/wp-content/uploads/2024/08/Banana-Milkshake-A_AAM_Banana_Milkshake_Recipe_Future_2.jpg.jpg',description:'Banana shake.'},
+      {id:'oreo-shake',name:'Oreo Shake',price:90,category:'beverages',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'Oreo shake.'},
+      {id:'hot-milk',name:'Hot Milk',price:40,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=1200&auto=format&fit=crop',description:'Fresh hot milk.'},
+      {id:'black-coffee',name:'Black Coffee',price:30,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop',description:'Strong black coffee.'},
+      {id:'lemonade',name:'Lemonade',price:40,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1200&auto=format&fit=crop',description:'Refreshing lemonade.'},
+      {id:'salted-lassi',name:'Salted Lassi',price:50,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?q=80&w=1200&auto=format&fit=crop',description:'Salted lassi.'},
+      {id:'mix-raita',name:'Mix Raita',price:70,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1604908554027-1deab3c5203d?q=80&w=1200&auto=format&fit=crop',description:'Mixed raita.'},
+      {id:'boondi-raita',name:'Boondi Raita',price:70,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1633945274309-2c16e8f88d42?q=80&w=1200&auto=format&fit=crop',description:'Boondi raita.'},
+      {id:'sweet-lassi',name:'Sweet Lassi',price:50,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?q=80&w=1200&auto=format&fit=crop',description:'Sweet lassi.'},
+
+      {id:'boiled-eggs',name:'Boiled Eggs',price:20,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?q=80&w=1200&auto=format&fit=crop',description:'Boiled eggs.'},
+      {id:'plain-omelette',name:'Plain Omelette',price:40,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Simple omelette.'},
+      {id:'bread-omelette',name:'Bread Omelette',price:50,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1506084868230-bb9d95c24759?q=80&w=1200&auto=format&fit=crop',description:'Bread omelette.'},
+      {id:'veg-omelette',name:'Veg Omelette',price:50,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Omelette with veggies.'},
+      {id:'half-fry-omelette',name:'Half Fry Omelette',price:40,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=1200&auto=format&fit=crop',description:'Half fry style egg.'},
+      {id:'butter-chicken-half',name:'Butter Chicken (Half)',price:288,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=1200&auto=format&fit=crop',description:'Butter chicken half.'},
+      {id:'butter-chicken-full',name:'Butter Chicken (Full)',price:408,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=1200&auto=format&fit=crop',description:'Butter chicken full.'},
+      {id:'kadai-chicken-half',name:'Kadai Chicken (Half)',price:299,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1604908176997-4314ed3f1f3f?q=80&w=1200&auto=format&fit=crop',description:'Kadai chicken half.'},
+      {id:'kadai-chicken-full',name:'Kadai Chicken (Full)',price:400,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1604908176997-4314ed3f1f3f?q=80&w=1200&auto=format&fit=crop',description:'Kadai chicken full.'},
+      {id:'chicken-butter-masala-half',name:'Chicken Butter Masala (Half)',price:200,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?q=80&w=1200&auto=format&fit=crop',description:'Chicken butter masala half.'},
+      {id:'chicken-butter-masala-full',name:'Chicken Butter Masala (Full)',price:400,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?q=80&w=1200&auto=format&fit=crop',description:'Chicken butter masala full.'},
+      {id:'tawa-chicken-half',name:'Tawa Chicken (Half)',price:250,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1200&auto=format&fit=crop',description:'Tawa chicken half.'},
+      {id:'tawa-chicken-full',name:'Tawa Chicken (Full)',price:409,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1200&auto=format&fit=crop',description:'Tawa chicken full.'}
     ];
 
     const cart = {};
@@ -1448,9 +1563,27 @@
         'main-course':'Main Course',
         'bread-rice':'Bread & Rice',
         'beverages':'Beverages',
-        'chicken':'Chicken'
+        'chicken':'Non Veg'
       };
       return map[category] || category;
+    }
+
+    function getFoodTypeBadge(type){
+      if(type === 'non-veg'){
+        return `
+          <span class="food-type-badge non-veg">
+            <span class="food-dot non-veg"></span>
+            Non-Veg
+          </span>
+        `;
+      }
+
+      return `
+        <span class="food-type-badge veg">
+          <span class="food-dot veg"></span>
+          Veg
+        </span>
+      `;
     }
 
     function goToCheckout(){
@@ -1466,7 +1599,9 @@
 
     function increaseQty(itemId){
       const input = document.getElementById(`qty-${itemId}`);
-      input.value = Number(input.value || 0) + 1;
+      const currentInput = Number(input.value || 0);
+      const currentCart = cart[itemId] ? cart[itemId].qty : 0;
+      input.value = Math.max(currentInput, currentCart) + 1;
     }
 
     function decreaseQty(itemId){
@@ -1490,7 +1625,10 @@
         col.innerHTML = `
           <div class="menu-card">
             <img src="${item.image}" alt="${item.name}">
-            <span class="menu-category-badge">${getCategoryLabel(item.category)}</span>
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+              <span class="menu-category-badge">${getCategoryLabel(item.category)}</span>
+              ${getFoodTypeBadge(item.type)}
+            </div>
             <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
               <h5 class="fw-bold mb-0">${item.name}</h5>
               <span class="badge text-bg-warning px-3 py-2 rounded-pill">₹${item.price}</span>
@@ -1500,7 +1638,7 @@
             <div class="d-flex justify-content-between align-items-center gap-2 mt-3 flex-wrap">
               <div class="qty-control">
                 <button type="button" class="qty-btn" onclick="decreaseQty('${item.id}')">−</button>
-                <input type="number" class="qty-box" id="qty-${item.id}" min="0" value="0" readonly>
+                <input type="number" class="qty-box" id="qty-${item.id}" min="0" value="${cart[item.id] ? cart[item.id].qty : 0}" readonly>
                 <button type="button" class="qty-btn" onclick="increaseQty('${item.id}')">+</button>
               </div>
               <button class="btn btn-main" onclick="addToCart('${item.id}')">Add to Cart</button>
@@ -1512,31 +1650,29 @@
     }
 
     function addToCart(itemId, forcedQty = null){
-  const item = menuItems.find(m => m.id === itemId);
-  if(!item) return;
+      const item = menuItems.find(m => m.id === itemId);
+      if(!item) return;
 
-  const qtyInput = document.getElementById(`qty-${itemId}`);
-  const qty = forcedQty !== null ? forcedQty : Number(qtyInput?.value || 0);
+      const qtyInput = document.getElementById(`qty-${itemId}`);
+      let qty = forcedQty !== null ? forcedQty : Number(qtyInput?.value || 0);
 
-  if(qty <= 0){
-    alert('Please select quantity first.');
-    return;
-  }
+      if(qty <= 0){
+        qty = 1;
+      }
 
-  if(cart[itemId]){
-    cart[itemId].qty += qty;
-  } else {
-    cart[itemId] = {...item, qty};
-  }
+      if(cart[itemId]){
+        cart[itemId].qty += qty;
+      } else {
+        cart[itemId] = {...item, qty: 0};
+        cart[itemId].qty += qty;
+      }
 
-  if(qtyInput){
-    qtyInput.value = 0;
-  }
+      if(qtyInput){
+        qtyInput.value = cart[itemId].qty;
+      }
 
-  updateSummary();
-}
-
-      
+      updateSummary();
+    }
 
     function quickAddThali(){
       addToCart('thali', 1);
@@ -1544,12 +1680,18 @@
 
     function removeFromCart(itemId){
       delete cart[itemId];
+      const qtyInput = document.getElementById(`qty-${itemId}`);
+      if(qtyInput){
+        qtyInput.value = 0;
+      }
       updateSummary();
+      renderMenu();
     }
 
     function clearCart(resetOrderStatus = true){
       Object.keys(cart).forEach(key => delete cart[key]);
       updateSummary();
+      renderMenu();
       if(resetOrderStatus){
         resetStatus();
       }
@@ -1599,7 +1741,7 @@
         row.innerHTML = `
           <div class="d-flex justify-content-between align-items-start gap-2">
             <div>
-              <div class="fw-semibold">${item.name}</div>
+              <div class="fw-semibold">${item.type === 'non-veg' ? '🔴' : '🟢'} ${item.name}</div>
               <div class="small text-muted">Qty: ${item.qty} × ₹${item.price}</div>
             </div>
             <div class="text-end">
@@ -1632,7 +1774,7 @@
         {title:'Main Course', key:'main-course'},
         {title:'Bread & Rice', key:'bread-rice'},
         {title:'Beverages', key:'beverages'},
-        {title:'Chicken Snacks', key:'chicken'}
+        {title:'Non Veg', key:'chicken'}
       ];
 
       categoryOrder.forEach(category => {
@@ -1644,7 +1786,7 @@
 
         const rows = categoryItems.map(item => `
           <div class="download-menu-row">
-            <span>${item.name}</span>
+            <span>${item.type === 'non-veg' ? '🔴' : '🟢'} ${item.name}</span>
             <strong>₹${item.price}</strong>
           </div>
         `).join('');
@@ -1821,8 +1963,8 @@
         const totalItems = items.reduce((sum, item) => sum + item.qty, 0);
 
         const orderLinesText = items
-          .map((item, index) => `${index + 1}. ${item.name} - Qty ${item.qty} - ₹${item.price * item.qty}`)
-          .join('\n');
+          .map((item, index) => `➡️ *${index + 1}. ${item.type === 'non-veg' ? '🔴' : '🟢'} ${item.name}*\n   Qty: *${item.qty}*   |   Amount: *₹${item.price * item.qty}*`)
+          .join('\n\n');
 
         const itemNames = items.map(item => item.name).join(', ');
         const now = new Date();
@@ -1835,7 +1977,7 @@
           paymentMode: paymentMode,
           paymentRef: paymentRef,
           specialNote: specialNote,
-          items: orderLinesText,
+          items: items.map((item, index) => `${index + 1}. ${item.name} - Qty ${item.qty} - ₹${item.price * item.qty}`).join('\n'),
           itemNames: itemNames,
           totalItems: totalItems,
           totalAmount: total,
@@ -1856,8 +1998,9 @@
           const orderDate = result.orderDate || formatIndianDate(now);
           const orderTime = result.orderTime || formatIndianTime(now);
 
-          const whatsappMessage = `Roots & Recipes - New Order
+          const whatsappMessage = `*🍽️ ROOTS & RECIPES - NEW ORDER*
 
+━━━━━━━━━━━━━━
 *📌 Order No:* ${orderNo}
 *📅 Date:* ${orderDate}
 *⏰ Time:* ${orderTime}
@@ -1869,10 +2012,12 @@
 *💳 Payment Mode:* ${paymentMode}
 *🧾 Payment Ref:* ${paymentRef}
 *🚚 ETA:* ${eta}
+
+*📞 Cook Query Number:* +91 ${cookNumber.slice(2)}
 ━━━━━━━━━━━━━━
 
 *🔥 ORDER ITEMS 🔥*
-${items.map((item, index) => `➡️ *${index + 1}. ${item.name}*\n   Qty: *${item.qty}*   |   Amount: *₹${item.price * item.qty}*`).join('\n\n')}
+${orderLinesText}
 
 ━━━━━━━━━━━━━━
 *🛍️ Total Quantity:* ${totalItems}
@@ -1919,15 +2064,17 @@ ${items.map((item, index) => `➡️ *${index + 1}. ${item.name}*\n   Qty: *${it
         const budget = document.getElementById('budgetRange').value.trim() || 'Not specified';
         const note = document.getElementById('enquiryNote').value.trim() || 'None';
 
-        const enquiryMessage = `Roots & Recipes - Room Enquiry
+        const enquiryMessage = `*🏠 ROOTS & RECIPES - ROOM ENQUIRY*
 
-Name: ${name}
-WhatsApp: ${whatsapp}
-Requirement: ${type}
-Food Option: ${food}
-Preferred Move-in: ${moveIn}
-Budget: ${budget}
-Extra Requirement: ${note}`;
+━━━━━━━━━━━━━━
+*👤 Name:* ${name}
+*📱 WhatsApp:* ${whatsapp}
+*🏢 Requirement:* ${type}
+*🍽️ Food Option:* ${food}
+*📅 Preferred Move-in:* ${moveIn}
+*💰 Budget:* ${budget}
+*📝 Extra Requirement:* ${note}
+━━━━━━━━━━━━━━`;
 
         sendMessageToWhatsapp(
           enquiryWhatsappNumbers,
@@ -1951,7 +2098,7 @@ Extra Requirement: ${note}`;
     }
 
     document.addEventListener('click', function(e){
-      const target = e.target.closest('button, .menu-card, .download-card, .summary-card, .form-card, .thali-card, .hero-card, .floating-cart-icon');
+      const target = e.target.closest('button, .menu-card, .download-card, .summary-card, .form-card, .thali-card, .hero-glass-card, .floating-cart-icon');
       if(target){
         createSparkles(e.clientX, e.clientY);
       }
