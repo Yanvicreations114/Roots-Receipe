@@ -117,9 +117,8 @@
       padding:25px 0 10px;
     }
 
-    /* SHORT PREMIUM HERO */
     .hero-section{
-      padding:120px 0 80px;
+      padding:115px 0 55px;
       position:relative;
     }
 
@@ -129,13 +128,13 @@
 
     .hero-glass-card{
       position:relative;
-      padding:42px 28px;
+      padding:34px 24px;
       border-radius:28px;
       text-align:center;
       backdrop-filter:blur(14px);
       -webkit-backdrop-filter:blur(14px);
-      background:linear-gradient(135deg, rgba(184,134,43,0.88), rgba(217,191,90,0.78), rgba(156,183,136,0.70));
-      border:1px solid rgba(255,255,255,0.20);
+      background:linear-gradient(135deg, rgba(72,53,18,0.94), rgba(184,134,43,0.88), rgba(217,191,90,0.74));
+      border:1px solid rgba(255,255,255,0.18);
       box-shadow:0 24px 60px rgba(184,134,43,0.18);
       overflow:hidden;
     }
@@ -144,66 +143,52 @@
       content:'';
       position:absolute;
       inset:0;
-      background:radial-gradient(circle at top right, rgba(255,255,255,0.22), transparent 28%);
+      background:radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 28%);
       pointer-events:none;
     }
 
-    .hero-mini-badge{
+    .hero-top-tag{
       display:inline-block;
       padding:8px 14px;
       border-radius:999px;
       font-size:.8rem;
       font-weight:700;
-      color:#fff;
-      background:rgba(255,255,255,0.14);
-      border:1px solid rgba(255,255,255,0.18);
-      margin-bottom:16px;
+      color:#fff7d1;
+      background:rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,0.16);
+      margin-bottom:14px;
       position:relative;
       z-index:2;
     }
 
     .hero-title-animated{
       font-family:'Cormorant Garamond',serif;
-      font-size:3.5rem;
+      font-size:3.3rem;
       font-weight:700;
       color:#fff;
-      margin-bottom:12px;
+      margin-bottom:10px;
       animation:heroFloat 3s ease-in-out infinite;
       position:relative;
       z-index:2;
+      text-shadow:0 10px 30px rgba(0,0,0,0.15);
     }
 
     .hero-title-animated span{
       color:#fff7d1;
     }
 
-    .hero-premium-subtext{
-      max-width:700px;
-      margin:0 auto 20px;
-      color:rgba(255,255,255,0.95);
-      font-size:1rem;
-      line-height:1.7;
-      position:relative;
-      z-index:2;
-    }
-
-    .hero-pill-wrap-premium{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:10px;
-      margin-bottom:24px;
-      position:relative;
-      z-index:2;
-    }
-
-    .premium-pill{
-      background:rgba(255,255,255,0.14);
-      color:#fff;
-      border:1px solid rgba(255,255,255,0.18);
-      border-radius:999px;
+    .hero-mini-badge{
+      display:inline-block;
       padding:8px 14px;
-      font-weight:600;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:700;
+      color:#fff;
+      background:rgba(255,255,255,0.14);
+      border:1px solid rgba(255,255,255,0.18);
+      margin-bottom:18px;
+      position:relative;
+      z-index:2;
     }
 
     .hero-cta-wrap{
@@ -216,7 +201,7 @@
     }
 
     .hero-btn{
-      min-width:170px;
+      min-width:180px;
       padding:13px 20px;
       border-radius:14px;
       font-weight:700;
@@ -225,29 +210,16 @@
       align-items:center;
       justify-content:center;
       transition:.3s ease;
-    }
-
-    .hero-btn-main{
       color:#fff;
-      background:linear-gradient(135deg,#3f3727,#7c5c12,#d9bf5a);
+      background:linear-gradient(135deg,#5e4511,#b8862b,#d9bf5a);
       box-shadow:0 14px 30px rgba(63,55,39,0.22);
+      border:1px solid rgba(255,255,255,0.12);
     }
 
-    .hero-btn-main:hover{
+    .hero-btn:hover{
       color:#fff;
       transform:translateY(-3px);
-    }
-
-    .hero-btn-soft{
-      color:#fff;
-      background:rgba(255,255,255,0.12);
-      border:1px solid rgba(255,255,255,0.22);
-    }
-
-    .hero-btn-soft:hover{
-      color:#fff;
-      transform:translateY(-3px);
-      background:rgba(255,255,255,0.18);
+      box-shadow:0 18px 36px rgba(63,55,39,0.28);
     }
 
     @keyframes heroFloat{
@@ -969,6 +941,25 @@
       color:#6b7280;
     }
 
+    .checkout-help-box{
+      padding:16px;
+      border-radius:16px;
+      background:#fff8e8;
+      border:1px solid rgba(184,134,43,0.18);
+      margin-top:18px;
+    }
+
+    .minimum-order-note{
+      margin-top:12px;
+      padding:10px 14px;
+      border-radius:12px;
+      background:#fff8e8;
+      color:#8a6b16;
+      font-size:.92rem;
+      font-weight:600;
+      border:1px solid rgba(184,134,43,0.14);
+    }
+
     @media print{
       body *{visibility:hidden !important}
 
@@ -1000,7 +991,7 @@
     }
 
     @media (max-width:991px){
-      .hero-section{padding:105px 0 70px}
+      .hero-section{padding:105px 0 60px}
       .summary-card{position:static}
       .site-watermark img{width:180px}
       .download-brand-wrap{justify-content:center;text-align:center}
@@ -1011,12 +1002,11 @@
 
     @media (max-width:576px){
       .hero-glass-card{
-        padding:34px 18px;
+        padding:30px 18px;
         border-radius:22px;
       }
 
       .hero-title-animated{font-size:2.3rem}
-      .hero-premium-subtext{font-size:.95rem}
     }
   </style>
 </head>
@@ -1054,25 +1044,13 @@
         <div class="col-lg-9">
           <div class="hero-premium-wrap">
             <div class="hero-glass-card sparkle-target">
+              <span class="hero-top-tag">Premium Kitchen • Elegant Service</span>
+              <h1 class="hero-title-animated">Roots <span>&amp;</span> Recipes</h1>
               <span class="hero-mini-badge">Fresh • Fast • Premium</span>
 
-              <h1 class="hero-title-animated">Roots <span>&amp;</span> Recipes</h1>
-
-              <p class="hero-premium-subtext">
-                Fresh homely meals with quick delivery, cozy dine-in, and easy ordering.
-              </p>
-
-              <div class="hero-pill-wrap-premium">
-                <span class="premium-pill">🍽 Daily Fresh Meals</span>
-                <span class="premium-pill">🚪 Fast Delivery</span>
-                <span class="premium-pill">🏠 Cozy Dine-In</span>
-                <span class="premium-pill">💵 Cash &amp; UPI</span>
-              </div>
-
               <div class="hero-cta-wrap">
-                <a href="#menu" class="hero-btn hero-btn-soft">Explore Menu</a>
-                <a href="#checkout" class="hero-btn hero-btn-main">Place Order</a>
-                <a href="#enquiry" class="hero-btn hero-btn-soft">Room Enquiry</a>
+                <a href="#menu" class="hero-btn">Explore Menu</a>
+                <a href="#checkout" class="hero-btn">Place Order</a>
               </div>
             </div>
           </div>
@@ -1124,7 +1102,7 @@
               <span class="info-pill">Rice</span>
               <span class="info-pill">Salad</span>
             </div>
-            <div class="price-tag">₹100 / plate</div>
+            <div class="price-tag">₹90 + ₹10 Packing</div>
           </div>
           <div class="col-lg-4 text-lg-end">
             <button class="btn btn-main" onclick="quickAddThali()">Add Thali</button>
@@ -1140,8 +1118,8 @@
         <h3>Download Full Menu</h3>
         <p class="text-muted">View or download the menu as PDF.</p>
         <div class="d-flex flex-wrap justify-content-center gap-3">
-          <button class="btn btn-main" onclick="openMenuDownloadSheet()">View Downloadable Menu</button>
-          <button class="btn btn-soft" onclick="downloadMenuPDF()">Download Menu PDF</button>
+          <button class="btn btn-main" onclick="handleViewMenu()">View Downloadable Menu</button>
+          <button class="btn btn-soft" onclick="handleDownloadMenu()">Download Menu PDF</button>
         </div>
       </div>
     </div>
@@ -1174,21 +1152,27 @@
 
         <div class="col-lg-5 order-1 order-lg-1">
           <div class="summary-card sparkle-target">
-            <h4>Order Summary</h4>
-            <div id="cartItems" class="mb-3">
+            <h4>Checkout Page</h4>
+
+            <div class="checkout-help-box">
+              <strong>Need help after ordering?</strong><br>
+              <span class="small text-muted">For any query regarding your order, you can call the cook directly.</span>
+              <div class="mt-2">
+                <a href="tel:+919310805191" class="btn btn-main btn-sm">📞 Call Cook: 919310805191</a>
+              </div>
+            </div>
+
+            <div id="cartItems" class="mb-3 mt-3">
               <p class="text-muted mb-0">No items selected yet.</p>
             </div>
             <hr>
             <div class="summary-row"><span>Subtotal</span><strong id="subtotalAmount">₹0</strong></div>
+            <div class="summary-row"><span>Packing</span><strong id="packingAmount">₹0</strong></div>
             <div class="summary-row"><span>Convenience</span><strong id="feeAmount">₹0</strong></div>
             <div class="summary-row total-row"><span>Total</span><strong id="totalAmount">₹0</strong></div>
-
-            <hr>
-            <h5 class="mb-3">Order Status</h5>
-            <span class="status-pill pending" id="userStatusBadge">Pending</span>
-            <p class="small text-muted mt-2" id="userStatusMessage">
-              Your order status will be shown here after placing the order.
-            </p>
+            <div class="minimum-order-note">
+              Minimum order amount for food delivery: ₹50
+            </div>
           </div>
         </div>
 
@@ -1196,34 +1180,6 @@
           <div class="form-card sparkle-target">
             <h2>Checkout Details</h2>
             <p class="text-muted">Fill your information and send the order to WhatsApp.</p>
-
-            <div class="payment-box mb-4">
-              <div class="row g-3 align-items-center">
-                <div class="col-md-8">
-                  <h5 class="fw-bold mb-2">Payment Section</h5>
-                  <p class="text-muted mb-2">
-                    Pay using <strong>UPI / Online</strong> or choose <strong>Cash</strong> at the time of delivery or dine-in.
-                  </p>
-                  <div class="upi-pill">UPI ID: 9870281515@okbizaxis</div>
-                  <p class="small text-muted mt-2 mb-1">Payment Number: <strong>+91 9870281515</strong></p>
-                  <p class="small text-success fw-semibold mb-0">Cash payment is also available.</p>
-                </div>
-                <div class="col-md-4 text-center">
-                  <div class="payment-qr-box">
-                    <img src="pay.jpeg" alt="UPI QR Code" class="payment-qr-img">
-                    <p class="qr-text">Scan &amp; Pay</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="alert alert-warning mt-3 rounded-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
-              <div>
-                <strong>Need help after ordering?</strong><br>
-                <span class="small">For any query regarding your order, you can call the cook directly.</span>
-              </div>
-              <a href="tel:+919310805191" class="btn btn-main">📞 Call Cook</a>
-            </div>
 
             <form id="checkoutForm" class="row g-3 mt-1">
               <div class="col-md-6">
@@ -1241,6 +1197,7 @@
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Order Type</label>
                 <select class="form-select" id="orderType" required>
+                  <option value="" selected disabled>Select Order Type</option>
                   <option value="Delivery">Food Delivery</option>
                   <option value="Dine-In">Dine-In</option>
                 </select>
@@ -1257,15 +1214,38 @@
                 <input type="text" class="form-control" id="etaInput" value="30 mins" readonly>
               </div>
 
+              <div class="col-12">
+                <label class="form-label fw-semibold">Special Instructions</label>
+                <textarea class="form-control" id="specialNote" rows="4" placeholder="Less spicy / no onion / extra roti etc."></textarea>
+              </div>
+
+              <div class="col-12 mt-3">
+                <div class="payment-box">
+                  <div class="row g-3 align-items-center">
+                    <div class="col-md-8">
+                      <h5 class="fw-bold mb-2">Payment Section</h5>
+                      <p class="text-muted mb-2">
+                        Pay using <strong>UPI / Online</strong> or choose <strong>Cash</strong> at the time of delivery or dine-in.
+                      </p>
+                      <div class="upi-pill">UPI ID: 9870281515@okbizaxis</div>
+                      <p class="small text-muted mt-2 mb-1">Payment Number: <strong>+91 9870281515</strong></p>
+                      <p class="small text-success fw-semibold mb-0">Cash payment is also available.</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                      <div class="payment-qr-box">
+                        <img src="pay.jpeg" alt="UPI QR Code" class="payment-qr-img">
+                        <p class="qr-text">Scan &amp; Pay</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="col-12" id="paymentRefWrap">
                 <label class="form-label fw-semibold">Payment Ref / UTR</label>
                 <input type="text" class="form-control" id="paymentRef" placeholder="Enter transaction ID">
               </div>
 
-              <div class="col-12">
-                <label class="form-label fw-semibold">Special Instructions</label>
-                <textarea class="form-control" id="specialNote" rows="4" placeholder="Less spicy / no onion / extra roti etc."></textarea>
-              </div>
               <div class="col-12 d-flex flex-wrap gap-3 mt-2">
                 <button type="submit" class="btn btn-main">Send Order to WhatsApp</button>
                 <button type="button" class="btn btn-soft" onclick="clearCart()">Clear Order</button>
@@ -1281,9 +1261,9 @@
   <section class="checkout-section" id="enquiry">
     <div class="container">
       <div class="summary-card sparkle-target p-4 mb-4 text-center">
-        <h3 class="fw-bold mb-2">69 STAR GALAXY PG</h3>
+        <h3 class="fw-bold mb-2">69 STAR GALAXY APPARTMENTS </h3>
         <p class="mb-0 text-muted">
-          Address: C-56, Sector 69, Near Genpact, 122101
+          Address: C-56, Sector 69, khushal Chowk, 122101
         </p>
       </div>
 
@@ -1442,562 +1422,626 @@
     </div>
   </div>
 
-  <script>
-    const orderWhatsappNumbers = ['919310805191'];
-    const enquiryWhatsappNumbers = ['919650009462', '919540757074'];
-    const cookNumber = '919870281515';
-    const sheetWebAppUrl = 'https://script.google.com/macros/s/AKfycbxS6x-UWoFOrGDD4X4ZGx56ntT52OpjSp9mXs0OLMw7jWrKNHR5kjLjmqxwyMBHoKmNyA/exec';
+  <<script>
+  const orderWhatsappNumbers = ['919310805191'];
+  const enquiryWhatsappNumbers = ['919650009462', '919540757074'];
+  const cookNumber = '919310805191';
+  const sheetWebAppUrl = 'https://script.google.com/macros/s/AKfycbxS6x-UWoFOrGDD4X4ZGx56ntT52OpjSp9mXs0OLMw7jWrKNHR5kjLjmqxwyMBHoKmNyA/exec';
+  const MIN_DELIVERY_ORDER = 50;
+  const THALI_PACKING_CHARGE = 10;
 
-    const menuItems = [
-      {id:'thali',name:'Daily Thali',price:100,category:'thali',type:'veg',image:'https://wallpaperaccess.com/full/11262727.jpg',description:'4 Rotis, sabzi, dal, rice and salad.'},
+  const menuItems = [
+    {id:'thali',name:'Daily Thali',price:90,category:'thali',type:'veg',image:'https://wallpaperaccess.com/full/11262727.jpg',description:'4 Rotis, sabzi, dal, rice and salad. ₹10 packing mandatory.'},
 
-      {id:'fried-rice',name:'Fried Rice',price:100,category:'snacks',type:'veg',image:'https://wallpaperbat.com/img/12458126-mixed-fried-rice-recipe-how-to-make-a.jpg',description:'Veg fried rice.'},
-      {id:'paneer-fried-rice',name:'Paneer Fried Rice',price:120,category:'snacks',type:'veg',image:'https://www.flavouroffood.com/wp-content/uploads/2021/02/Paneer-Fried-Rice-4.jpg',description:'Paneer fried rice.'},
-      {id:'veg-chowmein',name:'Veg Chowmein',price:100,category:'snacks',type:'veg',image:'https://wallpaperaccess.com/full/8325607.jpg',description:'Veg noodles.'},
-      {id:'paneer-chowmein',name:'Paneer Chowmein',price:150,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/qhvlkSbh4II/maxresdefault.jpg',description:'Paneer noodles.'},
-      {id:'veg-manchurian',name:'Veg Manchurian',price:150,category:'snacks',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.sPA0_0sQ4m_MLWVxzQ1rPgHaE7?w=800&h=533&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Fried veg balls in sauce.'},
-      {id:'chilli-paneer',name:'Chilli Paneer (Dry)',price:160,category:'snacks',type:'veg',image:'https://wallpapercave.com/wp/wp11413533.jpg',description:'Spicy paneer starter.'},
-      {id:'spring-roll',name:'Spring Roll (6 pcs)',price:120,category:'snacks',type:'veg',image:'https://images.indianexpress.com/2016/06/recipies_480_thinkstock.jpg',description:'Crispy spring rolls.'},
-      {id:'veg-momos',name:'Veg Momos (8 pcs)',price:120,category:'snacks',type:'veg',image:'https://wallpapercave.com/wp/wp10053469.jpg',description:'Steamed veg momos.'},
-      {id:'paneer-momos',name:'Paneer Momos (8 pcs)',price:120,category:'snacks',type:'veg',image:'https://i0.wp.com/passion2cook.com/wp-content/uploads/2023/03/paneer-momos-2.jpg?w=1920&ssl=1',description:'Paneer momos.'},
-      {id:'chilli-potato',name:'Chilli Potato',price:120,category:'snacks',type:'veg',image:'https://wallpaperaccess.com/full/13502513.jpg',description:'Spicy crispy potato.'},
-      {id:'honey-chilli-potato',name:'Honey Chilli Potato',price:150,category:'snacks',type:'veg',image:'https://recipes.timesofindia.com/photo/52532656.cms',description:'Sweet spicy potato.'},
-      {id:'plain-maggi',name:'Plain Maggi',price:40,category:'snacks',type:'veg',image:'https://theovenchef.com/wp-content/uploads/2023/12/plain-maggie-1.png',description:'Simple maggi.'},
-      {id:'veg-maggi',name:'Veg Maggi',price:50,category:'snacks',type:'veg',image:'https://i.pinimg.com/originals/00/e6/d0/00e6d0678a79442071445a3c0c50d5ac.jpg',description:'Veg maggi noodles.'},
-      {id:'veg-sandwich',name:'Veg Grilled Sandwich',price:50,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/veg-grilled-sandwich-served-with-ketchup-isolated-rustic-wooden-background-selective-focus_726363-1356.jpg',description:'Fresh veg sandwich.'},
-      {id:'paneer-sandwich',name:'Grilled Paneer Sandwich',price:80,category:'snacks',type:'veg',image:'https://www.indianhealthyrecipes.com/wp-content/uploads/2022/03/veg-grilled-sandwich-recipe-500x500.jpg',description:'Paneer grilled sandwich.'},
-      {id:'french-fries',name:'French Fries',price:80,category:'snacks',type:'veg',image:'https://images6.alphacoders.com/108/thumb-1920-1080178.jpg',description:'Crispy fries.'},
-      {id:'peri-fries',name:'Peri Peri Fries',price:100,category:'snacks',type:'veg',image:'https://static.vecteezy.com/system/resources/previews/024/748/761/non_2x/grilled-meat-and-french-fries-a-classic-american-lunch-bar-generated-by-ai-free-photo.jpg',description:'Peri peri fries.'},
-      {id:'chilli-gobhi',name:'Chilli Gobhi',price:50,category:'snacks',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.NStB_USdcZpBzL2jgVLsKwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Spicy crispy chilli gobhi.'},
-      {id:'veg-burger',name:'Veg Burger',price:50,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop',description:'Loaded veg burger.'},
-      {id:'red-sauce-pasta',name:'Red Sauce Pasta',price:100,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=1200&auto=format&fit=crop',description:'Classic red sauce pasta.'},
-      {id:'white-sauce-pasta',name:'White Sauce Pasta',price:150,category:'snacks',type:'veg',image:'https://cookingwithcasey.com/assets/images/1742358496409-ajvfa0wd.webp',description:'Creamy white sauce pasta.'},
-      {id:'veg-macaroni',name:'Veg Macaroni',price:100,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/VNs_AXNG1ik/maxresdefault.jpg',description:'Veg macaroni.'},
-      {id:'poha',name:'Poha',price:70,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/4k-high-resolution-image-poha-black-bowl-realistic-stock-photo-image_555090-49284.jpg',description:'Light and tasty poha.'},
-      {id:'veg-roll',name:'Veg Roll',price:100,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/indian-veg-spring-roll-wrap-also-known-as-franky-chapati-roll_466689-96649.jpg?w=900',description:'Stuffed veg roll.'},
-      {id:'paneer-cheese-roll',name:'Paneer Cheese Roll',price:150,category:'snacks',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.KqFGtKghMIJD7V3BiNnl7gHaDt?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Paneer and cheese loaded roll.'},
-      {id:'paneer-kathi-roll',name:'Paneer Kathi Roll',price:120,category:'snacks',type:'veg',image:'https://thumbs.dreamstime.com/z/selective-focus-indian-food-paneer-roll-kathi-ai-generative-design-background-instagram-facebook-wall-painting-wallpaper-323520749.jpg?w=992',description:'Paneer kathi roll.'},
-      {id:'corn-cheese',name:'Corn & Cheese',price:120,category:'snacks',type:'veg',image:'https://theblondcook.com/wp-content/uploads/2018/10/easy-creamed-corn-4-500x500.jpg',description:'Creamy corn and cheese snack.'},
+    {id:'fried-rice',name:'Fried Rice',price:100,category:'snacks',type:'veg',image:'https://wallpaperbat.com/img/12458126-mixed-fried-rice-recipe-how-to-make-a.jpg',description:'Veg fried rice.'},
+    {id:'paneer-fried-rice',name:'Paneer Fried Rice',price:120,category:'snacks',type:'veg',image:'https://www.flavouroffood.com/wp-content/uploads/2021/02/Paneer-Fried-Rice-4.jpg',description:'Paneer fried rice.'},
+    {id:'veg-chowmein',name:'Veg Chowmein',price:100,category:'snacks',type:'veg',image:'https://wallpaperaccess.com/full/8325607.jpg',description:'Veg noodles.'},
+    {id:'paneer-chowmein',name:'Paneer Chowmein',price:150,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/qhvlkSbh4II/maxresdefault.jpg',description:'Paneer noodles.'},
+    {id:'veg-manchurian',name:'Veg Manchurian',price:150,category:'snacks',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.sPA0_0sQ4m_MLWVxzQ1rPgHaE7?w=800&h=533&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Fried veg balls in sauce.'},
+    {id:'chilli-paneer',name:'Chilli Paneer (Dry)',price:160,category:'snacks',type:'veg',image:'https://wallpapercave.com/wp/wp11413533.jpg',description:'Spicy paneer starter.'},
+    {id:'chilli-paneer-gravy',name:'Chilli Paneer Gravy',price:180,category:'snacks',type:'veg',image:'https://www.shutterstock.com/image-photo/chilli-paneer-dry-made-using-600nw-2093440627.jpg',description:'Paneer tossed in spicy gravy.'},
+    {id:'spring-roll',name:'Spring Roll (6 pcs)',price:120,category:'snacks',type:'veg',image:'https://images.indianexpress.com/2016/06/recipies_480_thinkstock.jpg',description:'Crispy spring rolls.'},
+    {id:'veg-momos',name:'Veg Momos (8 pcs)',price:120,category:'snacks',type:'veg',image:'https://wallpapercave.com/wp/wp10053469.jpg',description:'Steamed veg momos.'},
+    {id:'paneer-momos',name:'Paneer Momos (8 pcs)',price:120,category:'snacks',type:'veg',image:'https://i0.wp.com/passion2cook.com/wp-content/uploads/2023/03/paneer-momos-2.jpg?w=1920&ssl=1',description:'Paneer momos.'},
+    {id:'chilli-potato',name:'Chilli Potato',price:120,category:'snacks',type:'veg',image:'https://wallpaperaccess.com/full/13502513.jpg',description:'Spicy crispy potato.'},
+    {id:'honey-chilli-potato',name:'Honey Chilli Potato',price:150,category:'snacks',type:'veg',image:'https://recipes.timesofindia.com/photo/52532656.cms',description:'Sweet spicy potato.'},
+    {id:'plain-maggi',name:'Plain Maggi',price:40,category:'snacks',type:'veg',image:'https://theovenchef.com/wp-content/uploads/2023/12/plain-maggie-1.png',description:'Simple maggi.'},
+    {id:'veg-maggi',name:'Veg Maggi',price:50,category:'snacks',type:'veg',image:'https://i.pinimg.com/originals/00/e6/d0/00e6d0678a79442071445a3c0c50d5ac.jpg',description:'Veg maggi noodles.'},
+    {id:'veg-sandwich',name:'Veg Grilled Sandwich',price:50,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/veg-grilled-sandwich-served-with-ketchup-isolated-rustic-wooden-background-selective-focus_726363-1356.jpg',description:'Fresh veg sandwich.'},
+    {id:'paneer-sandwich',name:'Grilled Paneer Sandwich',price:80,category:'snacks',type:'veg',image:'https://www.indianhealthyrecipes.com/wp-content/uploads/2022/03/veg-grilled-sandwich-recipe-500x500.jpg',description:'Paneer grilled sandwich.'},
+    {id:'french-fries',name:'French Fries',price:80,category:'snacks',type:'veg',image:'https://images6.alphacoders.com/108/thumb-1920-1080178.jpg',description:'Crispy fries.'},
+    {id:'peri-fries',name:'Peri Peri Fries',price:100,category:'snacks',type:'veg',image:'https://static.vecteezy.com/system/resources/previews/024/748/761/non_2x/grilled-meat-and-french-fries-a-classic-american-lunch-bar-generated-by-ai-free-photo.jpg',description:'Peri peri fries.'},
+    {id:'chilli-gobhi',name:'Chilli Gobhi',price:50,category:'snacks',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.NStB_USdcZpBzL2jgVLsKwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Spicy crispy chilli gobhi.'},
+    {id:'veg-burger',name:'Veg Burger',price:50,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop',description:'Loaded veg burger.'},
+    {id:'red-sauce-pasta',name:'Red Sauce Pasta',price:100,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=1200&auto=format&fit=crop',description:'Classic red sauce pasta.'},
+    {id:'white-sauce-pasta',name:'White Sauce Pasta',price:150,category:'snacks',type:'veg',image:'https://cookingwithcasey.com/assets/images/1742358496409-ajvfa0wd.webp',description:'Creamy white sauce pasta.'},
+    {id:'veg-macaroni',name:'Veg Macaroni',price:100,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/VNs_AXNG1ik/maxresdefault.jpg',description:'Veg macaroni.'},
+    {id:'poha',name:'Poha',price:70,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/4k-high-resolution-image-poha-black-bowl-realistic-stock-photo-image_555090-49284.jpg',description:'Light and tasty poha.'},
+    {id:'veg-roll',name:'Veg Roll',price:100,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/indian-veg-spring-roll-wrap-also-known-as-franky-chapati-roll_466689-96649.jpg?w=900',description:'Stuffed veg roll.'},
+    {id:'paneer-cheese-roll',name:'Paneer Cheese Roll',price:150,category:'snacks',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.KqFGtKghMIJD7V3BiNnl7gHaDt?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Paneer and cheese loaded roll.'},
+    {id:'paneer-kathi-roll',name:'Paneer Kathi Roll',price:120,category:'snacks',type:'veg',image:'https://thumbs.dreamstime.com/z/selective-focus-indian-food-paneer-roll-kathi-ai-generative-design-background-instagram-facebook-wall-painting-wallpaper-323520749.jpg?w=992',description:'Paneer kathi roll.'},
+    {id:'corn-cheese',name:'Corn & Cheese',price:120,category:'snacks',type:'veg',image:'https://theblondcook.com/wp-content/uploads/2018/10/easy-creamed-corn-4-500x500.jpg',description:'Creamy corn and cheese snack.'},
 
-      {id:'chana-masala',name:'Chana Masala',price:100,category:'main-course',type:'veg',image:'https://img.freepik.com/premium-photo/chana-masala-photo-with-touch-spice_1036998-305050.jpg',description:'Classic chana curry.'},
-      {id:'dal-tadka',name:'Dal Tadka',price:100,category:'main-course',type:'veg',image:'https://static.vecteezy.com/system/resources/previews/038/947/178/non_2x/ai-generated-dal-tadka-is-a-popular-indian-dish-where-cooked-spiced-lentils-are-finished-with-a-tempering-made-of-ghee-or-oil-and-spices-photo.jpg',description:'Tadka dal.'},
-      {id:'aloo-jeera',name:'Aloo Jeera',price:100,category:'main-course',type:'veg',image:'https://2.bp.blogspot.com/-wonKVzMF8lM/VtYdt7V12sI/AAAAAAAAUuo/li4gWvl4zBM/s1600/Aloo-Jeera_finalforweb1.jpg',description:'Jeera potatoes.'},
-      {id:'mix-veg',name:'Mix Veg',price:150,category:'main-course',type:'veg',image:'https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/Mixed-Veg-Curry1.jpg',description:'Mixed vegetables.'},
-      {id:'paneer-bhurji',name:'Paneer Bhurji',price:180,category:'main-course',type:'veg',image:'https://media.istockphoto.com/id/1820486089/photo/paneer-bhurji.jpg?s=612x612&w=0&k=20&c=8rcJeVTEJBw_gU6UN60qaDhknd4Z9jGw-x32cwk1vr8=',description:'Paneer bhurji masala.'},
-      {id:'kadhai-paneer',name:'Kadhai Paneer',price:190,category:'main-course',type:'veg',image:'https://1.bp.blogspot.com/_GlkYxavu-Ts/StVnaw3GCJI/AAAAAAAAARM/2b3PenJbX7g/s400/kadhai-paneer1.JPG',description:'Kadhai paneer gravy.'},
-      {id:'shahi-paneer',name:'Shahi Paneer',price:190,category:'main-course',type:'veg',image:'https://images.pexels.com/photos/10905933/pexels-photo-10905933.jpeg?cs=srgb&dl=pexels-anilsharma65-10905933.jpg&fm=jpg',description:'Rich paneer curry.'},
-      {id:'paneer-butter-masala',name:'Paneer Butter Masala',price:190,category:'main-course',type:'veg',image:'https://img.freepik.com/premium-photo/delicious-paneer-butter-masala-photography_928503-848.jpg',description:'Butter paneer curry.'},
-      {id:'aloo-gobhi',name:'Aloo Gobhi',price:100,category:'main-course',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.zoeJP2Q4Mp3y66jpOWWdEgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic aloo gobhi curry.'},
-      {id:'matar-paneer',name:'Matar Paneer',price:180,category:'main-course',type:'veg',image:'https://thumbs.dreamstime.com/b/savoring-delicious-matar-paneer-fresh-peas-cubes-rich-gravy-delight-plate-featuring-soft-vibrant-green-immersed-370203039.jpg?w=992',description:'Paneer and matar curry.'},
-      {id:'paneer-lababdar',name:'Paneer Lababdar',price:190,category:'main-course',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.gewHMZbjoOCtJwpIlihimwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Rich paneer lababdar gravy.'},
+    {id:'chana-masala',name:'Chana Masala',price:100,category:'main-course',type:'veg',image:'https://img.freepik.com/premium-photo/chana-masala-photo-with-touch-spice_1036998-305050.jpg',description:'Classic chana curry.'},
+    {id:'dal-tadka',name:'Dal Tadka',price:100,category:'main-course',type:'veg',image:'https://static.vecteezy.com/system/resources/previews/038/947/178/non_2x/ai-generated-dal-tadka-is-a-popular-indian-dish-where-cooked-spiced-lentils-are-finished-with-a-tempering-made-of-ghee-or-oil-and-spices-photo.jpg',description:'Tadka dal.'},
+    {id:'aloo-jeera',name:'Aloo Jeera',price:100,category:'main-course',type:'veg',image:'https://2.bp.blogspot.com/-wonKVzMF8lM/VtYdt7V12sI/AAAAAAAAUuo/li4gWvl4zBM/s1600/Aloo-Jeera_finalforweb1.jpg',description:'Jeera potatoes.'},
+    {id:'mix-veg',name:'Mix Veg',price:150,category:'main-course',type:'veg',image:'https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/Mixed-Veg-Curry1.jpg',description:'Mixed vegetables.'},
+    {id:'paneer-bhurji',name:'Paneer Bhurji',price:180,category:'main-course',type:'veg',image:'https://media.istockphoto.com/id/1820486089/photo/paneer-bhurji.jpg?s=612x612&w=0&k=20&c=8rcJeVTEJBw_gU6UN60qaDhknd4Z9jGw-x32cwk1vr8=',description:'Paneer bhurji masala.'},
+    {id:'kadhai-paneer',name:'Kadhai Paneer',price:190,category:'main-course',type:'veg',image:'https://1.bp.blogspot.com/_GlkYxavu-Ts/StVnaw3GCJI/AAAAAAAAARM/2b3PenJbX7g/s400/kadhai-paneer1.JPG',description:'Kadhai paneer gravy.'},
+    {id:'shahi-paneer',name:'Shahi Paneer',price:190,category:'main-course',type:'veg',image:'https://images.pexels.com/photos/10905933/pexels-photo-10905933.jpeg?cs=srgb&dl=pexels-anilsharma65-10905933.jpg&fm=jpg',description:'Rich paneer curry.'},
+    {id:'paneer-butter-masala',name:'Paneer Butter Masala',price:190,category:'main-course',type:'veg',image:'https://img.freepik.com/premium-photo/delicious-paneer-butter-masala-photography_928503-848.jpg',description:'Butter paneer curry.'},
+    {id:'aloo-gobhi',name:'Aloo Gobhi',price:100,category:'main-course',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.zoeJP2Q4Mp3y66jpOWWdEgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic aloo gobhi curry.'},
+    {id:'aloo-crispy',name:'Aloo Crispy',price:90,category:'main-course',type:'veg',image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3USDT6St9x7BFu5xBg5yBj1SwMtUhyvC7Kw&s',description:'Classic aloo crispy.'},
+    {id:'matar-paneer',name:'Matar Paneer',price:180,category:'main-course',type:'veg',image:'https://thumbs.dreamstime.com/b/savoring-delicious-matar-paneer-fresh-peas-cubes-rich-gravy-delight-plate-featuring-soft-vibrant-green-immersed-370203039.jpg?w=992',description:'Paneer and matar curry.'},
+    {id:'paneer-lababdar',name:'Paneer Lababdar',price:190,category:'main-course',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.gewHMZbjoOCtJwpIlihimwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Rich paneer lababdar gravy.'},
 
-      {id:'plain-paratha',name:'Plain Paratha',price:40,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/triangle-shape-plain-paratha-parantha-is-yummy-indian-flat-bread-made-whole-wheat-flour-served-plate-selective-focus_466689-2962.jpg',description:'Plain paratha.'},
-      {id:'lachha-paratha',name:'Lachha Paratha',price:50,category:'bread-rice',type:'veg',image:'https://i.ytimg.com/vi/pmA2-YtUMz4/maxresdefault.jpg',description:'Layered paratha.'},
-      {id:'aloo-paratha',name:'Aloo Paratha',price:60,category:'bread-rice',type:'veg',image:'https://wallpaperaccess.com/full/9466589.jpg',description:'Stuffed aloo paratha.'},
-      {id:'paneer-paratha',name:'Paneer Paratha',price:90,category:'bread-rice',type:'veg',image:'https://tse1.mm.bing.net/th/id/OIP.hIrsd6QLnB4qArX1Kg-o5gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed paneer paratha.'},
-      {id:'gobhi-paratha',name:'Gobhi Paratha',price:70,category:'bread-rice',type:'veg',image:'https://tse2.mm.bing.net/th/id/OIP.b5cvsZ7U6LpcIIr2RKzqmAHaE9?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed gobhi paratha.'},
-      {id:'plain-roti',name:'Plain Roti',price:10,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Fresh roti.'},
-      {id:'butter-roti',name:'Butter Roti',price:12,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Butter roti.'},
-      {id:'plain-rice',name:'Plain Rice',price:70,category:'bread-rice',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.oR_ER5FVgt6Ie1fjHPs8hQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Steamed rice.'},
-      {id:'jeera-rice',name:'Jeera Rice',price:80,category:'bread-rice',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.oR_ER5FVgt6Ie1fjHPs8hQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Cumin rice.'},
-      {id:'veg-biryani',name:'Veg Biryani',price:150,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/view-tasty-yummy-delicious-indian-biryani-4k-hd-photo_1193781-10185.jpg?w=2000',description:'Veg biryani.'},
+    {id:'plain-paratha',name:'Plain Paratha',price:40,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/triangle-shape-plain-paratha-parantha-is-yummy-indian-flat-bread-made-whole-wheat-flour-served-plate-selective-focus_466689-2962.jpg',description:'Plain paratha.'},
+    {id:'lachha-paratha',name:'Lachha Paratha',price:50,category:'bread-rice',type:'veg',image:'https://i.ytimg.com/vi/pmA2-YtUMz4/maxresdefault.jpg',description:'Layered paratha.'},
+    {id:'aloo-paratha',name:'Aloo Paratha',price:60,category:'bread-rice',type:'veg',image:'https://wallpaperaccess.com/full/9466589.jpg',description:'Stuffed aloo paratha.'},
+    {id:'paneer-paratha',name:'Paneer Paratha',price:90,category:'bread-rice',type:'veg',image:'https://tse1.mm.bing.net/th/id/OIP.hIrsd6QLnB4qArX1Kg-o5gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed paneer paratha.'},
+    {id:'gobhi-paratha',name:'Gobhi Paratha',price:70,category:'bread-rice',type:'veg',image:'https://tse2.mm.bing.net/th/id/OIP.b5cvsZ7U6LpcIIr2RKzqmAHaE9?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed gobhi paratha.'},
+    {id:'plain-roti',name:'Plain Roti',price:10,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Fresh roti.'},
+    {id:'butter-roti',name:'Butter Roti',price:12,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Butter roti.'},
+    {id:'plain-rice',name:'Plain Rice',price:70,category:'bread-rice',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.oR_ER5FVgt6Ie1fjHPs8hQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Steamed rice.'},
+    {id:'jeera-rice',name:'Jeera Rice',price:80,category:'bread-rice',type:'veg',image:'https://c8.alamy.com/comp/2H5RFYE/vegetarian-indian-jeera-rice-with-cumin-and-other-spices-close-up-in-the-bowl-on-the-table-horizontal-2H5RFYE.jpg',description:'Cumin rice.'},
+    {id:'veg-biryani',name:'Veg Biryani',price:150,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/view-tasty-yummy-delicious-indian-biryani-4k-hd-photo_1193781-10185.jpg?w=2000',description:'Veg biryani.'},
 
-      {id:'chai',name:'Aadrak Chai',price:20,category:'beverages',type:'veg',image:'https://budleaf.com/wp-content/uploads/2023/08/Adrak-masala-chai-scaled.jpeg',description:'Ginger tea.'},
-      {id:'coffee',name:'Hot Coffee',price:50,category:'beverages',type:'veg',image:'https://th.bing.com/th?q=Coffee%20Cup%20Background%20Wallpaper&pid=ImgDet&w=150&h=150&c=1&p=1&rs=1&t=1&dpr=1.3&mkt=en-in&adlt=demote&o=7&rm=3',description:'Hot coffee.'},
-      {id:'cold-coffee',name:'Classic Cold Coffee',price:70,category:'beverages',type:'veg',image:'https://tse2.mm.bing.net/th/id/OIP.2P4fqrajqy8-4iqhlVbR4AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic cold coffee.'},
-      {id:'banana-shake',name:'Banana Shake',price:80,category:'beverages',type:'veg',image:'https://www.aboutamom.com/wp-content/uploads/2024/08/Banana-Milkshake-A_AAM_Banana_Milkshake_Recipe_Future_2.jpg.jpg',description:'Banana shake.'},
-      {id:'oreo-shake',name:'Oreo Shake',price:90,category:'beverages',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'Oreo shake.'},
-      {id:'hot-milk',name:'Hot Milk',price:40,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=1200&auto=format&fit=crop',description:'Fresh hot milk.'},
-      {id:'black-coffee',name:'Black Coffee',price:30,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop',description:'Strong black coffee.'},
-      {id:'lemonade',name:'Lemonade',price:40,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1200&auto=format&fit=crop',description:'Refreshing lemonade.'},
-      {id:'salted-lassi',name:'Salted Lassi',price:50,category:'beverages',type:'veg',image:'https://wallpaperaccess.com/full/18669887.jpg',description:'Salted lassi.'},
-      {id:'mix-raita',name:'Mix Raita',price:70,category:'beverages',type:'veg',image:'https://wallpapercave.com/wp/wp12264876.jpg',description:'Mixed raita.'},
-      {id:'boondi-raita',name:'Boondi Raita',price:70,category:'beverages',type:'veg',image:'https://www.eatclub.de/wp-content/uploads/2025/11/ec-boondi-raita.jpg',description:'Boondi raita.'},
-      {id:'sweet-lassi',name:'Sweet Lassi',price:50,category:'beverages',type:'veg',image:'https://i.pinimg.com/originals/fa/ee/5b/faee5b82b78a9e3cd65bdff3edc3f95a.jpg',description:'Sweet lassi.'},
+    {id:'chai',name:'Aadrak Chai',price:20,category:'beverages',type:'veg',image:'https://budleaf.com/wp-content/uploads/2023/08/Adrak-masala-chai-scaled.jpeg',description:'Ginger tea.'},
+    {id:'coffee',name:'Hot Coffee',price:50,category:'beverages',type:'veg',image:'https://th.bing.com/th?q=Coffee%20Cup%20Background%20Wallpaper&pid=ImgDet&w=150&h=150&c=1&p=1&rs=1&t=1&dpr=1.3&mkt=en-in&adlt=demote&o=7&rm=3',description:'Hot coffee.'},
+    {id:'cold-coffee',name:'Classic Cold Coffee',price:70,category:'beverages',type:'veg',image:'https://tse2.mm.bing.net/th/id/OIP.2P4fqrajqy8-4iqhlVbR4AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic cold coffee.'},
+    {id:'banana-shake',name:'Banana Shake',price:80,category:'beverages',type:'veg',image:'https://www.aboutamom.com/wp-content/uploads/2024/08/Banana-Milkshake-A_AAM_Banana_Milkshake_Recipe_Future_2.jpg.jpg',description:'Banana shake.'},
+    {id:'oreo-shake',name:'Oreo Shake',price:90,category:'beverages',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'Oreo shake.'},
+    {id:'hot-milk',name:'Hot Milk',price:40,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=1200&auto=format&fit=crop',description:'Fresh hot milk.'},
+    {id:'black-coffee',name:'Black Coffee',price:30,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop',description:'Strong black coffee.'},
+    {id:'lemonade',name:'Lemonade',price:40,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1200&auto=format&fit=crop',description:'Refreshing lemonade.'},
+    {id:'salted-lassi',name:'Salted Lassi',price:50,category:'beverages',type:'veg',image:'https://wallpaperaccess.com/full/18669887.jpg',description:'Salted lassi.'},
+    {id:'mix-raita',name:'Mix Raita',price:70,category:'beverages',type:'veg',image:'https://wallpapercave.com/wp/wp12264876.jpg',description:'Mixed raita.'},
+    {id:'boondi-raita',name:'Boondi Raita',price:70,category:'beverages',type:'veg',image:'https://www.eatclub.de/wp-content/uploads/2025/11/ec-boondi-raita.jpg',description:'Boondi raita.'},
+    {id:'sweet-lassi',name:'Sweet Lassi',price:50,category:'beverages',type:'veg',image:'https://i.pinimg.com/originals/fa/ee/5b/faee5b82b78a9e3cd65bdff3edc3f95a.jpg',description:'Sweet lassi.'},
 
-      {id:'boiled-eggs',name:'Boiled Eggs',price:20,category:'chicken',type:'non-veg',image:'https://media.istockphoto.com/id/956940158/photo/hard-boiled-eggs.jpg?s=612x612&w=0&k=20&c=106pEBT8ddfH3n_xweh8-tsrwSV6gREqn5QUCM_-onE=',description:'Boiled eggs.'},
-      {id:'plain-omelette',name:'Plain Omelette',price:40,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Simple omelette.'},
-      {id:'bread-omelette',name:'Bread Omelette',price:50,category:'chicken',type:'non-veg',image:'https://tse1.mm.bing.net/th/id/OIP.a8x5MgnG3JftCFemeU8OuwHaDG?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Bread omelette.'},
-      {id:'veg-omelette',name:'Veg Omelette',price:50,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Omelette with veggies.'},
-      {id:'half-fry-omelette',name:'Half Fry Omelette',price:40,category:'chicken',type:'non-veg',image:'https://tse2.mm.bing.net/th/id/OIP.Oxk6VgRxxYoPxCt4T413bAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Half fry style egg.'},
-      {id:'butter-chicken-half',name:'Butter Chicken (Half)',price:288,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=1200&auto=format&fit=crop',description:'Butter chicken half.'},
-      {id:'butter-chicken-full',name:'Butter Chicken (Full)',price:408,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=1200&auto=format&fit=crop',description:'Butter chicken full.'},
-      {id:'kadai-chicken-half',name:'Kadai Chicken (Half)',price:299,category:'chicken',type:'non-veg',image:'https://tse3.mm.bing.net/th/id/OIP.5iXfn6XIGmIKSoodDFSNdgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Kadai chicken half.'},
-      {id:'kadai-chicken-full',name:'Kadai Chicken (Full)',price:400,category:'chicken',type:'non-veg',image:'https://tse3.mm.bing.net/th/id/OIP.5iXfn6XIGmIKSoodDFSNdgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Kadai chicken full.'},
-      {id:'chicken-butter-masala-half',name:'Chicken Butter Masala (Half)',price:200,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?q=80&w=1200&auto=format&fit=crop',description:'Chicken butter masala half.'},
-      {id:'chicken-butter-masala-full',name:'Chicken Butter Masala (Full)',price:400,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?q=80&w=1200&auto=format&fit=crop',description:'Chicken butter masala full.'},
-      {id:'tawa-chicken-half',name:'Tawa Chicken (Half)',price:250,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1200&auto=format&fit=crop',description:'Tawa chicken half.'},
-      {id:'tawa-chicken-full',name:'Tawa Chicken (Full)',price:409,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1200&auto=format&fit=crop',description:'Tawa chicken full.'}
-    ];
+    {id:'boiled-eggs',name:'Boiled Eggs',price:20,category:'chicken',type:'non-veg',image:'https://media.istockphoto.com/id/956940158/photo/hard-boiled-eggs.jpg?s=612x612&w=0&k=20&c=106pEBT8ddfH3n_xweh8-tsrwSV6gREqn5QUCM_-onE=',description:'Boiled eggs.'},
+    {id:'plain-omelette',name:'Plain Omelette',price:40,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Simple omelette.'},
+    {id:'bread-omelette',name:'Bread Omelette',price:50,category:'chicken',type:'non-veg',image:'https://tse1.mm.bing.net/th/id/OIP.a8x5MgnG3JftCFemeU8OuwHaDG?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Bread omelette.'},
+    {id:'veg-omelette',name:'Vegetable Omelette',price:50,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Omelette with veggies.'},
+    {id:'half-fry-omelette',name:'Half Fry Omelette',price:40,category:'chicken',type:'non-veg',image:'https://tse2.mm.bing.net/th/id/OIP.Oxk6VgRxxYoPxCt4T413bAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Half fry style egg.'},
+    {id:'chilli-chicken',name:'Chilli Chicken',price:180,category:'chicken',type:'non-veg',image:'https://t3.ftcdn.net/jpg/09/43/87/72/360_F_943877268_Q6tjM8uPJWhOaiWqqd8BZj2GSIdYt785.jpg',description:'Spicy chilli chicken.'},
+    {id:'chicken-momos',name:'Chicken Momos (8 pcs)',price:150,category:'chicken',type:'non-veg',image:'https://t3.ftcdn.net/jpg/06/49/25/26/360_F_649252668_AcwaAGxraSFmNbr5C20hDpTwz1qoi7RF.jpg',description:'Juicy chicken momos.'},
+    {id:'chicken-nuggets',name:'Chicken Nuggets',price:140,category:'chicken',type:'non-veg',image:'https://t4.ftcdn.net/jpg/01/58/36/13/360_F_158361356_PsgqLvsirkpM5n9hqCn48rexuB2UWsul.jpg',description:'Crispy chicken nuggets.'},
+    {id:'chicken-soup',name:'Chicken Soup',price:120,category:'chicken',type:'non-veg',image:'https://images.pexels.com/photos/10338449/pexels-photo-10338449.jpeg?cs=srgb&dl=pexels-istvanpszabo-10338449.jpg&fm=jpg',description:'Hot and comforting chicken soup.'},
+    {id:'butter-chicken-half',name:'Butter Chicken (Half)',price:288,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=1200&auto=format&fit=crop',description:'Butter chicken half.'},
+    {id:'butter-chicken-full',name:'Butter Chicken (Full)',price:408,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=1200&auto=format&fit=crop',description:'Butter chicken full.'},
+    {id:'kadai-chicken-half',name:'Kadai Chicken (Half)',price:299,category:'chicken',type:'non-veg',image:'https://tse3.mm.bing.net/th/id/OIP.5iXfn6XIGmIKSoodDFSNdgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Kadai chicken half.'},
+    {id:'kadai-chicken-full',name:'Kadai Chicken (Full)',price:400,category:'chicken',type:'non-veg',image:'https://tse3.mm.bing.net/th/id/OIP.5iXfn6XIGmIKSoodDFSNdgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Kadai chicken full.'},
+    {id:'chicken-butter-masala-half',name:'Chicken Butter Masala (Half)',price:200,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?q=80&w=1200&auto=format&fit=crop',description:'Chicken butter masala half.'},
+    {id:'chicken-butter-masala-full',name:'Chicken Butter Masala (Full)',price:400,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?q=80&w=1200&auto=format&fit=crop',description:'Chicken butter masala full.'},
+    {id:'tawa-chicken-half',name:'Tawa Chicken (Half)',price:250,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1200&auto=format&fit=crop',description:'Tawa chicken half.'},
+    {id:'tawa-chicken-full',name:'Tawa Chicken (Full)',price:409,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1200&auto=format&fit=crop',description:'Tawa chicken full.'}
+  ];
 
-    const cart = {};
-    let currentFilter = 'all';
-    let whatsappChoiceModal = null;
+  const cart = {};
+  let currentFilter = 'all';
+  let whatsappChoiceModal = null;
 
-    function formatCurrency(value){
-      return `₹${value}`;
-    }
+  function formatCurrency(value){
+    return `₹${value}`;
+  }
 
-    function formatIndianDate(dateObj){
-      return dateObj.toLocaleDateString('en-IN', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-      });
-    }
+  function formatIndianDate(dateObj){
+    return dateObj.toLocaleDateString('en-IN', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+  }
 
-    function formatIndianTime(dateObj){
-      return dateObj.toLocaleTimeString('en-IN', {
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true
-      });
-    }
+  function formatIndianTime(dateObj){
+    return dateObj.toLocaleTimeString('en-IN', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+  }
 
-    function getCategoryLabel(category){
-      const map = {
-        'thali':'Thali',
-        'snacks':'Snacks',
-        'main-course':'Main Course',
-        'bread-rice':'Bread & Rice',
-        'beverages':'Beverages',
-        'chicken':'Non Veg'
-      };
-      return map[category] || category;
-    }
+  function getCategoryLabel(category){
+    const map = {
+      'thali':'Thali',
+      'snacks':'Snacks',
+      'main-course':'Main Course',
+      'bread-rice':'Bread & Rice',
+      'beverages':'Beverages',
+      'chicken':'Non Veg'
+    };
+    return map[category] || category;
+  }
 
-    function getFoodTypeBadge(type){
-      if(type === 'non-veg'){
-        return `
-          <span class="food-type-badge non-veg">
-            <span class="food-dot non-veg"></span>
-            Non-Veg
-          </span>
-        `;
-      }
-
+  function getFoodTypeBadge(type){
+    if(type === 'non-veg'){
       return `
-        <span class="food-type-badge veg">
-          <span class="food-dot veg"></span>
-          Veg
+        <span class="food-type-badge non-veg">
+          <span class="food-dot non-veg"></span>
+          Non-Veg
         </span>
       `;
     }
 
-    function goToCheckout(){
-      document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
-    }
+    return `
+      <span class="food-type-badge veg">
+        <span class="food-dot veg"></span>
+        Veg
+      </span>
+    `;
+  }
 
-    function filterMenu(category, button){
-      currentFilter = category;
-      document.querySelectorAll('.menu-filter-btn').forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-      renderMenu();
-    }
+  function goToCheckout(){
+    document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+  }
 
-    function increaseQty(itemId){
-      const input = document.getElementById(`qty-${itemId}`);
-      const currentInput = Number(input.value || 0);
-      const currentCart = cart[itemId] ? cart[itemId].qty : 0;
-      input.value = Math.max(currentInput, currentCart) + 1;
-    }
+  function filterMenu(category, button){
+    currentFilter = category;
+    document.querySelectorAll('.menu-filter-btn').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    renderMenu();
+  }
 
-    function decreaseQty(itemId){
-      const input = document.getElementById(`qty-${itemId}`);
-      const current = Number(input.value || 0);
-      input.value = current > 0 ? current - 1 : 0;
-    }
+  function increaseQty(itemId){
+    const input = document.getElementById(`qty-${itemId}`);
+    const currentInput = Number(input.value || 0);
+    const currentCart = cart[itemId] ? cart[itemId].qty : 0;
+    input.value = Math.max(currentInput, currentCart) + 1;
+  }
 
-    function renderMenu(){
-      const container = document.getElementById('menuContainer');
-      container.innerHTML = '';
+  function decreaseQty(itemId){
+    const input = document.getElementById(`qty-${itemId}`);
+    const current = Number(input.value || 0);
+    input.value = current > 0 ? current - 1 : 0;
+  }
 
-      const visibleItems = currentFilter === 'all'
-        ? menuItems
-        : menuItems.filter(item => item.category === currentFilter);
+  function renderMenu(){
+    const container = document.getElementById('menuContainer');
+    if(!container) return;
 
-      visibleItems.forEach(item => {
-        const col = document.createElement('div');
-        col.className = 'col-md-6 col-lg-4';
+    container.innerHTML = '';
 
-        col.innerHTML = `
-          <div class="menu-card">
-            <img src="${item.image}" alt="${item.name}">
-            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-              <span class="menu-category-badge">${getCategoryLabel(item.category)}</span>
-              ${getFoodTypeBadge(item.type)}
-            </div>
-            <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
-              <h5 class="fw-bold mb-0">${item.name}</h5>
-              <span class="badge text-bg-warning px-3 py-2 rounded-pill">₹${item.price}</span>
-            </div>
-            <p class="text-muted small mb-3">${item.description}</p>
+    const visibleItems = currentFilter === 'all'
+      ? menuItems
+      : menuItems.filter(item => item.category === currentFilter);
 
-            <div class="d-flex justify-content-between align-items-center gap-2 mt-3 flex-wrap">
-              <div class="qty-control">
-                <button type="button" class="qty-btn" onclick="decreaseQty('${item.id}')">−</button>
-                <input type="number" class="qty-box" id="qty-${item.id}" min="0" value="${cart[item.id] ? cart[item.id].qty : 0}" readonly>
-                <button type="button" class="qty-btn" onclick="increaseQty('${item.id}')">+</button>
-              </div>
-              <button class="btn btn-main" onclick="addToCart('${item.id}')">Add to Cart</button>
-            </div>
+    visibleItems.forEach(item => {
+      const col = document.createElement('div');
+      col.className = 'col-md-6 col-lg-4';
+
+      const displayPrice = item.id === 'thali'
+        ? `₹90 + ₹10 packing`
+        : `₹${item.price}`;
+
+      col.innerHTML = `
+        <div class="menu-card">
+          <img src="${item.image}" alt="${item.name}">
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+            <span class="menu-category-badge">${getCategoryLabel(item.category)}</span>
+            ${getFoodTypeBadge(item.type)}
           </div>
-        `;
-        container.appendChild(col);
-      });
+          <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+            <h5 class="fw-bold mb-0">${item.name}</h5>
+            <span class="badge text-bg-warning px-3 py-2 rounded-pill">${displayPrice}</span>
+          </div>
+          <p class="text-muted small mb-3">${item.description}</p>
+
+          <div class="d-flex justify-content-between align-items-center gap-2 mt-3 flex-wrap">
+            <div class="qty-control">
+              <button type="button" class="qty-btn" onclick="decreaseQty('${item.id}')">−</button>
+              <input type="number" class="qty-box" id="qty-${item.id}" min="0" value="${cart[item.id] ? cart[item.id].qty : 0}" readonly>
+              <button type="button" class="qty-btn" onclick="increaseQty('${item.id}')">+</button>
+            </div>
+            <button class="btn btn-main" onclick="addToCart('${item.id}')">Add to Cart</button>
+          </div>
+        </div>
+      `;
+      container.appendChild(col);
+    });
+  }
+
+  function addToCart(itemId, forcedQty = null){
+    const item = menuItems.find(m => m.id === itemId);
+    if(!item) return;
+
+    const qtyInput = document.getElementById(`qty-${itemId}`);
+    let qty = forcedQty !== null ? forcedQty : Number(qtyInput?.value || 0);
+
+    if(qty <= 0){
+      qty = 1;
     }
 
-    function addToCart(itemId, forcedQty = null){
-      const item = menuItems.find(m => m.id === itemId);
-      if(!item) return;
-
-      const qtyInput = document.getElementById(`qty-${itemId}`);
-      let qty = forcedQty !== null ? forcedQty : Number(qtyInput?.value || 0);
-
-      if(qty <= 0){
-        qty = 1;
-      }
-
-      if(cart[itemId]){
-        cart[itemId].qty += qty;
-      } else {
-        cart[itemId] = {...item, qty: 0};
-        cart[itemId].qty += qty;
-      }
-
-      if(qtyInput){
-        qtyInput.value = cart[itemId].qty;
-      }
-
-      updateSummary();
+    if(cart[itemId]){
+      cart[itemId].qty += qty;
+    } else {
+      cart[itemId] = {...item, qty: 0};
+      cart[itemId].qty += qty;
     }
 
-    function quickAddThali(){
-      addToCart('thali', 1);
+    if(qtyInput){
+      qtyInput.value = cart[itemId].qty;
     }
 
-    function removeFromCart(itemId){
-      delete cart[itemId];
-      const qtyInput = document.getElementById(`qty-${itemId}`);
-      if(qtyInput){
-        qtyInput.value = 0;
+    updateSummary();
+  }
+
+  function quickAddThali(){
+    addToCart('thali', 1);
+  }
+
+  function removeFromCart(itemId){
+    delete cart[itemId];
+    const qtyInput = document.getElementById(`qty-${itemId}`);
+    if(qtyInput){
+      qtyInput.value = 0;
+    }
+    updateSummary();
+    renderMenu();
+  }
+
+  function clearCart(resetOrderStatus = true){
+    Object.keys(cart).forEach(key => delete cart[key]);
+    updateSummary();
+    renderMenu();
+    if(resetOrderStatus){
+      resetStatus();
+    }
+  }
+
+  function updateFloatingCart(totalItems){
+    const floatingCartIcon = document.getElementById('floatingCartIcon');
+    const floatingCartCount = document.getElementById('floatingCartCount');
+
+    if(!floatingCartIcon || !floatingCartCount) return;
+
+    if(totalItems > 0){
+      floatingCartIcon.classList.add('show');
+      floatingCartCount.textContent = totalItems;
+    } else {
+      floatingCartIcon.classList.remove('show');
+      floatingCartCount.textContent = '0';
+    }
+  }
+
+  function calculatePacking(items){
+    return items.reduce((sum, item) => {
+      if(item.id === 'thali'){
+        return sum + (item.qty * THALI_PACKING_CHARGE);
       }
-      updateSummary();
-      renderMenu();
+      return sum;
+    }, 0);
+  }
+
+  function updateSummary(){
+    const cartItems = document.getElementById('cartItems');
+    const subtotalAmount = document.getElementById('subtotalAmount');
+    const packingAmount = document.getElementById('packingAmount');
+    const feeAmount = document.getElementById('feeAmount');
+    const totalAmount = document.getElementById('totalAmount');
+
+    if(!cartItems || !subtotalAmount || !packingAmount || !feeAmount || !totalAmount) return;
+
+    const items = Object.values(cart);
+
+    if(!items.length){
+      cartItems.innerHTML = '<p class="text-muted mb-0">No items selected yet.</p>';
+      subtotalAmount.textContent = '₹0';
+      packingAmount.textContent = '₹0';
+      feeAmount.textContent = '₹0';
+      totalAmount.textContent = '₹0';
+      updateFloatingCart(0);
+      return;
     }
 
-    function clearCart(resetOrderStatus = true){
-      Object.keys(cart).forEach(key => delete cart[key]);
-      updateSummary();
-      renderMenu();
-      if(resetOrderStatus){
-        resetStatus();
-      }
+    let subtotal = 0;
+    let totalItemsCount = 0;
+    cartItems.innerHTML = '';
+
+    items.forEach(item => {
+      const packing = item.id === 'thali' ? item.qty * THALI_PACKING_CHARGE : 0;
+      const baseTotal = item.price * item.qty;
+      const itemTotal = baseTotal + packing;
+
+      subtotal += baseTotal;
+      totalItemsCount += item.qty;
+
+      const row = document.createElement('div');
+      row.className = 'order-item';
+      row.innerHTML = `
+        <div class="d-flex justify-content-between align-items-start gap-2">
+          <div>
+            <div class="fw-semibold">${item.type === 'non-veg' ? '🔴' : '🟢'} ${item.name}</div>
+            <div class="small text-muted">Qty: ${item.qty} × ₹${item.price}</div>
+            ${packing ? `<div class="small text-muted">Packing: ₹${packing}</div>` : ''}
+          </div>
+          <div class="text-end">
+            <div class="fw-bold">₹${itemTotal}</div>
+            <button class="btn btn-sm btn-link text-danger p-0" onclick="removeFromCart('${item.id}')">Remove</button>
+          </div>
+        </div>
+      `;
+      cartItems.appendChild(row);
+    });
+
+    const packing = calculatePacking(items);
+    const fee = 0;
+    const grandTotal = subtotal + packing + fee;
+
+    subtotalAmount.textContent = formatCurrency(subtotal);
+    packingAmount.textContent = formatCurrency(packing);
+    feeAmount.textContent = formatCurrency(fee);
+    totalAmount.textContent = formatCurrency(grandTotal);
+    updateFloatingCart(totalItemsCount);
+  }
+
+  function buildCategoryBlocks(containerId){
+    const container = document.getElementById(containerId);
+    if(!container) return;
+
+    container.innerHTML = '';
+
+    const categoryOrder = [
+      {title:'Thali System', key:'thali'},
+      {title:'Snacks', key:'snacks'},
+      {title:'Main Course', key:'main-course'},
+      {title:'Bread & Rice', key:'bread-rice'},
+      {title:'Beverages', key:'beverages'},
+      {title:'Non Veg', key:'chicken'}
+    ];
+
+    categoryOrder.forEach(category => {
+      const categoryItems = menuItems.filter(item => item.category === category.key);
+      if (!categoryItems.length) return;
+
+      const col = document.createElement('div');
+      col.className = 'col-md-6';
+
+      const rows = categoryItems.map(item => `
+        <div class="download-menu-row">
+          <span>${item.type === 'non-veg' ? '🔴' : '🟢'} ${item.name}</span>
+          <strong>${item.id === 'thali' ? '₹90 + ₹10' : '₹' + item.price}</strong>
+        </div>
+      `).join('');
+
+      col.innerHTML = `
+        <div class="download-category">
+          <h5>${category.title}</h5>
+          ${rows}
+        </div>
+      `;
+      container.appendChild(col);
+    });
+  }
+
+  function renderDownloadMenu(){
+    buildCategoryBlocks('downloadMenuContainer');
+  }
+
+  function renderPrintMenu(){
+    buildCategoryBlocks('printMenuContainer');
+  }
+
+  function openMenuDownloadSheet(){
+    const sheet = document.getElementById('menuDownloadSheet');
+    if(sheet){
+      sheet.classList.add('show');
+    }
+  }
+
+  function closeMenuDownloadSheet(){
+    const sheet = document.getElementById('menuDownloadSheet');
+    if(sheet){
+      sheet.classList.remove('show');
+    }
+  }
+
+  function handleViewMenu(){
+    renderDownloadMenu();
+    openMenuDownloadSheet();
+  }
+
+  function handleDownloadMenu(){
+    renderPrintMenu();
+    setTimeout(() => {
+      window.print();
+    }, 200);
+  }
+
+  function downloadMenuPDF(){
+    handleDownloadMenu();
+  }
+
+  function setLiveStatus(type, message = '', eta = '30 mins'){
+    const badge1 = document.getElementById('liveOrderStatusBadge');
+    const text1 = document.getElementById('statusText');
+    const etaText = document.getElementById('estimatedTimeText');
+
+    if(!badge1 || !text1 || !etaText) return;
+
+    badge1.className = 'status-pill';
+    etaText.textContent = eta;
+
+    if(type === 'confirmed'){
+      badge1.classList.add('accepted');
+      badge1.textContent = 'Order Sent';
+      text1.textContent = message || 'Your order was sent successfully.';
+    } else {
+      badge1.classList.add('pending');
+      badge1.textContent = 'Awaiting Order';
+      text1.textContent = 'Order tracking will appear here after placing an order.';
+    }
+  }
+
+  function resetStatus(){
+    setLiveStatus('pending');
+  }
+
+  function togglePaymentRefField(){
+    const paymentMode = document.getElementById('paymentMode').value;
+    const paymentRefWrap = document.getElementById('paymentRefWrap');
+    const paymentRef = document.getElementById('paymentRef');
+
+    if(paymentMode === 'Cash'){
+      paymentRefWrap.style.display = 'none';
+      paymentRef.value = 'Cash Payment';
+      paymentRef.removeAttribute('required');
+    } else {
+      paymentRefWrap.style.display = 'block';
+      paymentRef.value = '';
+      paymentRef.setAttribute('required', 'required');
+    }
+  }
+
+  async function saveOrderToSheet(orderData){
+    const response = await fetch(sheetWebAppUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(orderData)
+    });
+
+    const rawText = await response.text();
+    let result = null;
+
+    try {
+      result = JSON.parse(rawText);
+    } catch (err) {
+      throw new Error('Google Sheet response is not valid JSON: ' + rawText);
     }
 
-    function updateFloatingCart(totalItems){
-      const floatingCartIcon = document.getElementById('floatingCartIcon');
-      const floatingCartCount = document.getElementById('floatingCartCount');
-
-      if(totalItems > 0){
-        floatingCartIcon.classList.add('show');
-        floatingCartCount.textContent = totalItems;
-      } else {
-        floatingCartIcon.classList.remove('show');
-        floatingCartCount.textContent = '0';
-      }
+    if (!result.success) {
+      throw new Error(result.message || 'Unable to save order');
     }
 
-    function updateSummary(){
-      const cartItems = document.getElementById('cartItems');
-      const subtotalAmount = document.getElementById('subtotalAmount');
-      const feeAmount = document.getElementById('feeAmount');
-      const totalAmount = document.getElementById('totalAmount');
+    return result;
+  }
+
+  function getWhatsappUrl(phone, message){
+    const encodedMessage = encodeURIComponent(message);
+    const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+
+    return isMobile
+      ? `whatsapp://send?phone=${phone}&text=${encodedMessage}`
+      : `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`;
+  }
+
+  function openWhatsappChoiceModal(titleText, numbers, message){
+    const textEl = document.getElementById('whatsappChoiceText');
+    const btnWrap = document.getElementById('whatsappChoiceButtons');
+
+    textEl.textContent = titleText;
+    btnWrap.innerHTML = '';
+
+    numbers.forEach((number, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'whatsapp-choice-btn';
+      button.innerHTML = `Send to WhatsApp Number ${index + 1}<br><small class="text-muted">${number}</small>`;
+      button.onclick = function(){
+        window.location.href = getWhatsappUrl(number, message);
+        if (whatsappChoiceModal) whatsappChoiceModal.hide();
+      };
+      btnWrap.appendChild(button);
+    });
+
+    if (!whatsappChoiceModal) {
+      whatsappChoiceModal = new bootstrap.Modal(document.getElementById('whatsappChoiceModal'));
+    }
+    whatsappChoiceModal.show();
+  }
+
+  function sendMessageToWhatsapp(numbers, message, titleText){
+    if (numbers.length === 1) {
+      window.location.href = getWhatsappUrl(numbers[0], message);
+    } else {
+      openWhatsappChoiceModal(titleText, numbers, message);
+    }
+  }
+
+  const checkoutForm = document.getElementById('checkoutForm');
+  if (checkoutForm) {
+    checkoutForm.addEventListener('submit', async function(e){
+      e.preventDefault();
 
       const items = Object.values(cart);
-
       if(!items.length){
-        cartItems.innerHTML = '<p class="text-muted mb-0">No items selected yet.</p>';
-        subtotalAmount.textContent = '₹0';
-        feeAmount.textContent = '₹0';
-        totalAmount.textContent = '₹0';
-        updateFloatingCart(0);
+        alert('Please add at least one item to place the order.');
         return;
       }
 
-      let subtotal = 0;
-      let totalItemsCount = 0;
-      cartItems.innerHTML = '';
-
-      items.forEach(item => {
-        const total = item.price * item.qty;
-        subtotal += total;
-        totalItemsCount += item.qty;
-
-        const row = document.createElement('div');
-        row.className = 'order-item';
-        row.innerHTML = `
-          <div class="d-flex justify-content-between align-items-start gap-2">
-            <div>
-              <div class="fw-semibold">${item.type === 'non-veg' ? '🔴' : '🟢'} ${item.name}</div>
-              <div class="small text-muted">Qty: ${item.qty} × ₹${item.price}</div>
-            </div>
-            <div class="text-end">
-              <div class="fw-bold">₹${total}</div>
-              <button class="btn btn-sm btn-link text-danger p-0" onclick="removeFromCart('${item.id}')">Remove</button>
-            </div>
-          </div>
-        `;
-        cartItems.appendChild(row);
-      });
-
-      const fee = 0;
-      const grandTotal = subtotal + fee;
-
-      subtotalAmount.textContent = formatCurrency(subtotal);
-      feeAmount.textContent = formatCurrency(fee);
-      totalAmount.textContent = formatCurrency(grandTotal);
-      updateFloatingCart(totalItemsCount);
-    }
-
-    function buildCategoryBlocks(containerId){
-      const container = document.getElementById(containerId);
-      if(!container) return;
-
-      container.innerHTML = '';
-
-      const categoryOrder = [
-        {title:'Thali System', key:'thali'},
-        {title:'Snacks', key:'snacks'},
-        {title:'Main Course', key:'main-course'},
-        {title:'Bread & Rice', key:'bread-rice'},
-        {title:'Beverages', key:'beverages'},
-        {title:'Non Veg', key:'chicken'}
-      ];
-
-      categoryOrder.forEach(category => {
-        const categoryItems = menuItems.filter(item => item.category === category.key);
-        if (!categoryItems.length) return;
-
-        const col = document.createElement('div');
-        col.className = 'col-md-6';
-
-        const rows = categoryItems.map(item => `
-          <div class="download-menu-row">
-            <span>${item.type === 'non-veg' ? '🔴' : '🟢'} ${item.name}</span>
-            <strong>₹${item.price}</strong>
-          </div>
-        `).join('');
-
-        col.innerHTML = `
-          <div class="download-category">
-            <h5>${category.title}</h5>
-            ${rows}
-          </div>
-        `;
-        container.appendChild(col);
-      });
-    }
-
-    function renderDownloadMenu(){
-      buildCategoryBlocks('downloadMenuContainer');
-    }
-
-    function renderPrintMenu(){
-      buildCategoryBlocks('printMenuContainer');
-    }
-
-    function openMenuDownloadSheet(){
-      document.getElementById('menuDownloadSheet').classList.add('show');
-    }
-
-    function closeMenuDownloadSheet(){
-      document.getElementById('menuDownloadSheet').classList.remove('show');
-    }
-
-    function downloadMenuPDF(){
-      renderPrintMenu();
-      setTimeout(() => {
-        window.print();
-      }, 300);
-    }
-
-    function setLiveStatus(type, message = '', eta = '30 mins'){
-      const badge1 = document.getElementById('liveOrderStatusBadge');
-      const text1 = document.getElementById('statusText');
-      const badge2 = document.getElementById('userStatusBadge');
-      const text2 = document.getElementById('userStatusMessage');
-      const etaText = document.getElementById('estimatedTimeText');
-
-      badge1.className = 'status-pill';
-      badge2.className = 'status-pill';
-      etaText.textContent = eta;
-
-      if(type === 'confirmed'){
-        badge1.classList.add('accepted');
-        badge2.classList.add('accepted');
-        badge1.textContent = 'Order Sent';
-        badge2.textContent = 'Order Sent';
-        text1.textContent = message || 'Your order was sent successfully.';
-        text2.textContent = message || 'Your order was sent successfully.';
-      } else {
-        badge1.classList.add('pending');
-        badge2.classList.add('pending');
-        badge1.textContent = 'Awaiting Order';
-        badge2.textContent = 'Pending';
-        text1.textContent = 'Order tracking will appear here after placing an order.';
-        text2.textContent = 'Your order status will be shown here after placing the order.';
-      }
-    }
-
-    function resetStatus(){
-      setLiveStatus('pending');
-    }
-
-    function togglePaymentRefField(){
+      const name = document.getElementById('customerName').value.trim();
+      const room = document.getElementById('roomNumber').value.trim();
+      const whatsapp = document.getElementById('customerWhatsapp').value.trim();
+      const orderType = document.getElementById('orderType').value;
       const paymentMode = document.getElementById('paymentMode').value;
-      const paymentRefWrap = document.getElementById('paymentRefWrap');
-      const paymentRef = document.getElementById('paymentRef');
+      const paymentRef = document.getElementById('paymentRef').value.trim() || 'N/A';
+      const specialNote = document.getElementById('specialNote').value.trim() || 'None';
+      const eta = '30 mins';
 
-      if(paymentMode === 'Cash'){
-        paymentRefWrap.style.display = 'none';
-        paymentRef.value = 'Cash Payment';
-        paymentRef.removeAttribute('required');
-      } else {
-        paymentRefWrap.style.display = 'block';
-        paymentRef.value = '';
-        paymentRef.setAttribute('required', 'required');
+      if(!orderType){
+        alert('Please select order type: Food Delivery or Dine-In.');
+        return;
       }
-    }
 
-    async function saveOrderToSheet(orderData){
-      const response = await fetch(sheetWebAppUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'text/plain;charset=utf-8'
-        },
-        body: JSON.stringify(orderData)
-      });
+      const subtotal = items.reduce((sum, item) => sum + item.price * item.qty, 0);
+      const packing = calculatePacking(items);
+      const total = subtotal + packing;
+      const totalItems = items.reduce((sum, item) => sum + item.qty, 0);
 
-      const rawText = await response.text();
-      let result = null;
+      if(orderType === 'Delivery' && total < MIN_DELIVERY_ORDER){
+        alert(`Minimum order amount for food delivery is ₹${MIN_DELIVERY_ORDER}.`);
+        return;
+      }
+
+      const orderLinesText = items
+        .map((item, index) => {
+          const baseAmount = item.price * item.qty;
+          const packingAmount = item.id === 'thali' ? item.qty * THALI_PACKING_CHARGE : 0;
+          return `➡️ *${index + 1}. ${item.type === 'non-veg' ? '🔴' : '🟢'} ${item.name}*\n   Qty: *${item.qty}*   |   Base Amount: *₹${baseAmount}*${packingAmount ? `\n   Packing: *₹${packingAmount}*` : ''}`;
+        })
+        .join('\n\n');
+
+      const itemNames = items.map(item => item.name).join(', ');
+      const now = new Date();
+
+      const orderData = {
+        customerName: name,
+        roomNumber: room,
+        customerWhatsapp: whatsapp,
+        orderType: orderType,
+        paymentMode: paymentMode,
+        paymentRef: paymentRef,
+        specialNote: specialNote,
+        items: items.map((item, index) => {
+          const packingAmount = item.id === 'thali' ? item.qty * THALI_PACKING_CHARGE : 0;
+          return `${index + 1}. ${item.name} - Qty ${item.qty} - Base ₹${item.price * item.qty}${packingAmount ? ` - Packing ₹${packingAmount}` : ''}`;
+        }).join('\n'),
+        itemNames: itemNames,
+        totalItems: totalItems,
+        subtotalAmount: subtotal,
+        packingAmount: packing,
+        totalAmount: total,
+        eta: eta,
+        frontendDate: formatIndianDate(now),
+        frontendTime: formatIndianTime(now)
+      };
+
+      const submitButton = checkoutForm.querySelector('button[type="submit"]');
+      const oldButtonText = submitButton.innerHTML;
+      submitButton.disabled = true;
+      submitButton.innerHTML = 'Saving Order...';
 
       try {
-        result = JSON.parse(rawText);
-      } catch (err) {
-        throw new Error('Google Sheet response is not valid JSON: ' + rawText);
-      }
+        const result = await saveOrderToSheet(orderData);
 
-      if (!result.success) {
-        throw new Error(result.message || 'Unable to save order');
-      }
+        const orderNo = result.orderNo || 'N/A';
+        const orderDate = result.orderDate || formatIndianDate(now);
+        const orderTime = result.orderTime || formatIndianTime(now);
 
-      return result;
-    }
-
-    function getWhatsappUrl(phone, message){
-      const encodedMessage = encodeURIComponent(message);
-      const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-
-      return isMobile
-        ? `whatsapp://send?phone=${phone}&text=${encodedMessage}`
-        : `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`;
-    }
-
-    function openWhatsappChoiceModal(titleText, numbers, message){
-      const textEl = document.getElementById('whatsappChoiceText');
-      const btnWrap = document.getElementById('whatsappChoiceButtons');
-
-      textEl.textContent = titleText;
-      btnWrap.innerHTML = '';
-
-      numbers.forEach((number, index) => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'whatsapp-choice-btn';
-        button.innerHTML = `Send to WhatsApp Number ${index + 1}<br><small class="text-muted">${number}</small>`;
-        button.onclick = function(){
-          window.location.href = getWhatsappUrl(number, message);
-          if (whatsappChoiceModal) whatsappChoiceModal.hide();
-        };
-        btnWrap.appendChild(button);
-      });
-
-      if (!whatsappChoiceModal) {
-        whatsappChoiceModal = new bootstrap.Modal(document.getElementById('whatsappChoiceModal'));
-      }
-      whatsappChoiceModal.show();
-    }
-
-    function sendMessageToWhatsapp(numbers, message, titleText){
-      if (numbers.length === 1) {
-        window.location.href = getWhatsappUrl(numbers[0], message);
-      } else {
-        openWhatsappChoiceModal(titleText, numbers, message);
-      }
-    }
-
-    const checkoutForm = document.getElementById('checkoutForm');
-    if (checkoutForm) {
-      checkoutForm.addEventListener('submit', async function(e){
-        e.preventDefault();
-
-        const items = Object.values(cart);
-        if(!items.length){
-          alert('Please add at least one item to place the order.');
-          return;
-        }
-
-        const name = document.getElementById('customerName').value.trim();
-        const room = document.getElementById('roomNumber').value.trim();
-        const whatsapp = document.getElementById('customerWhatsapp').value.trim();
-        const orderType = document.getElementById('orderType').value;
-        const paymentMode = document.getElementById('paymentMode').value;
-        const paymentRef = document.getElementById('paymentRef').value.trim() || 'N/A';
-        const specialNote = document.getElementById('specialNote').value.trim() || 'None';
-        const eta = '30 mins';
-
-        const total = items.reduce((sum, item) => sum + item.price * item.qty, 0);
-        const totalItems = items.reduce((sum, item) => sum + item.qty, 0);
-
-        const orderLinesText = items
-          .map((item, index) => `➡️ *${index + 1}. ${item.type === 'non-veg' ? '🔴' : '🟢'} ${item.name}*\n   Qty: *${item.qty}*   |   Amount: *₹${item.price * item.qty}*`)
-          .join('\n\n');
-
-        const itemNames = items.map(item => item.name).join(', ');
-        const now = new Date();
-
-        const orderData = {
-          customerName: name,
-          roomNumber: room,
-          customerWhatsapp: whatsapp,
-          orderType: orderType,
-          paymentMode: paymentMode,
-          paymentRef: paymentRef,
-          specialNote: specialNote,
-          items: items.map((item, index) => `${index + 1}. ${item.name} - Qty ${item.qty} - ₹${item.price * item.qty}`).join('\n'),
-          itemNames: itemNames,
-          totalItems: totalItems,
-          totalAmount: total,
-          eta: eta,
-          frontendDate: formatIndianDate(now),
-          frontendTime: formatIndianTime(now)
-        };
-
-        const submitButton = checkoutForm.querySelector('button[type="submit"]');
-        const oldButtonText = submitButton.innerHTML;
-        submitButton.disabled = true;
-        submitButton.innerHTML = 'Saving Order...';
-
-        try {
-          const result = await saveOrderToSheet(orderData);
-
-          const orderNo = result.orderNo || 'N/A';
-          const orderDate = result.orderDate || formatIndianDate(now);
-          const orderTime = result.orderTime || formatIndianTime(now);
-
-          const whatsappMessage = `*🍽️ ROOTS & RECIPES - NEW ORDER*
+        const whatsappMessage = `*🍽️ ROOTS & RECIPES - NEW ORDER*
 
 ━━━━━━━━━━━━━━
 *📌 Order No:* ${orderNo}
@@ -2011,7 +2055,6 @@
 *💳 Payment Mode:* ${paymentMode}
 *🧾 Payment Ref:* ${paymentRef}
 *🚚 ETA:* ${eta}
-
 *📞 Cook Query Number:* +91 ${cookNumber.slice(2)}
 ━━━━━━━━━━━━━━
 
@@ -2020,50 +2063,52 @@ ${orderLinesText}
 
 ━━━━━━━━━━━━━━
 *🛍️ Total Quantity:* ${totalItems}
+*💰 Subtotal:* *₹${subtotal}*
+*📦 Packing:* *₹${packing}*
 *💰 Total Amount:* *₹${total}*
 *📝 Special Instructions:* ${specialNote}
 ━━━━━━━━━━━━━━`;
 
-          setLiveStatus(
-            'confirmed',
-            `Order ${orderNo} saved in Google Sheets. Choose a WhatsApp number to send.`,
-            eta
-          );
+        setLiveStatus(
+          'confirmed',
+          `Order ${orderNo} saved in Google Sheets. Choose a WhatsApp number to send.`,
+          eta
+        );
 
-          sendMessageToWhatsapp(
-            orderWhatsappNumbers,
-            whatsappMessage,
-            'Choose which WhatsApp number should receive this order.'
-          );
+        sendMessageToWhatsapp(
+          orderWhatsappNumbers,
+          whatsappMessage,
+          'Choose which WhatsApp number should receive this order.'
+        );
 
-          checkoutForm.reset();
-          clearCart(false);
-          togglePaymentRefField();
+        checkoutForm.reset();
+        clearCart(false);
+        togglePaymentRefField();
 
-        } catch (error) {
-          console.error('Order save error:', error);
-          alert('Order could not be saved to Google Sheets. Check Apps Script deployment, permissions, and URL.');
-        } finally {
-          submitButton.disabled = false;
-          submitButton.innerHTML = oldButtonText;
-        }
-      });
-    }
+      } catch (error) {
+        console.error('Order save error:', error);
+        alert('Order could not be saved to Google Sheets. Check Apps Script deployment, permissions, and URL.');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML = oldButtonText;
+      }
+    });
+  }
 
-    const enquiryForm = document.getElementById('enquiryForm');
-    if (enquiryForm) {
-      enquiryForm.addEventListener('submit', function(e){
-        e.preventDefault();
+  const enquiryForm = document.getElementById('enquiryForm');
+  if (enquiryForm) {
+    enquiryForm.addEventListener('submit', function(e){
+      e.preventDefault();
 
-        const name = document.getElementById('enquiryName').value.trim();
-        const whatsapp = document.getElementById('enquiryWhatsapp').value.trim();
-        const type = document.getElementById('requirementType').value;
-        const food = document.getElementById('foodPreference').value;
-        const moveIn = document.getElementById('moveInDate').value || 'Not specified';
-        const budget = document.getElementById('budgetRange').value.trim() || 'Not specified';
-        const note = document.getElementById('enquiryNote').value.trim() || 'None';
+      const name = document.getElementById('enquiryName').value.trim();
+      const whatsapp = document.getElementById('enquiryWhatsapp').value.trim();
+      const type = document.getElementById('requirementType').value;
+      const food = document.getElementById('foodPreference').value;
+      const moveIn = document.getElementById('moveInDate').value || 'Not specified';
+      const budget = document.getElementById('budgetRange').value.trim() || 'Not specified';
+      const note = document.getElementById('enquiryNote').value.trim() || 'None';
 
-        const enquiryMessage = `*🏠 ROOTS & RECIPES - ROOM ENQUIRY*
+      const enquiryMessage = `*🏠 ROOTS & RECIPES - ROOM ENQUIRY*
 
 ━━━━━━━━━━━━━━
 *👤 Name:* ${name}
@@ -2075,41 +2120,41 @@ ${orderLinesText}
 *📝 Extra Requirement:* ${note}
 ━━━━━━━━━━━━━━`;
 
-        sendMessageToWhatsapp(
-          enquiryWhatsappNumbers,
-          enquiryMessage,
-          'Choose which WhatsApp number should receive this room enquiry.'
-        );
-      });
-    }
-
-    function createSparkles(x, y){
-      for(let i = 0; i < 10; i++){
-        const sparkle = document.createElement('span');
-        sparkle.className = 'sparkle';
-        sparkle.style.left = `${x}px`;
-        sparkle.style.top = `${y}px`;
-        sparkle.style.setProperty('--x', `${(Math.random() - 0.5) * 140}px`);
-        sparkle.style.setProperty('--y', `${(Math.random() - 0.5) * 140}px`);
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 800);
-      }
-    }
-
-    document.addEventListener('click', function(e){
-      const target = e.target.closest('button, .menu-card, .download-card, .summary-card, .form-card, .thali-card, .hero-glass-card, .floating-cart-icon');
-      if(target){
-        createSparkles(e.clientX, e.clientY);
-      }
+      sendMessageToWhatsapp(
+        enquiryWhatsappNumbers,
+        enquiryMessage,
+        'Choose which WhatsApp number should receive this room enquiry.'
+      );
     });
+  }
 
-    renderMenu();
-    renderDownloadMenu();
-    renderPrintMenu();
-    updateSummary();
-    resetStatus();
-    togglePaymentRefField();
-  </script>
+  function createSparkles(x, y){
+    for(let i = 0; i < 10; i++){
+      const sparkle = document.createElement('span');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = `${x}px`;
+      sparkle.style.top = `${y}px`;
+      sparkle.style.setProperty('--x', `${(Math.random() - 0.5) * 140}px`);
+      sparkle.style.setProperty('--y', `${(Math.random() - 0.5) * 140}px`);
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 800);
+    }
+  }
+
+  document.addEventListener('click', function(e){
+    const target = e.target.closest('button, .menu-card, .download-card, .summary-card, .form-card, .thali-card, .hero-glass-card, .floating-cart-icon');
+    if(target){
+      createSparkles(e.clientX, e.clientY);
+    }
+  });
+
+  renderMenu();
+  renderDownloadMenu();
+  renderPrintMenu();
+  updateSummary();
+  resetStatus();
+  togglePaymentRefField();
+</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
