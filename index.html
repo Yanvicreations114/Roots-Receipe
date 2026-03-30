@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Roots & Recipes</title>
 
+  <link rel="icon" href="./logo.png.jpeg" type="image/jpeg">
+  <link rel="shortcut icon" href="./logo.png.jpeg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="./logo.png.jpeg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
@@ -47,9 +51,9 @@
     }
 
     .site-watermark img{
-      width:75vw;
-      max-width:900px;
-      opacity:0.20;
+      width:90vw;
+      max-width:1100px;
+      opacity:0.10;
       filter:sepia(80%) saturate(120%) hue-rotate(10deg) brightness(0.9);
       transform:rotate(-15deg);
       object-fit:contain;
@@ -61,7 +65,7 @@
     }
 
     .custom-navbar{
-      background:rgba(250,248,240,0.9);
+      background:rgba(250,248,240,0.92);
       backdrop-filter:blur(12px);
       box-shadow:0 8px 24px rgba(184,134,43,0.08);
       border-bottom:1px solid rgba(184,134,43,0.12);
@@ -70,22 +74,24 @@
     .brand-wrap{
       display:flex;
       align-items:center;
-      gap:12px;
+      gap:14px;
       text-decoration:none;
     }
 
     .brand-logo{
-      width:44px;
-      height:44px;
+      width:64px;
+      height:64px;
       border-radius:50%;
       object-fit:cover;
-      box-shadow:0 10px 22px rgba(184,134,43,0.18);
-      border:2px solid rgba(255,255,255,0.85);
+      box-shadow:0 10px 22px rgba(184,134,43,0.22);
+      border:2px solid rgba(255,255,255,0.9);
+      background:#fff;
+      padding:2px;
     }
 
     .brand-text{
       font-family:'Cormorant Garamond',serif;
-      font-size:2rem;
+      font-size:2.3rem;
       font-weight:700;
       color:var(--gold-1);
       line-height:1;
@@ -721,12 +727,12 @@
     }
 
     .download-brand-logo{
-      width:78px;
-      height:78px;
-      border-radius:18px;
+      width:110px;
+      height:110px;
+      border-radius:20px;
       object-fit:cover;
       background:#fff;
-      padding:8px;
+      padding:10px;
       border:2px solid rgba(184,134,43,0.20);
       box-shadow:0 12px 24px rgba(184,134,43,0.16);
     }
@@ -998,6 +1004,8 @@
       .download-menu-header{justify-content:center}
       .hero-title-animated{font-size:2.8rem}
       .hero-btn{width:100%;min-width:unset}
+      .brand-logo{width:56px;height:56px}
+      .brand-text{font-size:2rem}
     }
 
     @media (max-width:576px){
@@ -1007,6 +1015,8 @@
       }
 
       .hero-title-animated{font-size:2.3rem}
+      .brand-logo{width:50px;height:50px}
+      .brand-text{font-size:1.7rem}
     }
   </style>
 </head>
@@ -1204,7 +1214,7 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Payment Mode</label>
-                <select class="form-select" id="paymentMode" required onchange="togglePaymentRefField()">
+                <select class="form-select" id="paymentMode" required onchange="togglePaymentScreenshotField()">
                   <option value="Online">Online / UPI</option>
                   <option value="Cash">Cash</option>
                 </select>
@@ -1241,9 +1251,10 @@
                 </div>
               </div>
 
-              <div class="col-12" id="paymentRefWrap">
-                <label class="form-label fw-semibold">Payment Ref / UTR</label>
-                <input type="text" class="form-control" id="paymentRef" placeholder="Enter transaction ID">
+              <div class="col-12" id="paymentScreenshotWrap">
+                <label class="form-label fw-semibold">Payment Screenshot</label>
+                <input type="file" class="form-control" id="paymentScreenshot" accept="image/*">
+                <small class="text-muted">For online payment, upload screenshot and then attach it in WhatsApp before sending.</small>
               </div>
 
               <div class="col-12 d-flex flex-wrap gap-3 mt-2">
@@ -1379,7 +1390,7 @@
     <div class="print-menu-content">
       <div style="border:3px solid #d9bf5a; border-radius:24px; padding:24px; background:linear-gradient(135deg,#fffaf0,#fffdf8,#f7f1dd);">
         <div class="text-center mb-4">
-          <img src="logo.png.jpeg" alt="Roots & Recipes Logo" style="width:90px; height:90px; object-fit:cover; border-radius:18px; padding:6px; background:#fff; border:2px solid rgba(184,134,43,0.2); margin-bottom:12px;">
+          <img src="logo.png.jpeg" alt="Roots & Recipes Logo" style="width:130px; height:130px; object-fit:cover; border-radius:22px; padding:8px; background:#fff; border:2px solid rgba(184,134,43,0.2); margin-bottom:14px;">
           <h2 style="font-family:'Cormorant Garamond',serif; color:#b8862b; font-size:2.6rem; margin-bottom:6px;">Roots &amp; Recipes</h2>
           <p style="margin-bottom:10px; color:#7a7467;">Premium Food Menu</p>
           <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:8px;">
@@ -1422,11 +1433,10 @@
     </div>
   </div>
 
-  <<script>
+  <script>
   const orderWhatsappNumbers = ['919310805191'];
   const enquiryWhatsappNumbers = ['919650009462', '919540757074'];
   const cookNumber = '919310805191';
-  const sheetWebAppUrl = 'https://script.google.com/macros/s/AKfycbxS6x-UWoFOrGDD4X4ZGx56ntT52OpjSp9mXs0OLMw7jWrKNHR5kjLjmqxwyMBHoKmNyA/exec';
   const MIN_DELIVERY_ORDER = 50;
   const THALI_PACKING_CHARGE = 10;
 
@@ -1459,7 +1469,7 @@
     {id:'poha',name:'Poha',price:70,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/4k-high-resolution-image-poha-black-bowl-realistic-stock-photo-image_555090-49284.jpg',description:'Light and tasty poha.'},
     {id:'veg-roll',name:'Veg Roll',price:100,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/indian-veg-spring-roll-wrap-also-known-as-franky-chapati-roll_466689-96649.jpg?w=900',description:'Stuffed veg roll.'},
     {id:'paneer-cheese-roll',name:'Paneer Cheese Roll',price:150,category:'snacks',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.KqFGtKghMIJD7V3BiNnl7gHaDt?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Paneer and cheese loaded roll.'},
-    {id:'paneer-kathi-roll',name:'Paneer Kathi Roll',price:120,category:'snacks',type:'veg',image:'https://thumbs.dreamstime.com/z/selective-focus-indian-food-paneer-roll-kathi-ai-generative-design-background-instagram-facebook-wall-painting-wallpaper-323520749.jpg?w=992',description:'Paneer kathi roll.'},
+    {id:'paneer-kathi-roll',name:'Paneer Kathi Roll',price:120,category:'snacks',type:'veg',image:'https://thumbs.dreamstime.com/b/selective-focus-indian-food-paneer-roll-kathi-ai-generative-design-background-instagram-facebook-wall-painting-wallpaper-323520749.jpg?w=992',description:'Paneer kathi roll.'},
     {id:'corn-cheese',name:'Corn & Cheese',price:120,category:'snacks',type:'veg',image:'https://theblondcook.com/wp-content/uploads/2018/10/easy-creamed-corn-4-500x500.jpg',description:'Creamy corn and cheese snack.'},
 
     {id:'chana-masala',name:'Chana Masala',price:100,category:'main-course',type:'veg',image:'https://img.freepik.com/premium-photo/chana-masala-photo-with-touch-spice_1036998-305050.jpg',description:'Classic chana curry.'},
@@ -1585,16 +1595,32 @@
   }
 
   function increaseQty(itemId){
-    const input = document.getElementById(`qty-${itemId}`);
-    const currentInput = Number(input.value || 0);
-    const currentCart = cart[itemId] ? cart[itemId].qty : 0;
-    input.value = Math.max(currentInput, currentCart) + 1;
+    const currentQty = cart[itemId] ? cart[itemId].qty : 0;
+    const item = menuItems.find(m => m.id === itemId);
+    if(!item) return;
+
+    cart[itemId] = {
+      ...item,
+      qty: currentQty + 1
+    };
+
+    updateSummary();
+    renderMenu();
   }
 
   function decreaseQty(itemId){
-    const input = document.getElementById(`qty-${itemId}`);
-    const current = Number(input.value || 0);
-    input.value = current > 0 ? current - 1 : 0;
+    if(!cart[itemId]) return;
+
+    const currentQty = cart[itemId].qty - 1;
+
+    if(currentQty <= 0){
+      delete cart[itemId];
+    } else {
+      cart[itemId].qty = currentQty;
+    }
+
+    updateSummary();
+    renderMenu();
   }
 
   function renderMenu(){
@@ -1611,6 +1637,7 @@
       const col = document.createElement('div');
       col.className = 'col-md-6 col-lg-4';
 
+      const cartQty = cart[item.id] ? cart[item.id].qty : 0;
       const displayPrice = item.id === 'thali'
         ? `₹90 + ₹10 packing`
         : `₹${item.price}`;
@@ -1631,10 +1658,10 @@
           <div class="d-flex justify-content-between align-items-center gap-2 mt-3 flex-wrap">
             <div class="qty-control">
               <button type="button" class="qty-btn" onclick="decreaseQty('${item.id}')">−</button>
-              <input type="number" class="qty-box" id="qty-${item.id}" min="0" value="${cart[item.id] ? cart[item.id].qty : 0}" readonly>
+              <input type="number" class="qty-box" id="qty-${item.id}" min="0" value="${cartQty}" readonly>
               <button type="button" class="qty-btn" onclick="increaseQty('${item.id}')">+</button>
             </div>
-            <button class="btn btn-main" onclick="addToCart('${item.id}')">Add to Cart</button>
+            <button class="btn btn-main" onclick="addToCart('${item.id}')">${cartQty > 0 ? 'Added' : 'Add to Cart'}</button>
           </div>
         </div>
       `;
@@ -1642,41 +1669,36 @@
     });
   }
 
-  function addToCart(itemId, forcedQty = null){
+  function addToCart(itemId){
     const item = menuItems.find(m => m.id === itemId);
     if(!item) return;
 
-    const qtyInput = document.getElementById(`qty-${itemId}`);
-    let qty = forcedQty !== null ? forcedQty : Number(qtyInput?.value || 0);
-
-    if(qty <= 0){
-      qty = 1;
-    }
-
-    if(cart[itemId]){
-      cart[itemId].qty += qty;
-    } else {
-      cart[itemId] = {...item, qty: 0};
-      cart[itemId].qty += qty;
-    }
-
-    if(qtyInput){
-      qtyInput.value = cart[itemId].qty;
+    if(!cart[itemId]){
+      cart[itemId] = {
+        ...item,
+        qty: 1
+      };
     }
 
     updateSummary();
+    renderMenu();
   }
 
   function quickAddThali(){
-    addToCart('thali', 1);
+    const thaliItem = menuItems.find(m => m.id === 'thali');
+    const currentQty = cart['thali'] ? cart['thali'].qty : 0;
+
+    cart['thali'] = {
+      ...thaliItem,
+      qty: currentQty + 1
+    };
+
+    updateSummary();
+    renderMenu();
   }
 
   function removeFromCart(itemId){
     delete cart[itemId];
-    const qtyInput = document.getElementById(`qty-${itemId}`);
-    if(qtyInput){
-      qtyInput.value = 0;
-    }
     updateSummary();
     renderMenu();
   }
@@ -1849,10 +1871,6 @@
     }, 200);
   }
 
-  function downloadMenuPDF(){
-    handleDownloadMenu();
-  }
-
   function setLiveStatus(type, message = '', eta = '30 mins'){
     const badge1 = document.getElementById('liveOrderStatusBadge');
     const text1 = document.getElementById('statusText');
@@ -1878,45 +1896,19 @@
     setLiveStatus('pending');
   }
 
-  function togglePaymentRefField(){
+  function togglePaymentScreenshotField(){
     const paymentMode = document.getElementById('paymentMode').value;
-    const paymentRefWrap = document.getElementById('paymentRefWrap');
-    const paymentRef = document.getElementById('paymentRef');
+    const paymentScreenshotWrap = document.getElementById('paymentScreenshotWrap');
+    const paymentScreenshot = document.getElementById('paymentScreenshot');
 
     if(paymentMode === 'Cash'){
-      paymentRefWrap.style.display = 'none';
-      paymentRef.value = 'Cash Payment';
-      paymentRef.removeAttribute('required');
+      paymentScreenshotWrap.style.display = 'none';
+      paymentScreenshot.value = '';
+      paymentScreenshot.removeAttribute('required');
     } else {
-      paymentRefWrap.style.display = 'block';
-      paymentRef.value = '';
-      paymentRef.setAttribute('required', 'required');
+      paymentScreenshotWrap.style.display = 'block';
+      paymentScreenshot.setAttribute('required', 'required');
     }
-  }
-
-  async function saveOrderToSheet(orderData){
-    const response = await fetch(sheetWebAppUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'text/plain;charset=utf-8'
-      },
-      body: JSON.stringify(orderData)
-    });
-
-    const rawText = await response.text();
-    let result = null;
-
-    try {
-      result = JSON.parse(rawText);
-    } catch (err) {
-      throw new Error('Google Sheet response is not valid JSON: ' + rawText);
-    }
-
-    if (!result.success) {
-      throw new Error(result.message || 'Unable to save order');
-    }
-
-    return result;
   }
 
   function getWhatsappUrl(phone, message){
@@ -1963,7 +1955,7 @@
 
   const checkoutForm = document.getElementById('checkoutForm');
   if (checkoutForm) {
-    checkoutForm.addEventListener('submit', async function(e){
+    checkoutForm.addEventListener('submit', function(e){
       e.preventDefault();
 
       const items = Object.values(cart);
@@ -1977,12 +1969,19 @@
       const whatsapp = document.getElementById('customerWhatsapp').value.trim();
       const orderType = document.getElementById('orderType').value;
       const paymentMode = document.getElementById('paymentMode').value;
-      const paymentRef = document.getElementById('paymentRef').value.trim() || 'N/A';
       const specialNote = document.getElementById('specialNote').value.trim() || 'None';
       const eta = '30 mins';
 
       if(!orderType){
         alert('Please select order type: Food Delivery or Dine-In.');
+        return;
+      }
+
+      const screenshotInput = document.getElementById('paymentScreenshot');
+      const paymentScreenshotUploaded = paymentMode === 'Online' && screenshotInput.files.length > 0 ? 'Yes' : 'No';
+
+      if(paymentMode === 'Online' && (!screenshotInput.files || screenshotInput.files.length === 0)){
+        alert('Please upload payment screenshot.');
         return;
       }
 
@@ -2004,56 +2003,15 @@
         })
         .join('\n\n');
 
-      const itemNames = items.map(item => item.name).join(', ');
-      const now = new Date();
-
-      const orderData = {
-        customerName: name,
-        roomNumber: room,
-        customerWhatsapp: whatsapp,
-        orderType: orderType,
-        paymentMode: paymentMode,
-        paymentRef: paymentRef,
-        specialNote: specialNote,
-        items: items.map((item, index) => {
-          const packingAmount = item.id === 'thali' ? item.qty * THALI_PACKING_CHARGE : 0;
-          return `${index + 1}. ${item.name} - Qty ${item.qty} - Base ₹${item.price * item.qty}${packingAmount ? ` - Packing ₹${packingAmount}` : ''}`;
-        }).join('\n'),
-        itemNames: itemNames,
-        totalItems: totalItems,
-        subtotalAmount: subtotal,
-        packingAmount: packing,
-        totalAmount: total,
-        eta: eta,
-        frontendDate: formatIndianDate(now),
-        frontendTime: formatIndianTime(now)
-      };
-
-      const submitButton = checkoutForm.querySelector('button[type="submit"]');
-      const oldButtonText = submitButton.innerHTML;
-      submitButton.disabled = true;
-      submitButton.innerHTML = 'Saving Order...';
-
-      try {
-        const result = await saveOrderToSheet(orderData);
-
-        const orderNo = result.orderNo || 'N/A';
-        const orderDate = result.orderDate || formatIndianDate(now);
-        const orderTime = result.orderTime || formatIndianTime(now);
-
-        const whatsappMessage = `*🍽️ ROOTS & RECIPES *
+      const whatsappMessage = `*🍽️ ROOTS & RECIPES *
 
 ━━━━━━━━━━━━━━
-*📌 Order No:* ${orderNo}
-*📅 Date:* ${orderDate}
-*⏰ Time:* ${orderTime}
-
 *👤 Customer:* ${name}
 *🏠 Room No:* ${room}
 *📱 WhatsApp:* ${whatsapp}
 *🍴 Order Type:* ${orderType}
 *💳 Payment Mode:* ${paymentMode}
-*🧾 Payment Ref:* ${paymentRef}
+*📸 Payment Screenshot Uploaded:* ${paymentScreenshotUploaded}
 *🚚 ETA:* ${eta}
 ━━━━━━━━━━━━━━
 
@@ -2066,31 +2024,21 @@ ${orderLinesText}
 *📦 Packing:* *₹${packing}*
 *💰 Total Amount:* *₹${total}*
 *📝 Special Instructions:* ${specialNote}
-━━━━━━━━━━━━━━`;
+━━━━━━━━━━━━━━
 
-        setLiveStatus(
-          'confirmed',
-          `Order ${orderNo} saved in Google Sheets. Choose a WhatsApp number to send.`,
-          eta
-        );
+${paymentMode === 'Online' ? '⚠️ Please attach the uploaded payment screenshot manually in WhatsApp before sending.' : ''}`;
 
-        sendMessageToWhatsapp(
-          orderWhatsappNumbers,
-          whatsappMessage,
-          'Choose which WhatsApp number should receive this order.'
-        );
+      setLiveStatus(
+        'confirmed',
+        'Order details are ready. Send them on WhatsApp now.',
+        eta
+      );
 
-        checkoutForm.reset();
-        clearCart(false);
-        togglePaymentRefField();
-
-      } catch (error) {
-        console.error('Order save error:', error);
-        alert('Order could not be saved to Google Sheets. Check Apps Script deployment, permissions, and URL.');
-      } finally {
-        submitButton.disabled = false;
-        submitButton.innerHTML = oldButtonText;
-      }
+      sendMessageToWhatsapp(
+        orderWhatsappNumbers,
+        whatsappMessage,
+        'Choose which WhatsApp number should receive this order.'
+      );
     });
   }
 
@@ -2152,8 +2100,8 @@ ${orderLinesText}
   renderPrintMenu();
   updateSummary();
   resetStatus();
-  togglePaymentRefField();
-</script>
+  togglePaymentScreenshotField();
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
