@@ -1073,6 +1073,21 @@
       transform:translateX(2px);
     }
 
+
+    #menuSearchInput{
+      border-radius:999px;
+      padding:14px 20px;
+      font-size:16px;
+      border:1px solid rgba(184,134,43,0.24);
+      box-shadow:0 10px 24px rgba(184,134,43,0.10);
+      background:rgba(255,255,255,0.96);
+    }
+
+    #menuSearchInput:focus{
+      border-color:var(--gold-1);
+      box-shadow:0 0 0 .2rem rgba(184,134,43,0.16);
+    }
+
     @media print{
       body *{visibility:hidden !important}
 
@@ -1252,6 +1267,18 @@
       <div class="section-head text-center">
         <h2>Explore Our Menu</h2>
         <p>Choose by category and add items with quantity controls.</p>
+      </div>
+
+      <div class="row justify-content-center mb-4">
+        <div class="col-md-8 col-lg-6">
+          <input
+            type="text"
+            id="menuSearchInput"
+            class="form-control"
+            placeholder="🔍 Search food... Paneer, Maggi, Chicken"
+            oninput="renderMenu()"
+          >
+        </div>
       </div>
 
       <div class="menu-filter-wrap mb-4">
@@ -1573,103 +1600,116 @@
   const ORDER_START_HOUR = 10;
   const ORDER_END_HOUR = 22;
 
-  const menuItems = [
-    {id:'thali',name:'Special Thali',price:150,category:'thali',type:'veg',image:'https://wallpaperaccess.com/full/11262727.jpg',description:'4 Rotis, sabzi, dal, rice, raita and salad. ₹10 packing mandatory.'},
+const menuItems = [
+  {id:'thali',name:'Special Thali',price:150,category:'thali',type:'veg',image:'https://wallpaperaccess.com/full/11262727.jpg',description:'4 Rotis, sabzi, dal, rice, raita and salad. ₹10 packing mandatory.'},
 
-    {id:'fried-rice',name:'Fried Rice',price:100,category:'snacks',type:'veg',image:'https://wallpaperbat.com/img/12458126-mixed-fried-rice-recipe-how-to-make-a.jpg',description:'Veg fried rice.'},
-    {id:'paneer-fried-rice',name:'Paneer Fried Rice',price:120,category:'snacks',type:'veg',image:'https://www.flavouroffood.com/wp-content/uploads/2021/02/Paneer-Fried-Rice-4.jpg',description:'Paneer fried rice.'},
-    {id:'veg-chowmein',name:'Veg Chowmein',price:100,category:'snacks',type:'veg',image:'https://wallpaperaccess.com/full/8325607.jpg',description:'Veg noodles.'},
-    {id:'paneer-chowmein',name:'Paneer Chowmein',price:150,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/qhvlkSbh4II/maxresdefault.jpg',description:'Paneer noodles.'},
-    {id:'veg-manchurian',name:'Veg Manchurian',price:150,category:'snacks',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.sPA0_0sQ4m_MLWVxzQ1rPgHaE7?w=800&h=533&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Fried veg balls in sauce.'},
-    {id:'chilli-paneer',name:'Chilli Paneer (Dry)',price:160,category:'snacks',type:'veg',image:'https://wallpapercave.com/wp/wp11413533.jpg',description:'Spicy paneer starter.'},
-    {id:'chilli-paneer-gravy',name:'Chilli Paneer Gravy',price:200,category:'snacks',type:'veg',image:'https://www.shutterstock.com/image-photo/chilli-paneer-dry-made-using-600nw-2093440627.jpg',description:'Paneer tossed in spicy gravy.'},
-    {id:'spring-roll',name:'Spring Roll (6 pcs)',price:120,category:'snacks',type:'veg',image:'https://images.indianexpress.com/2016/06/recipies_480_thinkstock.jpg',description:'Crispy spring rolls.'},
-    {id:'veg-momos',name:'Veg Momos (8 pcs)',price:100,category:'snacks',type:'veg',image:'https://wallpapercave.com/wp/wp10053469.jpg',description:'Steamed veg momos.'},
-    {id:'paneer-momos',name:'Paneer Momos (8 pcs)',price:120,category:'snacks',type:'veg',image:'https://i0.wp.com/passion2cook.com/wp-content/uploads/2023/03/paneer-momos-2.jpg?w=1920&ssl=1',description:'Paneer momos.'},
-    {id:'chilli-potato',name:'Chilli Potato',price:120,category:'snacks',type:'veg',image:'https://wallpaperaccess.com/full/13502513.jpg',description:'Spicy crispy potato.'},
-    {id:'honey-chilli-potato',name:'Honey Chilli Potato',price:150,category:'snacks',type:'veg',image:'https://recipes.timesofindia.com/photo/52532656.cms',description:'Sweet spicy potato.'},
-    {id:'plain-maggi',name:'Plain Maggi',price:40,category:'snacks',type:'veg',image:'https://theovenchef.com/wp-content/uploads/2023/12/plain-maggie-1.png',description:'Simple maggi.'},
-    {id:'veg-maggi',name:'Veg Maggi',price:50,category:'snacks',type:'veg',image:'https://i.pinimg.com/originals/00/e6/d0/00e6d0678a79442071445a3c0c50d5ac.jpg',description:'Veg maggi noodles.'},
-    {id:'veg-sandwich',name:'Veg Grilled Sandwich',price:60,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/veg-grilled-sandwich-served-with-ketchup-isolated-rustic-wooden-background-selective-focus_726363-1356.jpg',description:'Fresh veg sandwich.'},
-    {id:'paneer-sandwich',name:'Grilled Paneer Sandwich',price:80,category:'snacks',type:'veg',image:'https://www.indianhealthyrecipes.com/wp-content/uploads/2022/03/veg-grilled-sandwich-recipe-500x500.jpg',description:'Paneer grilled sandwich.'},
-    {id:'french-fries',name:'French Fries',price:80,category:'snacks',type:'veg',image:'https://images6.alphacoders.com/108/thumb-1920-1080178.jpg',description:'Crispy fries.'},
-    {id:'peri-fries',name:'Peri Peri Fries',price:100,category:'snacks',type:'veg',image:'https://static.vecteezy.com/system/resources/previews/024/748/761/non_2x/grilled-meat-and-french-fries-a-classic-american-lunch-bar-generated-by-ai-free-photo.jpg',description:'Peri peri fries.'},
-    {id:'chilli-gobhi',name:'Chilli Gobhi',price:150,category:'snacks',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.NStB_USdcZpBzL2jgVLsKwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Spicy crispy chilli gobhi.'},
-    {id:'veg-burger',name:'Veg Burger',price:50,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop',description:'Loaded veg burger.'},
-    {id:'red-sauce-pasta',name:'Red Sauce Pasta',price:100,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=1200&auto=format&fit=crop',description:'Classic red sauce pasta.'},
-    {id:'white-sauce-pasta',name:'White Sauce Pasta',price:150,category:'snacks',type:'veg',image:'https://cookingwithcasey.com/assets/images/1742358496409-ajvfa0wd.webp',description:'Creamy white sauce pasta.'},
-    {id:'veg-macaroni',name:'Veg Macaroni',price:100,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/VNs_AXNG1ik/maxresdefault.jpg',description:'Veg macaroni.'},
-    {id:'poha',name:'Poha',price:70,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/4k-high-resolution-image-poha-black-bowl-realistic-stock-photo-image_555090-49284.jpg',description:'Light and tasty poha.'},
-    {id:'veg-roll',name:'Veg Roll',price:100,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/indian-veg-spring-roll-wrap-also-known-as-franky-chapati-roll_466689-96649.jpg?w=900',description:'Stuffed veg roll.'},
-    {id:'paneer-cheese-roll',name:'Paneer Cheese Roll',price:150,category:'snacks',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.KqFGtKghMIJD7V3BiNnl7gHaDt?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Paneer and cheese loaded roll.'},
-    {id:'paneer-kathi-roll',name:'Paneer Kathi Roll',price:120,category:'snacks',type:'veg',image:'https://thumbs.dreamstime.com/b/selective-focus-indian-food-paneer-roll-kathi-ai-generative-design-background-instagram-facebook-wall-painting-wallpaper-323520749.jpg?w=992',description:'Paneer kathi roll.'},
-    {id:'paneer-tikka',name:'Paneer Tikka',price:150,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/juicy-tandoori-paneer-tikka-white-background-paneer-tikka-image-photography_1020697-118609.jpg?w=2000',description:'Paneer tikka.'},
-    {id:'corn-cheese',name:'Corn & Cheese',price:120,category:'snacks',type:'veg',image:'https://theblondcook.com/wp-content/uploads/2018/10/easy-creamed-corn-4-500x500.jpg',description:'Creamy corn and cheese snack.'},
-    {id:'chilli-crispy-corn',name:'Chilli Crispy Corn',price:150,category:'snacks',type:'veg',image:'https://i.pinimg.com/736x/74/5e/5e/745e5e9f5231e284cc4770dcd52f81de.jpg',description:'Chilli crispy corn.'},
+  {id:'veg-manchurian',name:'Veg Manchurian',price:150,category:'snacks',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.sPA0_0sQ4m_MLWVxzQ1rPgHaE7?w=800&h=533&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Fried veg balls in sauce.'},
+  {id:'chilli-gobhi',name:'Chilli Gobhi',price:150,category:'snacks',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.NStB_USdcZpBzL2jgVLsKwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Spicy crispy chilli gobhi.'},
+  {id:'chilli-crispy-corn',name:'Chilli Crispy Corn',price:150,category:'snacks',type:'veg',image:'https://i.pinimg.com/736x/74/5e/5e/745e5e9f5231e284cc4770dcd52f81de.jpg',description:'Chilli crispy corn.'},
+  {id:'chilli-paneer',name:'Chilli Paneer (Dry)',price:160,category:'snacks',type:'veg',image:'https://wallpapercave.com/wp/wp11413533.jpg',description:'Spicy paneer starter.'},
+  {id:'spring-roll',name:'Spring Roll (6 pcs)',price:120,category:'snacks',type:'veg',image:'https://images.indianexpress.com/2016/06/recipies_480_thinkstock.jpg',description:'Crispy spring rolls.'},
+  {id:'veg-momos',name:'Veg Momos (8 pcs)',price:100,category:'snacks',type:'veg',image:'https://wallpapercave.com/wp/wp10053469.jpg',description:'Steamed veg momos.'},
+  {id:'kurkure-veg-momos',name:'Kurkure Veg Momos',price:120,category:'snacks',type:'veg',image:'https://b.zmtcdn.com/data/pictures/1/20243811/9cbec4a596a6c137c95d851e896b2755.jpg',description:'Crispy kurkure veg momos.'},
+  {id:'paneer-momos',name:'Paneer Momos (8 pcs)',price:120,category:'snacks',type:'veg',image:'https://rotigo.in/wp-content/uploads/2025/02/paneer-momos-1.jpg',description:'Paneer momos.'},
+  {id:'kurkure-paneer-momos',name:'Kurkure Paneer Momos',price:140,category:'snacks',type:'veg',image:'https://rotigo.in/wp-content/uploads/2025/02/1690110734478_SKU-0194_0.jpg',description:'Crispy kurkure paneer momos.'},
+  {id:'chilli-potato',name:'Chilli Potato',price:120,category:'snacks',type:'veg',image:'https://wallpaperaccess.com/full/13502513.jpg',description:'Spicy crispy potato.'},
+  {id:'honey-chilli-potato',name:'Honey Chilli Potato',price:150,category:'snacks',type:'veg',image:'https://recipes.timesofindia.com/photo/52532656.cms',description:'Sweet spicy potato.'},
+  {id:'veg-sandwich',name:'Veg Sandwich',price:50,category:'snacks',type:'veg',image:'https://rare-gallery.com/uploads/posts/853967-Sandwich-Fast-food-Bread-Olive-Vegetables-Cutting.jpg',description:'Fresh veg sandwich.'},
+  {id:'grilled-aloo-sandwich',name:'Grilled Aloo Sandwich',price:60,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/veg-grilled-sandwich-served-with-ketchup-isolated-rustic-wooden-background-selective-focus_726363-1356.jpg',description:'Grilled aloo sandwich.'},
+  {id:'paneer-sandwich',name:'Grilled Paneer Sandwich',price:80,category:'snacks',type:'veg',image:'https://www.indianhealthyrecipes.com/wp-content/uploads/2022/03/veg-grilled-sandwich-recipe-500x500.jpg',description:'Paneer grilled sandwich.'},
+  {id:'french-fries',name:'French Fries',price:80,category:'snacks',type:'veg',image:'https://images6.alphacoders.com/108/thumb-1920-1080178.jpg',description:'Crispy fries.'},
+  {id:'peri-fries',name:'Peri-Peri Fries',price:100,category:'snacks',type:'veg',image:'https://static.vecteezy.com/system/resources/previews/024/748/761/non_2x/grilled-meat-and-french-fries-a-classic-american-lunch-bar-generated-by-ai-free-photo.jpg',description:'Peri peri fries.'},
+  {id:'veg-burger',name:'Veg Burger',price:50,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop',description:'Loaded veg burger.'},
+  {id:'red-sauce-pasta',name:'Red Sauce Pasta',price:100,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=1200&auto=format&fit=crop',description:'Classic red sauce pasta.'},
+  {id:'white-sauce-pasta',name:'White Sauce Pasta',price:150,category:'snacks',type:'veg',image:'https://cookingwithcasey.com/assets/images/1742358496409-ajvfa0wd.webp',description:'Creamy white sauce pasta.'},
+  {id:'veg-macaroni',name:'Veg Macaroni',price:100,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/VNs_AXNG1ik/maxresdefault.jpg',description:'Veg macaroni.'},
+  {id:'poha',name:'Poha',price:70,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/4k-high-resolution-image-poha-black-bowl-realistic-stock-photo-image_555090-49284.jpg',description:'Light and tasty poha.'},
+  {id:'veg-roll',name:'Veg Roll',price:100,category:'snacks',type:'veg',image:'https://img.freepik.com/premium-photo/indian-veg-spring-roll-wrap-also-known-as-franky-chapati-roll_466689-96649.jpg?w=900',description:'Stuffed veg roll.'},
+  {id:'paneer-cheese-roll',name:'Paneer Cheese Roll',price:150,category:'snacks',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.KqFGtKghMIJD7V3BiNnl7gHaDt?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Paneer and cheese loaded roll.'},
+  {id:'paneer-kathi-roll',name:'Paneer Kathi Roll',price:120,category:'snacks',type:'veg',image:'https://thumbs.dreamstime.com/b/selective-focus-indian-food-paneer-roll-kathi-ai-generative-design-background-instagram-facebook-wall-painting-wallpaper-323520749.jpg?w=992',description:'Paneer kathi roll.'},
+  {id:'corn-cheese',name:'Corn & Cheese',price:120,category:'snacks',type:'veg',image:'https://theblondcook.com/wp-content/uploads/2018/10/easy-creamed-corn-4-500x500.jpg',description:'Creamy corn and cheese snack.'},
 
-    {id:'chana-masala',name:'Chana Masala',price:120,category:'main-course',type:'veg',image:'https://img.freepik.com/premium-photo/chana-masala-photo-with-touch-spice_1036998-305050.jpg',description:'Classic chana curry.'},
-    {id:'dal-tadka',name:'Dal Tadka',price:100,category:'main-course',type:'veg',image:'https://static.vecteezy.com/system/resources/previews/038/947/178/non_2x/ai-generated-dal-tadka-is-a-popular-indian-dish-where-cooked-spiced-lentils-are-finished-with-a-tempering-made-of-ghee-or-oil-and-spices-photo.jpg',description:'Tadka dal.'},
-    {id:'aloo-jeera',name:'Aloo Jeera',price:100,category:'main-course',type:'veg',image:'https://2.bp.blogspot.com/-wonKVzMF8lM/VtYdt7V12sI/AAAAAAAAUuo/li4gWvl4zBM/s1600/Aloo-Jeera_finalforweb1.jpg',description:'Jeera potatoes.'},
-    {id:'mix-veg',name:'Mix Veg',price:150,category:'main-course',type:'veg',image:'https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/Mixed-Veg-Curry1.jpg',description:'Mixed vegetables.'},
-    {id:'paneer-bhurji',name:'Paneer Bhurji',price:180,category:'main-course',type:'veg',image:'https://media.istockphoto.com/id/1820486089/photo/paneer-bhurji.jpg?s=612x612&w=0&k=20&c=8rcJeVTEJBw_gU6UN60qaDhknd4Z9jGw-x32cwk1vr8=',description:'Paneer bhurji masala.'},
-    {id:'kadhai-paneer',name:'Kadhai Paneer',price:190,category:'main-course',type:'veg',image:'https://1.bp.blogspot.com/_GlkYxavu-Ts/StVnaw3GCJI/AAAAAAAAARM/2b3PenJbX7g/s400/kadhai-paneer1.JPG',description:'Kadhai paneer gravy.'},
-    {id:'shahi-paneer',name:'Shahi Paneer',price:190,category:'main-course',type:'veg',image:'https://recipesblob.oetker.in/assets/6c0ac2f3ce204d3d9bb1df9709fc06c9/1272x764/shahi-paneer.jpg',description:'Rich paneer curry.'},
-    {id:'paneer-butter-masala',name:'Paneer Butter Masala',price:190,category:'main-course',type:'veg',image:'https://img.freepik.com/premium-photo/delicious-paneer-butter-masala-photography_928503-848.jpg',description:'Butter paneer curry.'},
-    {id:'aloo-gobhi',name:'Aloo Gobhi',price:120,category:'main-course',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.zoeJP2Q4Mp3y66jpOWWdEgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic aloo gobhi curry.'},
-    {id:'aloo-crispy',name:'Aloo Crispy',price:90,category:'main-course',type:'veg',image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3USDT6St9x7BFu5xBg5yBj1SwMtUhyvC7Kw&s',description:'Classic aloo crispy.'},
-    {id:'matar-paneer',name:'Matar Paneer',price:180,category:'main-course',type:'veg',image:'https://thumbs.dreamstime.com/b/savoring-delicious-matar-paneer-fresh-peas-cubes-rich-gravy-delight-plate-featuring-soft-vibrant-green-immersed-370203039.jpg?w=992',description:'Paneer and matar curry.'},
-    {id:'paneer-lababdar',name:'Paneer Lababdar',price:190,category:'main-course',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.gewHMZbjoOCtJwpIlihimwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Rich paneer lababdar gravy.'},
+  {id:'aloo-matar',name:'Aloo Matar',category:'main-course',type:'veg',image:'https://www.cubesnjuliennes.com/wp-content/uploads/2020/07/Punjabi-Aloo-Matar-Recipe.jpg',description:'Aloo matar curry.',variants:[{label:'Half',price:70},{label:'Full',price:120}]},
+  {id:'chana-masala',name:'Chana Masala',category:'main-course',type:'veg',image:'https://img.freepik.com/premium-photo/chana-masala-photo-with-touch-spice_1036998-305050.jpg',description:'Classic chana curry.',variants:[{label:'Half',price:70},{label:'Full',price:120}]},
+  {id:'dal-tadka',name:'Dal Tadka',category:'main-course',type:'veg',image:'https://static.vecteezy.com/system/resources/previews/038/947/178/non_2x/ai-generated-dal-tadka-is-a-popular-indian-dish-where-cooked-spiced-lentils-are-finished-with-a-tempering-made-of-ghee-or-oil-and-spices-photo.jpg',description:'Tadka dal.',variants:[{label:'Half',price:70},{label:'Full',price:120}]},
+  {id:'aloo-jeera',name:'Aloo Jeera',category:'main-course',type:'veg',image:'https://2.bp.blogspot.com/-wonKVzMF8lM/VtYdt7V12sI/AAAAAAAAUuo/li4gWvl4zBM/s1600/Aloo-Jeera_finalforweb1.jpg',description:'Jeera potatoes.',variants:[{label:'Half',price:70},{label:'Full',price:120}]},
+  {id:'aloo-gobhi',name:'Aloo Gobhi',category:'main-course',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.zoeJP2Q4Mp3y66jpOWWdEgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic aloo gobhi curry.',variants:[{label:'Half',price:70},{label:'Full',price:120}]},
+  {id:'mix-veg',name:'Mix Veg',category:'main-course',type:'veg',image:'https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/Mixed-Veg-Curry1.jpg',description:'Mixed vegetables.',variants:[{label:'Half',price:90},{label:'Full',price:120}]},
+  {id:'paneer-bhurji',name:'Paneer Bhurji',category:'main-course',type:'veg',image:'https://media.istockphoto.com/id/1820486089/photo/paneer-bhurji.jpg?s=612x612&w=0&k=20&c=8rcJeVTEJBw_gU6UN60qaDhknd4Z9jGw-x32cwk1vr8=',description:'Paneer bhurji masala.',variants:[{label:'Half',price:120},{label:'Full',price:210}]},
+  {id:'kadhai-paneer',name:'Kadhai Paneer',category:'main-course',type:'veg',image:'https://1.bp.blogspot.com/_GlkYxavu-Ts/StVnaw3GCJI/AAAAAAAAARM/2b3PenJbX7g/s400/kadhai-paneer1.JPG',description:'Kadhai paneer gravy.',variants:[{label:'Half',price:120},{label:'Full',price:210}]},
+  {id:'paneer-mix-veg',name:'Paneer Mix Veg',category:'main-course',type:'veg',image:'https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/Mixed-Veg-Curry1.jpg',description:'Paneer mix veg.',variants:[{label:'Half',price:120},{label:'Full',price:210}]},
+  {id:'shahi-paneer',name:'Shahi Paneer',category:'main-course',type:'veg',image:'https://recipesblob.oetker.in/assets/6c0ac2f3ce204d3d9bb1df9709fc06c9/1272x764/shahi-paneer.jpg',description:'Rich paneer curry.',variants:[{label:'Half',price:120},{label:'Full',price:210}]},
+  {id:'paneer-butter-masala',name:'Paneer Butter Masala',category:'main-course',type:'veg',image:'https://img.freepik.com/premium-photo/delicious-paneer-butter-masala-photography_928503-848.jpg',description:'Butter paneer curry.',variants:[{label:'Half',price:120},{label:'Full',price:210}]},
+  {id:'matar-paneer',name:'Matar Paneer',category:'main-course',type:'veg',image:'https://thumbs.dreamstime.com/b/savoring-delicious-matar-paneer-fresh-peas-cubes-rich-gravy-delight-plate-featuring-soft-vibrant-green-immersed-370203039.jpg?w=992',description:'Paneer and matar curry.',variants:[{label:'Half',price:120},{label:'Full',price:210}]},
+  {id:'paneer-lababdar',name:'Paneer Lababdar',category:'main-course',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.gewHMZbjoOCtJwpIlihimwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Rich paneer lababdar gravy.',variants:[{label:'Half',price:120},{label:'Full',price:210}]},
 
-    {id:'plain-paratha',name:'Plain Paratha',price:40,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/triangle-shape-plain-paratha-parantha-is-yummy-indian-flat-bread-made-whole-wheat-flour-served-plate-selective-focus_466689-2962.jpg',description:'Plain paratha.'},
-    {id:'lachha-paratha',name:'Lachha Paratha',price:50,category:'bread-rice',type:'veg',image:'https://i.ytimg.com/vi/pmA2-YtUMz4/maxresdefault.jpg',description:'Layered paratha.'},
-    {id:'aloo-paratha',name:'Aloo Paratha',price:60,category:'bread-rice',type:'veg',image:'https://wallpaperaccess.com/full/9466589.jpg',description:'Stuffed aloo paratha.'},
-    {id:'aloo-pyaaz-paratha',name:'Aloo Pyaaz Paratha',price:70,category:'bread-rice',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.uJk6VgRxxYoPxCt4T413bAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed aloo pyaaz paratha.'},
-    {id:'mix-veg-paratha',name:'Mix Veg Paratha',price:90,category:'bread-rice',type:'veg',image:'https://t3.ftcdn.net/jpg/09/45/46/72/360_F_945467264_13rCx2nGR9wb9wrVt2g2FEFB4tE4b8sW.jpg',description:'Mix veg paratha.'},
-    {id:'paneer-paratha',name:'Paneer Paratha',price:90,category:'bread-rice',type:'veg',image:'https://tse1.mm.bing.net/th/id/OIP.hIrsd6QLnB4qArX1Kg-o5gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed paneer paratha.'},
-    {id:'gobhi-paratha',name:'Gobhi Paratha',price:70,category:'bread-rice',type:'veg',image:'https://tse2.mm.bing.net/th/id/OIP.b5cvsZ7U6LpcIIr2RKzqmAHaE9?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed gobhi paratha.'},
-    {id:'plain-roti',name:'Plain Roti',price:10,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Fresh roti.'},
-    {id:'butter-roti',name:'Butter Roti',price:12,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Butter roti.'},
-    {id:'plain-rice',name:'Plain Rice',price:70,category:'bread-rice',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.UIWqlls5ZeZbVV8t0U8FjwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Steamed rice.'},
-    {id:'vegetable-pulav',name:'Vegetable Pulav',price:90,category:'bread-rice',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.MppFLjNgDDzu2RNCmmEp4wHaEJ?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Vegetable pulav.'},
-    {id:'jeera-rice',name:'Jeera Rice',price:80,category:'bread-rice',type:'veg',image:'https://c8.alamy.com/comp/2H5RFYE/vegetarian-indian-jeera-rice-with-cumin-and-other-spices-close-up-in-the-bowl-on-the-table-horizontal-2H5RFYE.jpg',description:'Cumin rice.'},
-    {id:'veg-biryani',name:'Veg Biryani',price:150,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/view-tasty-yummy-delicious-indian-biryani-4k-hd-photo_1193781-10185.jpg',description:'Veg biryani.'},
+  {id:'plain-paratha',name:'Plain Paratha',price:40,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/triangle-shape-plain-paratha-parantha-is-yummy-indian-flat-bread-made-whole-wheat-flour-served-plate-selective-focus_466689-2962.jpg',description:'Plain paratha.'},
+  {id:'lachha-paratha',name:'Lachha Paratha',price:50,category:'bread-rice',type:'veg',image:'https://i.ytimg.com/vi/pmA2-YtUMz4/maxresdefault.jpg',description:'Layered paratha.'},
+  {id:'aloo-paratha',name:'Aloo Paratha',price:60,category:'bread-rice',type:'veg',image:'https://wallpaperaccess.com/full/9466589.jpg',description:'Stuffed aloo paratha.'},
+  {id:'aloo-pyaz-paratha',name:'Aloo Pyaz Paratha',price:70,category:'bread-rice',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.uJk6BNDHqHljUehn7zqLGQHaEK?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed aloo pyaz paratha.'},
+  {id:'paneer-paratha',name:'Paneer Paratha',price:90,category:'bread-rice',type:'veg',image:'https://tse1.mm.bing.net/th/id/OIP.hIrsd6QLnB4qArX1Kg-o5gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed paneer paratha.'},
+  {id:'paneer-pyaz-paratha',name:'Paneer Pyaz Paratha',price:80,category:'bread-rice',type:'veg',image:'https://vegecravings.com/wp-content/uploads/2022/03/Paneer-Paratha-Recipe-Step-By-Step-Instructions-scaled.jpg',description:'Paneer pyaz paratha.'},
+  {id:'mix-paratha',name:'Mix Paratha',price:90,category:'bread-rice',type:'veg',image:'https://t3.ftcdn.net/jpg/09/45/46/72/360_F_945467264_13rCx2nGR9wb9wrVt2g2FEFB4tE4b8sW.jpg',description:'Mix paratha.'},
+  {id:'gobhi-paratha',name:'Gobhi Paratha',price:70,category:'bread-rice',type:'veg',image:'https://tse2.mm.bing.net/th/id/OIP.b5cvsZ7U6LpcIIr2RKzqmAHaE9?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Stuffed gobhi paratha.'},
+  {id:'pyaz-paratha',name:'Pyaz Paratha',price:60,category:'bread-rice',type:'veg',image:'https://t3.ftcdn.net/jpg/09/45/46/72/360_F_945467264_13rCx2nGR9wb9wrVt2g2FEFB4tE4b8sW.jpg',description:'Pyaz paratha.'},
+  {id:'plain-roti',name:'Plain Roti',price:10,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/wheat-roti-hd-8k-wallpaper-stock-photographic-image_1064748-508.jpg?w=2000',description:'Fresh roti.'},
+  {id:'butter-roti',name:'Butter Roti',price:12,category:'bread-rice',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.TF9hCF6o2rTZlTp1pUvCywHaFj?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Butter roti.'},
+  {id:'fried-rice',name:'Fried Rice',price:100,category:'bread-rice',type:'veg',image:'https://wallpaperbat.com/img/12458126-mixed-fried-rice-recipe-how-to-make-a.jpg',description:'Veg fried rice.'},
+  {id:'paneer-fried-rice',name:'Paneer Fried Rice',price:120,category:'bread-rice',type:'veg',image:'https://www.flavouroffood.com/wp-content/uploads/2021/02/Paneer-Fried-Rice-4.jpg',description:'Paneer fried rice.'},
+  {id:'plain-rice',name:'Plain Rice',price:70,category:'bread-rice',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.UIWqlls5ZeZbVV8t0U8FjwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Steamed rice.'},
+  {id:'jeera-rice',name:'Jeera Rice',price:80,category:'bread-rice',type:'veg',image:'https://c8.alamy.com/comp/2H5RFYE/vegetarian-indian-jeera-rice-with-cumin-and-other-spices-close-up-in-the-bowl-on-the-table-horizontal-2H5RFYE.jpg',description:'Cumin rice.'},
+  {id:'veg-biryani',name:'Veg Biryani',price:150,category:'bread-rice',type:'veg',image:'https://img.freepik.com/premium-photo/view-tasty-yummy-delicious-indian-biryani-4k-hd-photo_1193781-10185.jpg',description:'Veg biryani.'},
 
-    {id:'chai',name:'Aadrak Chai',price:20,category:'beverages',type:'veg',image:'https://budleaf.com/wp-content/uploads/2023/08/Adrak-masala-chai-scaled.jpeg',description:'Ginger tea.'},
-    {id:'coffee',name:'Hot Coffee',price:40,category:'beverages',type:'veg',image:'https://th.bing.com/th?q=Coffee%20Cup%20Background%20Wallpaper&pid=ImgDet&w=150&h=150&c=1&p=1&rs=1&t=1&dpr=1.3&mkt=en-in&adlt=demote&o=7&rm=3',description:'Hot coffee.'},
-    {id:'cold-coffee',name:'Classic Cold Coffee',price:70,category:'beverages',type:'veg',image:'https://tse2.mm.bing.net/th/id/OIP.2P4fqrajqy8-4iqhlVbR4AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic cold coffee.'},
-    {id:'banana-shake',name:'Banana Shake',price:80,category:'beverages',type:'veg',image:'https://www.aboutamom.com/wp-content/uploads/2024/08/Banana-Milkshake-A_AAM_Banana_Milkshake_Recipe_Future_2.jpg.jpg',description:'Banana shake.'},
-    {id:'oreo-shake',name:'Oreo Shake',price:60,category:'beverages',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'Oreo shake.'},
-    {id:'hot-milk',name:'Hot Milk',price:40,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=1200&auto=format&fit=crop',description:'Fresh hot milk.'},
-    {id:'black-coffee',name:'Black Coffee',price:30,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop',description:'Strong black coffee.'},
-    {id:'lemonade',name:'Lemonade',price:40,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1200&auto=format&fit=crop',description:'Refreshing lemonade.'},
-    {id:'salted-lassi',name:'Salted Lassi',price:50,category:'beverages',type:'veg',image:'https://wallpaperaccess.com/full/18669887.jpg',description:'Salted lassi.'},
-    {id:'mix-raita',name:'Mix Raita',price:70,category:'beverages',type:'veg',image:'https://wallpapercave.com/wp/wp12264876.jpg',description:'Mixed raita.'},
-    {id:'boondi-raita',name:'Boondi Raita',price:70,category:'beverages',type:'veg',image:'https://www.eatclub.de/wp-content/uploads/2025/11/ec-boondi-raita.jpg',description:'Boondi raita.'},
-    {id:'sweet-lassi',name:'Sweet Lassi',price:50,category:'beverages',type:'veg',image:'https://i.pinimg.com/originals/fa/ee/5b/faee5b82b78a9e3cd65bdff3edc3f95a.jpg',description:'Sweet lassi.'},
+  {id:'chai',name:'Aadrak Chai',price:20,category:'beverages',type:'veg',image:'https://tse1.explicit.bing.net/th/id/OIP.oqX6ZnzGjvYBJz2GWyK33AHaE7?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Ginger tea.'},
+  {id:'elaichi-chai',name:'Aadrak Elaichi Chai',price:30,category:'beverages',type:'veg',image:'https://swachhtea.com/cdn/shop/files/1_13f36ba5-a4bd-47bd-b588-484f0ac3cbbf_1000x.jpg?v=1719233375',description:'Ginger elaichi tea.'},
+  {id:'hot-milk',name:'Hot Milk',price:40,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=1200&auto=format&fit=crop',description:'Fresh hot milk.'},
+  {id:'coffee',name:'Hot Coffee',price:40,category:'beverages',type:'veg',image:'https://th.bing.com/th?q=Coffee%20Cup%20Background%20Wallpaper&pid=ImgDet&w=150&h=150&c=1&p=1&rs=1&t=1&dpr=1.3&mkt=en-in&adlt=demote&o=7&rm=3',description:'Hot coffee.'},
+  {id:'black-coffee',name:'Black Coffee',price:30,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop',description:'Strong black coffee.'},
+  {id:'hot-chocolate',name:'Hot Chocolate',price:90,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?q=80&w=1200&auto=format&fit=crop',description:'Hot chocolate.'},
+  {id:'cold-coffee',name:'Classic Cold Coffee',price:70,category:'beverages',type:'veg',image:'https://tse2.mm.bing.net/th/id/OIP.2P4fqrajqy8-4iqhlVbR4AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic cold coffee.'},
+  {id:'banana-shake',name:'Banana Shake',price:80,category:'beverages',type:'veg',image:'https://www.aboutamom.com/wp-content/uploads/2024/08/Banana-Milkshake-A_AAM_Banana_Milkshake_Recipe_Future_2.jpg.jpg',description:'Banana shake.'},
+  {id:'oreo-shake',name:'Oreo Shake',price:80,category:'beverages',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'Oreo shake.'},
+  {id:'kitkat-crunch-shake',name:'KitKat Crunch Shake',price:100,category:'beverages',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'KitKat crunch shake.'},
+  {id:'cream-chocolate-shake',name:'Cream Chocolate Shake',price:100,category:'beverages',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'Cream chocolate shake.'},
+  {id:'ice-cream-latte',name:'Ice-Cream Latte',price:100,category:'beverages',type:'veg',image:'https://tse2.mm.bing.net/th/id/OIP.2P4fqrajqy8-4iqhlVbR4AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Ice-cream latte.'},
+  {id:'lemonade',name:'Lemonade',price:40,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1200&auto=format&fit=crop',description:'Refreshing lemonade.'},
+  {id:'mojito',name:'Mojito',price:60,category:'beverages',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.f_z13A_8JEZ8yLqLvUYzkwHaEu?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Refreshing mojito.'},
+  {id:'salted-lassi',name:'Salted Lassi',price:50,category:'beverages',type:'veg',image:'https://wallpaperaccess.com/full/18669887.jpg',description:'Salted lassi.'},
+  {id:'sweet-lassi',name:'Sweet Lassi',price:50,category:'beverages',type:'veg',image:'https://i.pinimg.com/originals/fa/ee/5b/faee5b82b78a9e3cd65bdff3edc3f95a.jpg',description:'Sweet lassi.'},
+  {id:'mix-raita',name:'Mix Raita',price:70,category:'beverages',type:'veg',image:'https://wallpapercave.com/wp/wp12264876.jpg',description:'Mixed raita.'},
+  {id:'boondi-raita',name:'Boondi Raita',price:70,category:'beverages',type:'veg',image:'https://www.eatclub.de/wp-content/uploads/2025/11/ec-boondi-raita.jpg',description:'Boondi raita.'},
 
-    {id:'boiled-eggs',name:'Boiled Eggs',price:25,category:'chicken',type:'non-veg',image:'https://media.istockphoto.com/id/956940158/photo/hard-boiled-eggs.jpg?s=612x612&w=0&k=20&c=106pEBT8ddfH3n_xweh8-tsrwSV6gREqn5QUCM_-onE=',description:'Boiled eggs (Two Pcs).'},
-    {id:'egg-curry',name:'Egg Curry',price:150,category:'chicken',type:'non-veg',image:'https://images.services.kitchenstories.io/vmRyyK5xOTfkP0Jatqunl2h-11w=/1200x0/filters:quality(80)/images.kitchenstories.io/wagtailOriginalImages/R2899-photo-final-3x4.jpg',description:'Egg curry.'},
-    {id:'plain-omelette',name:'Plain Omelette',price:40,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Simple omelette.'},
-    {id:'bread-omelette',name:'Bread Omelette',price:50,category:'chicken',type:'non-veg',image:'https://tse1.mm.bing.net/th/id/OIP.a8x5MgnG3JftCFemeU8OuwHaDG?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Bread omelette.'},
-    {id:'veg-omelette',name:'Vegetable Omelette',price:50,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Omelette with veggies.'},
-    {id:'half-fry-omelette',name:'Half Fry Omelette',price:40,category:'chicken',type:'non-veg',image:'https://tse2.mm.bing.net/th/id/OIP.Oxk6VgRxxYoPxCt4T413bAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Half fry style egg.'},
-    {id:'chilli-chicken',name:'Chilli Chicken',price:300,category:'chicken',type:'non-veg',image:'https://t3.ftcdn.net/jpg/09/43/87/72/360_F_943877268_Q6tjM8uPJWhOaiWqqd8BZj2GSIdYt785.jpg',description:'Spicy chilli chicken.'},
-    {id:'chicken-momos',name:'Chicken Momos (8 pcs)',price:150,category:'chicken',type:'non-veg',image:'https://t3.ftcdn.net/jpg/06/49/25/26/360_F_649252668_AcwaAGxraSFmNbr5C20hDpTwz1qoi7RF.jpg',description:'Juicy chicken momos.'},
-    {id:'chicken-nuggets',name:'Chicken Nuggets',price:300,category:'chicken',type:'non-veg',image:'https://t4.ftcdn.net/jpg/01/58/36/13/360_F_158361356_PsgqLvsirkpM5n9hqCn48rexuB2UWsul.jpg',description:'Crispy chicken nuggets.'},
-    {id:'chicken-soup',name:'Chicken Soup',price:70,category:'chicken',type:'non-veg',image:'https://images.pexels.com/photos/10338449/pexels-photo-10338449.jpeg?cs=srgb&dl=pexels-istvanpszabo-10338449.jpg&fm=jpg',description:'Hot and comforting chicken soup.'},
-    {id:'chicken-lemon',name:'Chicken Lemon',price:120,category:'chicken',type:'non-veg',image:'https://tse1.mm.bing.net/th/id/OIP.mWS928cTfvEQrs6e5w0m3gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Chicken lemon.'},
-    {id:'chicken-boiled',name:'Chicken Boiled',price:100,category:'chicken',type:'non-veg',image:'https://tse1.mm.bing.net/th/id/OIP.zpbHGBc0UItpu0f47aLBPQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Chicken boiled (200 gm).'},
-    {id:'chicken-tikka-half',name:'Chicken Tikka (Half)',price:300,category:'chicken',type:'non-veg',image:'https://tse2.mm.bing.net/th/id/OIP.SLpKztir0tF7J8if85S3EgHaD4?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Chicken tikka half.'},
-    {id:'chicken-tikka-full',name:'Chicken Tikka (Full)',price:500,category:'chicken',type:'non-veg',image:'https://tse2.mm.bing.net/th/id/OIP.SLpKztir0tF7J8if85S3EgHaD4?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Chicken tikka full.'},
-    {id:'afghani-tikka-half',name:'Afghani Chicken Tikka (Half)',price:300,category:'chicken',type:'non-veg',image:'https://hindi.dheivegam.com/wp-content/uploads/2023/06/Chicken-afghani-tikka-recipe-in-Hindi.jpg',description:'Afghani tikka half.'},
-    {id:'afghani-tikka-full',name:'Afghani Chicken Tikka (Full)',price:500,category:'chicken',type:'non-veg',image:'https://hindi.dheivegam.com/wp-content/uploads/2023/06/Chicken-afghani-tikka-recipe-in-Hindi.jpg',description:'Afghani tikka full.'},
-    {id:'butter-chicken-half',name:'Butter Chicken (Half)',price:300,category:'chicken',type:'non-veg',image:'https://www.licious.in/blog/wp-content/uploads/2020/10/butter-chicken-.jpg',description:'Butter chicken half.'},
-    {id:'butter-chicken-full',name:'Butter Chicken (Full)',price:500,category:'chicken',type:'non-veg',image:'https://www.licious.in/blog/wp-content/uploads/2020/10/butter-chicken-.jpg',description:'Butter chicken full.'},
-    {id:'kadai-chicken-half',name:'Kadai Chicken (Half)',price:300,category:'chicken',type:'non-veg',image:'https://tse3.mm.bing.net/th/id/OIP.5iXfn6XIGmIKSoodDFSNdgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Kadai chicken half.'},
-    {id:'kadai-chicken-full',name:'Kadai Chicken (Full)',price:500,category:'chicken',type:'non-veg',image:'https://tse3.mm.bing.net/th/id/OIP.5iXfn6XIGmIKSoodDFSNdgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Kadai chicken full.'},
-    {id:'tawa-chicken-half',name:'Tawa Chicken (Half)',price:300,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1200&auto=format&fit=crop',description:'Tawa chicken half.'},
-    {id:'tawa-chicken-full',name:'Tawa Chicken (Full)',price:500,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1200&auto=format&fit=crop',description:'Tawa chicken full.'}
-  ];
+  {id:'khichadi',name:'Khichadi',price:120,category:'main-course',type:'veg',image:'https://www.funfoodfrolic.com/wp-content/uploads/2021/05/Dalia-Khichdi-Blog-Thumbnail.jpg',description:'Simple khichadi.'},
+  {id:'vegetable-khichadi',name:'Vegetable Khichadi',price:150,category:'main-course',type:'veg',image:'https://tandoor.com.sg/wp-content/uploads/2025/06/indian-vegetable-khichdi-recipe-1750072625.jpg',description:'Vegetable khichadi.'},
+
+  {id:'plain-maggie',name:'Plain Maggie',price:50,category:'snacks',type:'veg',image:'https://theovenchef.com/wp-content/uploads/2023/12/plain-maggie-1.png',description:'Simple maggie.'},
+  {id:'vegetable-maggie',name:'Vegetable Maggie',price:60,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/T09CbMLq6Wo/maxresdefault.jpg',description:'Vegetable maggie.'},
+  {id:'cheese-maggie',name:'Cheese Maggie',price:60,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/QqRy4cJywh4/maxresdefault.jpg',description:'Cheese maggie.'},
+
+  {id:'boiled-egg',name:'Boiled Egg (2 pcs)',price:25,category:'chicken',type:'non-veg',image:'https://media.istockphoto.com/id/956940158/photo/hard-boiled-eggs.jpg?s=612x612&w=0&k=20&c=106pEBT8ddfH3n_xweh8-tsrwSV6gREqn5QUCM_-onE=',description:'Boiled egg two pieces.'},
+  {id:'vegetable-omelette',name:'Vegetable Omelette',price:50,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Omelette with vegetables.'},
+  {id:'bread-omelette',name:'Bread Omelette',price:50,category:'chicken',type:'non-veg',image:'https://tse1.mm.bing.net/th/id/OIP.a8x5MgnG3JftCFemeU8OuwHaDG?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Bread omelette.'},
+  {id:'cheese-omelette',name:'Cheese Omelette',price:60,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Cheese omelette.'},
+  {id:'half-fried-omelette',name:'Half Fried Omelette',price:50,category:'chicken',type:'non-veg',image:'https://tse2.mm.bing.net/th/id/OIP.lyCWnRECeXJGgqqTwHfkGAHaEo?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Half fried omelette.'},
+
+  {id:'chilli-chicken',name:'Chilli Chicken',category:'chicken',type:'non-veg',image:'https://t3.ftcdn.net/jpg/09/43/87/72/360_F_943877268_Q6tjM8uPJWhOaiWqqd8BZj2GSIdYt785.jpg',description:'Spicy chilli chicken.',variants:[{label:'Half',price:180},{label:'Full',price:299}]},
+  {id:'bunton-garlic-chicken',name:'Bunton Garlic Chicken',category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1200&auto=format&fit=crop',description:'Garlic chicken.',variants:[{label:'Half',price:180},{label:'Full',price:299}]},
+  {id:'chicken-finger',name:'Chicken Finger',category:'chicken',type:'non-veg',image:'https://static.vecteezy.com/system/resources/thumbnails/041/899/364/small_2x/ai-generated-irresistible-and-greasy-chicken-fingers-generative-ai-photo.jpeg',description:'Chicken finger.',variants:[{label:'Half',price:180},{label:'Full',price:299}]},
+  {id:'chicken-nuggets',name:'Chicken Nuggets',category:'chicken',type:'non-veg',image:'https://t4.ftcdn.net/jpg/01/58/36/13/360_F_158361356_PsgqLvsirkpM5n9hqCn48rexuB2UWsul.jpg',description:'Chicken nuggets.',variants:[{label:'Half',price:180},{label:'Full',price:299}]},
+  {id:'chicken-soup',name:'Chicken Soup',price:70,category:'chicken',type:'non-veg',image:'https://images.pexels.com/photos/10338449/pexels-photo-10338449.jpeg?cs=srgb&dl=pexels-istvanpszabo-10338449.jpg&fm=jpg',description:'Hot chicken soup.'},
+  {id:'chicken-fried-rice',name:'Chicken Fried Rice',price:150,category:'chicken',type:'non-veg',image:'https://tse3.mm.bing.net/th/id/OIP.ld7xjlxTzt-5R40Y9F-obwHaE8?cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3',description:'Chicken fried rice.'},
+  {id:'egg-fried-rice',name:'Egg Fried Rice',price:120,category:'chicken',type:'non-veg',image:'https://wallpaperbat.com/img/12458126-mixed-fried-rice-recipe-how-to-make-a.jpg',description:'Egg fried rice.'},
+  {id:'kadhai-chicken',name:'Kadhai Chicken',category:'chicken',type:'non-veg',image:'https://tse3.mm.bing.net/th/id/OIP.5iXfn6XIGmIKSoodDFSNdgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Kadhai chicken.',variants:[{label:'Half',price:300},{label:'Full',price:500}]},
+  {id:'chicken-curry',name:'Chicken Curry',category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1200&auto=format&fit=crop',description:'Chicken curry.',variants:[{label:'Half',price:300},{label:'Full',price:500}]},
+  {id:'chicken-butter-masala',name:'Chicken Butter Masala',category:'chicken',type:'non-veg',image:'https://www.licious.in/blog/wp-content/uploads/2020/10/butter-chicken-.jpg',description:'Chicken butter masala.',variants:[{label:'Half',price:300},{label:'Full',price:500}]},
+  {id:'chicken-masala',name:'Chicken Masala',category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=1200&auto=format&fit=crop',description:'Chicken masala.',variants:[{label:'Half',price:300},{label:'Full',price:500}]},
+  {id:'egg-curry',name:'Egg Curry',price:150,category:'chicken',type:'non-veg',image:'https://images.services.kitchenstories.io/vmRyyK5xOTfkP0Jatqunl2h-11w=/1200x0/filters:quality(80)/images.kitchenstories.io/wagtailOriginalImages/R2899-photo-final-3x4.jpg',description:'Egg curry.'},
+  {id:'chicken-biryani',name:'Chicken Biryani',price:220,category:'chicken',type:'non-veg',image:'https://img.freepik.com/premium-photo/view-tasty-yummy-delicious-indian-biryani-4k-hd-photo_1193781-10185.jpg',description:'Chicken biryani.'},
+  {id:'chicken-chowmein',name:'Chicken Chowmein',price:150,category:'chicken',type:'non-veg',image:'https://natashaskitchen.com/wp-content/uploads/2020/03/Chicken-Chow-Mein-4-1024x1536.jpg',description:'Chicken chowmein.'},
+  {id:'egg-chowmein',name:'Egg Chowmein',price:120,category:'chicken',type:'non-veg',image:'https://product-assets.faasos.io/production/product/image_1662389020944_Egg_Chowmein.jpg',description:'Egg chowmein.'},
+  {id:'chicken-maggie',name:'Chicken Maggie',price:90,category:'chicken',type:'non-veg',image:'https://cdn.beyondthebayoublog.com/wp-content/uploads/2025/06/Authentic-Chicken-Maggi-1200x904.png',description:'Chicken maggie.'},
+  {id:'egg-maggie',name:'Egg Maggie',price:70,category:'chicken',type:'non-veg',image:'https://images.slurrp.com/prod/articles/x4y40hvvf8r.webp?impolicy=slurrp-20210601&width=1200&height=900&q=75',description:'Egg maggie.'}
+];
 
   const cart = {};
   let currentFilter = 'all';
@@ -1808,13 +1848,85 @@
     renderMenu();
   }
 
-  function increaseQty(itemId){
-    const currentQty = cart[itemId] ? cart[itemId].qty : 0;
+  function getItemBasePrice(item){
+    if(item.variants && item.variants.length){
+      return item.variants[0].price;
+    }
+    return item.price || 0;
+  }
+
+  function getSelectedVariant(itemId){
+    const item = menuItems.find(m => m.id === itemId);
+    if(!item || !item.variants || !item.variants.length) return null;
+
+    const select = document.getElementById(`variant-${itemId}`);
+    if(!select){
+      return item.variants[0];
+    }
+
+    const selectedIndex = select.selectedIndex >= 0 ? select.selectedIndex : 0;
+    const selectedOption = select.options[selectedIndex];
+
+    return {
+      label: selectedOption.value,
+      price: Number(selectedOption.dataset.price)
+    };
+  }
+
+  function getCartKey(itemId){
+    const variant = getSelectedVariant(itemId);
+    return variant ? `${itemId}__${variant.label}` : itemId;
+  }
+
+  function getCartDisplayName(item, variant){
+    return variant ? `${item.name} (${variant.label})` : item.name;
+  }
+
+  function getVariantPriceText(item){
+    if(item.id === 'thali'){
+      return '₹150 + ₹10 packing';
+    }
+
+    if(item.variants && item.variants.length){
+      return item.variants.map(v => `${v.label}: ₹${v.price}`).join(' / ');
+    }
+
+    return `₹${item.price}`;
+  }
+
+  function updateVariantPrice(itemId){
     const item = menuItems.find(m => m.id === itemId);
     if(!item) return;
 
-    cart[itemId] = {
+    const variant = getSelectedVariant(itemId);
+    const priceBadge = document.getElementById(`price-badge-${itemId}`);
+    const qtyBox = document.getElementById(`qty-${itemId}`);
+
+    if(priceBadge && variant){
+      priceBadge.textContent = `₹${variant.price}`;
+    }
+
+    if(qtyBox){
+      const cartKey = getCartKey(itemId);
+      qtyBox.value = cart[cartKey] ? cart[cartKey].qty : 0;
+    }
+  }
+
+  function increaseQty(itemId){
+    const item = menuItems.find(m => m.id === itemId);
+    if(!item) return;
+
+    const variant = getSelectedVariant(itemId);
+    const cartKey = getCartKey(itemId);
+    const currentQty = cart[cartKey] ? cart[cartKey].qty : 0;
+    const price = variant ? variant.price : item.price;
+
+    cart[cartKey] = {
       ...item,
+      cartKey,
+      variant: variant ? variant.label : '',
+      name: getCartDisplayName(item, variant),
+      price,
       qty: currentQty + 1
     };
 
@@ -1823,14 +1935,18 @@
   }
 
   function decreaseQty(itemId){
-    if(!cart[itemId]) return;
+    const item = menuItems.find(m => m.id === itemId);
+    if(!item) return;
 
-    const currentQty = cart[itemId].qty - 1;
+    const cartKey = getCartKey(itemId);
+    if(!cart[cartKey]) return;
+
+    const currentQty = cart[cartKey].qty - 1;
 
     if(currentQty <= 0){
-      delete cart[itemId];
+      delete cart[cartKey];
     } else {
-      cart[itemId].qty = currentQty;
+      cart[cartKey].qty = currentQty;
     }
 
     updateSummary();
@@ -1843,31 +1959,61 @@
 
     container.innerHTML = '';
 
-    const visibleItems = currentFilter === 'all'
-      ? menuItems
-      : menuItems.filter(item => item.category === currentFilter);
+    const searchValue = (document.getElementById('menuSearchInput')?.value || '').toLowerCase().trim();
+
+    const visibleItems = menuItems.filter(item => {
+      const categoryMatch = currentFilter === 'all' || item.category === currentFilter;
+      const variantText = item.variants ? item.variants.map(v => `${v.label} ${v.price}`).join(' ') : '';
+      const searchText = `${item.name} ${item.description} ${item.category} ${item.type} ${variantText}`.toLowerCase();
+      return categoryMatch && searchText.includes(searchValue);
+    });
+
+    if(!visibleItems.length){
+      container.innerHTML = `
+        <div class="col-12">
+          <div class="download-card text-center">
+            <h3>No food found</h3>
+            <p class="text-muted mb-0">Try searching Paneer, Chicken, Maggi, Momos, Rice, or Coffee.</p>
+          </div>
+        </div>
+      `;
+      return;
+    }
 
     visibleItems.forEach(item => {
       const col = document.createElement('div');
       col.className = 'col-md-6 col-lg-4';
 
-      const cartQty = cart[item.id] ? cart[item.id].qty : 0;
-      const displayPrice = item.id === 'thali'
-        ? `₹150 + ₹10 packing`
-        : `₹${item.price}`;
+      const defaultVariant = item.variants && item.variants.length ? item.variants[0] : null;
+      const defaultCartKey = defaultVariant ? `${item.id}__${defaultVariant.label}` : item.id;
+      const cartQty = cart[defaultCartKey] ? cart[defaultCartKey].qty : 0;
+      const displayPrice = defaultVariant ? `₹${defaultVariant.price}` : getVariantPriceText(item);
 
       col.innerHTML = `
         <div class="menu-card">
-          <img src="${item.image}" alt="${item.name}">
+          <img src="${item.image}" alt="${item.name}" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop'">
           <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
             <span class="menu-category-badge">${getCategoryLabel(item.category)}</span>
             ${getFoodTypeBadge(item.type)}
           </div>
+
           <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
             <h5 class="fw-bold mb-0">${item.name}</h5>
-            <span class="badge text-bg-warning px-3 py-2 rounded-pill">${displayPrice}</span>
+            <span class="badge text-bg-warning px-3 py-2 rounded-pill" id="price-badge-${item.id}">${displayPrice}</span>
           </div>
+
           <p class="text-muted small mb-3">${item.description}</p>
+
+          ${item.variants && item.variants.length ? `
+            <label class="form-label small fw-semibold mb-1">Choose Size</label>
+            <select class="form-select mb-3" id="variant-${item.id}" onchange="updateVariantPrice('${item.id}')">
+              ${item.variants.map(v => `
+                <option value="${v.label}" data-price="${v.price}">
+                  ${v.label} - ₹${v.price}
+                </option>
+              `).join('')}
+            </select>
+          ` : ''}
 
           <div class="d-flex justify-content-between align-items-center gap-2 mt-3 flex-wrap">
             <div class="qty-control">
@@ -1884,26 +2030,19 @@
   }
 
   function addToCart(itemId){
-    const item = menuItems.find(m => m.id === itemId);
-    if(!item) return;
-
-    if(!cart[itemId]){
-      cart[itemId] = {
-        ...item,
-        qty: 1
-      };
-    }
-
-    updateSummary();
-    renderMenu();
+    increaseQty(itemId);
   }
 
   function quickAddThali(){
     const thaliItem = menuItems.find(m => m.id === 'thali');
+    if(!thaliItem) return;
+
     const currentQty = cart['thali'] ? cart['thali'].qty : 0;
 
     cart['thali'] = {
       ...thaliItem,
+      cartKey: 'thali',
+      variant: '',
       qty: currentQty + 1
     };
 
@@ -1911,8 +2050,8 @@
     renderMenu();
   }
 
-  function removeFromCart(itemId){
-    delete cart[itemId];
+  function removeFromCart(cartKey){
+    delete cart[cartKey];
     updateSummary();
     renderMenu();
   }
@@ -1994,7 +2133,7 @@
           </div>
           <div class="text-end">
             <div class="fw-bold">₹${itemTotal}</div>
-            <button class="btn btn-sm btn-link text-danger p-0" onclick="removeFromCart('${item.id}')">Remove</button>
+            <button class="btn btn-sm btn-link text-danger p-0" onclick="removeFromCart('${item.cartKey || item.id}')">Remove</button>
           </div>
         </div>
       `;
@@ -2037,7 +2176,7 @@
       const rows = categoryItems.map(item => `
         <div class="download-menu-row">
           <span>${item.type === 'non-veg' ? '🔴' : '🟢'} ${item.name}</span>
-          <strong>${item.id === 'thali' ? '₹150 + ₹10' : '₹' + item.price}</strong>
+          <strong>${getVariantPriceText(item)}</strong>
         </div>
       `).join('');
 
