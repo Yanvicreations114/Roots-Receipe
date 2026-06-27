@@ -1074,18 +1074,58 @@
     }
 
 
+    .sticky-menu-search-wrap{
+      position:sticky;
+      top:88px;
+      z-index:900;
+      background:rgba(250,248,240,0.94);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      border:1px solid rgba(184,134,43,0.14);
+      border-radius:24px;
+      padding:16px;
+      margin-bottom:26px;
+      box-shadow:0 16px 35px rgba(120,94,35,0.14);
+    }
+
+    .sticky-search-title{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      margin-bottom:12px;
+      color:var(--gold-1);
+      font-weight:800;
+      font-size:.95rem;
+    }
+
     #menuSearchInput{
       border-radius:999px;
       padding:14px 20px;
       font-size:16px;
       border:1px solid rgba(184,134,43,0.24);
       box-shadow:0 10px 24px rgba(184,134,43,0.10);
-      background:rgba(255,255,255,0.96);
+      background:rgba(255,255,255,0.98);
     }
 
     #menuSearchInput:focus{
       border-color:var(--gold-1);
       box-shadow:0 0 0 .2rem rgba(184,134,43,0.16);
+    }
+
+    .sticky-menu-search-wrap .menu-filter-wrap{
+      max-height:58px;
+      overflow-x:auto;
+      overflow-y:hidden;
+      flex-wrap:nowrap;
+      justify-content:flex-start;
+      padding:4px 2px 8px;
+      scrollbar-width:thin;
+    }
+
+    .sticky-menu-search-wrap .menu-filter-btn{
+      white-space:nowrap;
+      flex:0 0 auto;
     }
 
     @media print{
@@ -1121,6 +1161,7 @@
     }
 
     @media (max-width:991px){
+      .sticky-menu-search-wrap{top:78px; padding:14px; border-radius:20px}
       .hero-section{padding:105px 0 60px}
       .summary-card{position:static}
       .site-watermark img{width:180px}
@@ -1133,6 +1174,10 @@
     }
 
     @media (max-width:576px){
+      .sticky-menu-search-wrap{top:72px; margin-left:-4px; margin-right:-4px}
+      .sticky-search-title{font-size:.88rem}
+      .sticky-menu-search-wrap .menu-filter-wrap{max-height:54px}
+      .menu-filter-btn{padding:9px 14px; font-size:.9rem}
       .hero-glass-card{
         padding:30px 18px;
         border-radius:22px;
@@ -1269,26 +1314,29 @@
         <p>Choose by category and add items with quantity controls.</p>
       </div>
 
-      <div class="row justify-content-center mb-4">
-        <div class="col-md-8 col-lg-6">
-          <input
-            type="text"
-            id="menuSearchInput"
-            class="form-control"
-            placeholder="🔍 Search food... Paneer, Maggi, Chicken"
-            oninput="renderMenu()"
-          >
+      <div class="sticky-menu-search-wrap sparkle-target">
+        <div class="sticky-search-title">🔎 Search & Filter Menu</div>
+        <div class="row justify-content-center mb-3">
+          <div class="col-md-8 col-lg-6">
+            <input
+              type="text"
+              id="menuSearchInput"
+              class="form-control"
+              placeholder="🔍 Search food... Paneer, Maggi, Chicken"
+              oninput="renderMenu()"
+            >
+          </div>
         </div>
-      </div>
 
-      <div class="menu-filter-wrap mb-4">
-        <button class="menu-filter-btn active" onclick="filterMenu('all', this)">All Menu</button>
-        <button class="menu-filter-btn" onclick="filterMenu('thali', this)">Thali</button>
-        <button class="menu-filter-btn" onclick="filterMenu('snacks', this)">Snacks</button>
-        <button class="menu-filter-btn" onclick="filterMenu('main-course', this)">Main Course</button>
-        <button class="menu-filter-btn" onclick="filterMenu('bread-rice', this)">Bread & Rice</button>
-        <button class="menu-filter-btn" onclick="filterMenu('beverages', this)">Beverages</button>
-        <button class="menu-filter-btn" onclick="filterMenu('chicken', this)">Non Veg</button>
+        <div class="menu-filter-wrap mb-0">
+          <button class="menu-filter-btn active" onclick="filterMenu('all', this)">All Menu</button>
+          <button class="menu-filter-btn" onclick="filterMenu('thali', this)">Thali</button>
+          <button class="menu-filter-btn" onclick="filterMenu('snacks', this)">Snacks</button>
+          <button class="menu-filter-btn" onclick="filterMenu('main-course', this)">Main Course</button>
+          <button class="menu-filter-btn" onclick="filterMenu('bread-rice', this)">Bread & Rice</button>
+          <button class="menu-filter-btn" onclick="filterMenu('beverages', this)">Beverages</button>
+          <button class="menu-filter-btn" onclick="filterMenu('chicken', this)">Non Veg</button>
+        </div>
       </div>
 
       <div class="row g-4" id="menuContainer"></div>
@@ -1688,7 +1736,7 @@ const menuItems = [
   {id:'cheese-maggie',name:'Cheese Maggie',price:60,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/QqRy4cJywh4/maxresdefault.jpg',description:'Cheese maggie.'},
 
   {id:'boiled-egg',name:'Boiled Egg (2 pcs)',price:25,category:'chicken',type:'non-veg',image:'https://media.istockphoto.com/id/956940158/photo/hard-boiled-eggs.jpg?s=612x612&w=0&k=20&c=106pEBT8ddfH3n_xweh8-tsrwSV6gREqn5QUCM_-onE=',description:'Boiled egg two pieces.'},
-  {id:'egg-bhurji',name:'Egg Bhurji',price:150,category:'chicken',type:'non-veg',image:'https://eggcellent.recipes/wp-content/uploads/2024/08/Indian-Egg-Bhurji-Recipe-1536x1536.png',description:'Masala egg bhurji.'},
+  {id:'egg-bhurji',name:'Egg Bhurji',price:150,category:'chicken',type:'non-veg',image:'https://media.istockphoto.com/id/1305516603/photo/egg-bhurji.jpg?s=612x612&w=0&k=20&c=L6f76imq85K2v8iPtvTP5SiM6M7k17Xl6gfDYTJFU28=',description:'Masala egg bhurji.'},
   {id:'vegetable-omelette',name:'Vegetable Omelette',price:50,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Omelette with vegetables.'},
   {id:'bread-omelette',name:'Bread Omelette',price:50,category:'chicken',type:'non-veg',image:'https://tse1.mm.bing.net/th/id/OIP.a8x5MgnG3JftCFemeU8OuwHaDG?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Bread omelette.'},
   {id:'cheese-omelette',name:'Cheese Omelette',price:60,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Cheese omelette.'},
