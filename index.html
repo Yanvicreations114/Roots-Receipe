@@ -1620,6 +1620,7 @@ const menuItems = [
   {id:'french-fries',name:'French Fries',price:80,category:'snacks',type:'veg',image:'https://images6.alphacoders.com/108/thumb-1920-1080178.jpg',description:'Crispy fries.'},
   {id:'peri-fries',name:'Peri-Peri Fries',price:100,category:'snacks',type:'veg',image:'https://static.vecteezy.com/system/resources/previews/024/748/761/non_2x/grilled-meat-and-french-fries-a-classic-american-lunch-bar-generated-by-ai-free-photo.jpg',description:'Peri peri fries.'},
   {id:'veg-burger',name:'Veg Burger',price:50,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop',description:'Loaded veg burger.'},
+  {id:'chicken-burger',name:'Chicken Burger',price:90,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop',description:'Loaded chicken burger.'},
   {id:'red-sauce-pasta',name:'Red Sauce Pasta',price:100,category:'snacks',type:'veg',image:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=1200&auto=format&fit=crop',description:'Classic red sauce pasta.'},
   {id:'white-sauce-pasta',name:'White Sauce Pasta',price:150,category:'snacks',type:'veg',image:'https://cookingwithcasey.com/assets/images/1742358496409-ajvfa0wd.webp',description:'Creamy white sauce pasta.'},
   {id:'veg-macaroni',name:'Veg Macaroni',price:100,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/VNs_AXNG1ik/maxresdefault.jpg',description:'Veg macaroni.'},
@@ -1634,7 +1635,7 @@ const menuItems = [
   {id:'dal-tadka',name:'Dal Tadka',category:'main-course',type:'veg',image:'https://static.vecteezy.com/system/resources/previews/038/947/178/non_2x/ai-generated-dal-tadka-is-a-popular-indian-dish-where-cooked-spiced-lentils-are-finished-with-a-tempering-made-of-ghee-or-oil-and-spices-photo.jpg',description:'Tadka dal.',variants:[{label:'Half',price:70},{label:'Full',price:120}]},
   {id:'aloo-jeera',name:'Aloo Jeera',category:'main-course',type:'veg',image:'https://2.bp.blogspot.com/-wonKVzMF8lM/VtYdt7V12sI/AAAAAAAAUuo/li4gWvl4zBM/s1600/Aloo-Jeera_finalforweb1.jpg',description:'Jeera potatoes.',variants:[{label:'Half',price:70},{label:'Full',price:120}]},
   {id:'aloo-gobhi',name:'Aloo Gobhi',category:'main-course',type:'veg',image:'https://tse4.mm.bing.net/th/id/OIP.zoeJP2Q4Mp3y66jpOWWdEgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic aloo gobhi curry.',variants:[{label:'Half',price:70},{label:'Full',price:120}]},
-  {id:'mix-veg',name:'Mix Veg',category:'main-course',type:'veg',image:'https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/Mixed-Veg-Curry1.jpg',description:'Mixed vegetables.',variants:[{label:'Half',price:90},{label:'Full',price:120}]},
+  {id:'mix-veg',name:'Mix Veg',category:'main-course',type:'veg',image:'https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/Mixed-Veg-Curry1.jpg',description:'Mixed vegetables.',variants:[{label:'Half',price:90},{label:'Full',price:150}]},
   {id:'paneer-bhurji',name:'Paneer Bhurji',category:'main-course',type:'veg',image:'https://media.istockphoto.com/id/1820486089/photo/paneer-bhurji.jpg?s=612x612&w=0&k=20&c=8rcJeVTEJBw_gU6UN60qaDhknd4Z9jGw-x32cwk1vr8=',description:'Paneer bhurji masala.',variants:[{label:'Half',price:120},{label:'Full',price:210}]},
   {id:'kadhai-paneer',name:'Kadhai Paneer',category:'main-course',type:'veg',image:'https://1.bp.blogspot.com/_GlkYxavu-Ts/StVnaw3GCJI/AAAAAAAAARM/2b3PenJbX7g/s400/kadhai-paneer1.JPG',description:'Kadhai paneer gravy.',variants:[{label:'Half',price:120},{label:'Full',price:210}]},
   {id:'paneer-mix-veg',name:'Paneer Mix Veg',category:'main-course',type:'veg',image:'https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/Mixed-Veg-Curry1.jpg',description:'Paneer mix veg.',variants:[{label:'Half',price:120},{label:'Full',price:210}]},
@@ -1669,7 +1670,7 @@ const menuItems = [
   {id:'cold-coffee',name:'Classic Cold Coffee',price:70,category:'beverages',type:'veg',image:'https://tse2.mm.bing.net/th/id/OIP.2P4fqrajqy8-4iqhlVbR4AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Classic cold coffee.'},
   {id:'banana-shake',name:'Banana Shake',price:80,category:'beverages',type:'veg',image:'https://www.aboutamom.com/wp-content/uploads/2024/08/Banana-Milkshake-A_AAM_Banana_Milkshake_Recipe_Future_2.jpg.jpg',description:'Banana shake.'},
   {id:'oreo-shake',name:'Oreo Shake',price:80,category:'beverages',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'Oreo shake.'},
-  {id:'kitkat-crunch-shake',name:'KitKat Crunch Shake',price:100,category:'beverages',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'KitKat crunch shake.'},
+  {id:'kitkat-crunch-shake',name:'KitKat Crunch Shake',price:80,category:'beverages',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'KitKat crunch shake.'},
   {id:'cream-chocolate-shake',name:'Cream Chocolate Shake',price:100,category:'beverages',type:'veg',image:'https://tse3.mm.bing.net/th/id/OIP.YmUkCL3jdnB0PdkEvhHU7AHaEO?pid=ImgDet&w=184&h=105&c=7&dpr=1.3&o=7&rm=3',description:'Cream chocolate shake.'},
   {id:'ice-cream-latte',name:'Ice-Cream Latte',price:100,category:'beverages',type:'veg',image:'https://tse2.mm.bing.net/th/id/OIP.2P4fqrajqy8-4iqhlVbR4AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Ice-cream latte.'},
   {id:'lemonade',name:'Lemonade',price:40,category:'beverages',type:'veg',image:'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1200&auto=format&fit=crop',description:'Refreshing lemonade.'},
@@ -1687,6 +1688,7 @@ const menuItems = [
   {id:'cheese-maggie',name:'Cheese Maggie',price:60,category:'snacks',type:'veg',image:'https://i.ytimg.com/vi/QqRy4cJywh4/maxresdefault.jpg',description:'Cheese maggie.'},
 
   {id:'boiled-egg',name:'Boiled Egg (2 pcs)',price:25,category:'chicken',type:'non-veg',image:'https://media.istockphoto.com/id/956940158/photo/hard-boiled-eggs.jpg?s=612x612&w=0&k=20&c=106pEBT8ddfH3n_xweh8-tsrwSV6gREqn5QUCM_-onE=',description:'Boiled egg two pieces.'},
+  {id:'egg-bhurji',name:'Egg Bhurji',price:150,category:'chicken',type:'non-veg',image:'https://eggcellent.recipes/wp-content/uploads/2024/08/Indian-Egg-Bhurji-Recipe-1536x1536.png',description:'Masala egg bhurji.'},
   {id:'vegetable-omelette',name:'Vegetable Omelette',price:50,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Omelette with vegetables.'},
   {id:'bread-omelette',name:'Bread Omelette',price:50,category:'chicken',type:'non-veg',image:'https://tse1.mm.bing.net/th/id/OIP.a8x5MgnG3JftCFemeU8OuwHaDG?rs=1&pid=ImgDetMain&o=7&rm=3',description:'Bread omelette.'},
   {id:'cheese-omelette',name:'Cheese Omelette',price:60,category:'chicken',type:'non-veg',image:'https://images.unsplash.com/photo-1510693206972-df098062cb71?q=80&w=1200&auto=format&fit=crop',description:'Cheese omelette.'},
@@ -1712,6 +1714,7 @@ const menuItems = [
 ];
 
   const cart = {};
+  const selectedVariants = {};
   let currentFilter = 'all';
   let whatsappChoiceModal = null;
 
@@ -1848,11 +1851,14 @@ const menuItems = [
     renderMenu();
   }
 
+  function getFullVariant(item){
+    if(!item || !item.variants || !item.variants.length) return null;
+    return item.variants.find(v => v.label.toLowerCase() === 'full') || item.variants[item.variants.length - 1];
+  }
+
   function getItemBasePrice(item){
-    if(item.variants && item.variants.length){
-      return item.variants[0].price;
-    }
-    return item.price || 0;
+    const fullVariant = getFullVariant(item);
+    return fullVariant ? fullVariant.price : (item.price || 0);
   }
 
   function getSelectedVariant(itemId){
@@ -1861,11 +1867,12 @@ const menuItems = [
 
     const select = document.getElementById(`variant-${itemId}`);
     if(!select){
-      return item.variants[0];
+      return getFullVariant(item);
     }
 
     const selectedIndex = select.selectedIndex >= 0 ? select.selectedIndex : 0;
     const selectedOption = select.options[selectedIndex];
+    selectedVariants[itemId] = selectedOption.value;
 
     return {
       label: selectedOption.value,
@@ -1894,6 +1901,19 @@ const menuItems = [
     return `₹${item.price}`;
   }
 
+  function getMainMenuPriceText(item){
+    if(item.id === 'thali'){
+      return '₹150 + ₹10 packing';
+    }
+
+    const fullVariant = getFullVariant(item);
+    if(fullVariant){
+      return `₹${fullVariant.price}`;
+    }
+
+    return `₹${item.price}`;
+  }
+
   function updateVariantPrice(itemId){
     const item = menuItems.find(m => m.id === itemId);
     if(!item) return;
@@ -1901,6 +1921,10 @@ const menuItems = [
     const variant = getSelectedVariant(itemId);
     const priceBadge = document.getElementById(`price-badge-${itemId}`);
     const qtyBox = document.getElementById(`qty-${itemId}`);
+
+    if(variant){
+      selectedVariants[itemId] = variant.label;
+    }
 
     if(priceBadge && variant){
       priceBadge.textContent = `₹${variant.price}`;
@@ -1984,7 +2008,7 @@ const menuItems = [
       const col = document.createElement('div');
       col.className = 'col-md-6 col-lg-4';
 
-      const defaultVariant = item.variants && item.variants.length ? item.variants[0] : null;
+      const defaultVariant = item.variants && item.variants.length ? (item.variants.find(v => v.label === selectedVariants[item.id]) || getFullVariant(item)) : null;
       const defaultCartKey = defaultVariant ? `${item.id}__${defaultVariant.label}` : item.id;
       const cartQty = cart[defaultCartKey] ? cart[defaultCartKey].qty : 0;
       const displayPrice = defaultVariant ? `₹${defaultVariant.price}` : getVariantPriceText(item);
@@ -2008,7 +2032,7 @@ const menuItems = [
             <label class="form-label small fw-semibold mb-1">Choose Size</label>
             <select class="form-select mb-3" id="variant-${item.id}" onchange="updateVariantPrice('${item.id}')">
               ${item.variants.map(v => `
-                <option value="${v.label}" data-price="${v.price}">
+                <option value="${v.label}" data-price="${v.price}" ${defaultVariant && defaultVariant.label === v.label ? 'selected' : ''}>
                   ${v.label} - ₹${v.price}
                 </option>
               `).join('')}
@@ -2176,7 +2200,7 @@ const menuItems = [
       const rows = categoryItems.map(item => `
         <div class="download-menu-row">
           <span>${item.type === 'non-veg' ? '🔴' : '🟢'} ${item.name}</span>
-          <strong>${getVariantPriceText(item)}</strong>
+          <strong>${getMainMenuPriceText(item)}</strong>
         </div>
       `).join('');
 
